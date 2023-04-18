@@ -1,0 +1,23 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.Card-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+
+.Card-title {
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.Card-text {
+  margin: 8px 0;
+}
