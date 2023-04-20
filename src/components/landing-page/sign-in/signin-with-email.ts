@@ -20,9 +20,9 @@ class SigninWithEmail extends LitElement {
     `}
 
     // Handle the submit event of the sign in form.
-    checkSignIn(event) {
+    checkSignIn(e) {
         console.log('here', this.email, this.password)
-        event.preventDefault();
+        e.preventDefault();
         // Sign in the user with the email and password.
         signInWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredintial) => {
