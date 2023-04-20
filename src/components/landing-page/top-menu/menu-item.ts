@@ -1,7 +1,11 @@
 import { html, LitElement, css } from "lit";
+import { property } from "lit/decorators.js";
 
 
 class MenuItem extends LitElement {
+    @property() disabled=false
+
+
     static styles = css`
         span {
             display: inline-flex;
@@ -18,10 +22,15 @@ class MenuItem extends LitElement {
 			color: var(--highlight-color);
 			fill: var(--highlight-color);
 		}
+        span[disabled=true] {
+            color: var(--inactive-color);
+			fill: var(--inactive-color);
+            pointer-events: none;
+        }
     `
 
     render () {return html`
-        <span>
+        <span disabled=${this.disabled}>
             <slot>
             </slot>
 		</span>
