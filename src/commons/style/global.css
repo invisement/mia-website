@@ -9,6 +9,7 @@
     --accent-color: rgb(0, 110, 100);
     --highlight-color: rgb(255, 122, 0);
     --warning-color: rgb(255, 0, 0);
+    --inactive-color: lightgray;
 
     --primary-background: white;
     --accent-background: rgb(230, 240, 230);
