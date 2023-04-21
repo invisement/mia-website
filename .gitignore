@@ -2,9 +2,7 @@
 # Perosnal/temporary folders and files and build folders like www and dist
 temp
 dist
-mia-dist
 node_modules
-www
 types/
 package-lock.json
 

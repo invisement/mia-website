@@ -1,13 +1,14 @@
 import { defineConfig } from 'vite'
-import mkcert from 'vite-plugin-mkcert'
 import * as path from 'path'
+import basicSsl from '@vitejs/plugin-basic-ssl'
+
 
 export default defineConfig({
 	root: 'src',
 	publicDir: '../static',
 
 	plugins: [
-		mkcert(),
+        basicSsl(),
 	],
 
 	build: {
