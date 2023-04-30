@@ -1,92 +1,45 @@
 //import { LitElement, css, html } from "lit";
-import {LitElement, html, css} from 'lit';
+import { LitElement, html, css } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import {property, state, query} from 'lit/decorators.js'
-import { marked } from 'marked';
+import { property, state, query } from 'lit/decorators.js'
 
-marked.setOptions({
-	breaks: true,
-})
+import { post } from '../../../commons/firebase/firestore/post-questionnaire-data.ts';
+
+const api_url = import.meta.env.VITE_API_BASE_URL
+const post_questionaire = "questionnaire/questionnaire-1"
+
+const url = `${api_url}/${post_questionaire}`
+
+type QuestionAnswers = {
+    [key: string]: string[]
+}
 
 export class QuesTionnaire extends LitElement {
-	@property()
-	src = ""
+    @property()
+    src = "/default"
 
-	@state()
-	content = ""
+    @state()
+    content = ""
 
-	@query('form')
-	form: HTMLFormElement;
+    @query('form')
+    form: HTMLFormElement;
 
-	submit() {
-		// TODO: later
-		console.log("here")
-		return false
-	}
-    
+    connectedCallback() {
+        super.connectedCallback();
 
-	connectedCallback() {
-		super.connectedCallback()
-		this.parse()
-	}
+        console.log("source", this.src);
+        
+        ["", "/"].includes(this.src) || fetch(this.src)
+            .then(r => r.text())
+            .then(doc => this.content = doc)
+            .catch(() => {
+                console.error("wrong input for questionnaire source");
+            })
+    }
 
-	async parse() {
-		var md = await fetch(this.src).then(r => r.text())
-
-		var doc = marked.parse(md)
-
-		var level = 0
-		var question = 0
-		var name = "q"
-		var answer = 1
-		const metaData = {}
-
-		doc = doc.split('\n').map(line => {
-			if (line == '<ol>' || line == '<ul>') {
-				level++
-			} else if (line == '</ol>' || line == '</ul>') {
-				level--
-			} else if ((level == 1 && line.startsWith('<li>')) || (level == 0 && line.startsWith('<p>'))) {
-				question++
-				name = 'q' + question
-				answer = 0
-				metaData[name] = {question: line, answers: []}
-			} else if (line.startsWith('<li>')) {
-				answer++
-				metaData[name]['answers'].push(line)
-
-				if (!line.startsWith('<li><input') && level <= 2) {
-					line = line.replace('<li>', '<li><input type="radio">')
-				}
-				// TODO: add dropbox either by ol or level>2
-			}
-
-			line = line
-				.replace('<input', `<input name=${name}`)
-				.replace('type="checkbox"', `type="checkbox" value=${answer}`)
-				.replace('type="radio"', `type="radio" value=${answer}`)
-				.replace('disabled=""', '')
-
-			if (level == 2) {
-				line = line
-					.replace('<li>', '<li><label>')
-					.replace('</li>', '</label></li>')
-			}
-		
-			return line
-
-		}).join('\n')
-
-		// TODO: save metadata in backend to analyze data gathering
-		console.log(JSON.stringify(metaData))
-
-		this.content = doc
-
-	}
-
-	render() {
-		return html`
-		<form action="/questionnaire/q1">
+    render() {
+        return html`
+		<form @submit=${this.submit}>
 			<main>
 				${unsafeHTML(this.content)}
 			</main>
@@ -97,9 +50,14 @@ export class QuesTionnaire extends LitElement {
 		<form>
 	`}
 
-	static styles = css`
+    static styles = css`
+        form {
+            background-color: var(--primary-background);
+        }
 		h1 {
+            margin: 0;
 			text-align: center;
+            padding: 1em;
 		}
 		ul {
 			list-style-type: none;
@@ -127,10 +85,32 @@ export class QuesTionnaire extends LitElement {
 		ol>li {
 			break-after: avoid;
 		}
-
-
 	`
+    async submit(e) {
 
+        e.preventDefault()
+        const formData = new FormData(e.currentTarget)
+
+        const data: QuestionAnswers = {}
+        for (const key of formData.keys()) {
+            data[key] = formData.getAll(key)
+        }
+
+        post("questionnaire-1", "heydari@gmail.com", data)
+        .then(console.log)
+
+        // const response = await fetch(url, {
+        //     method: "post",
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(data),
+        // });
+
+        // console.log("response", response)
+
+    }
 }
 customElements.define('ques-tionnaire', QuesTionnaire)
 

@@ -11,6 +11,7 @@
     --warning-color: rgb(255, 0, 0);
     --inactive-color: lightgray;
 
+    --inactive-background: rgb(215, 210, 215);
     --primary-background: white;
     --accent-background: rgb(230, 240, 230);
     --highlight-background: rgb(240, 220, 200);
@@ -22,13 +23,12 @@
 
 body {
     font-family: var(--primary-font);
+    background-color: var(--inactive-background);
 	font-size: 16px;
     line-height: 1.5em;
 
     margin: 0 auto;
 	max-width: 65rem;
-    border: thin solid lightgrey;
-	border-top: none;
 
 }
 

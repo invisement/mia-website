@@ -14,7 +14,12 @@ class SignIn extends LitElement {
 		dialog {
 			font-size: 1rem;
 			text-align: center;
+            background-color: var(--accent-background);
+            color: var(--accent-color);
 		}
+        a {
+            color: unset;
+        }
 		menu-item {
 			margin: .5em auto;
 			display: block;

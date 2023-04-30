@@ -7,7 +7,7 @@ import './top-right'
 class TopMenu extends LitElement {
     static styles = css`
 		:host {
-			padding: .5em;
+			padding: 1em;
 			display: block;
 			position: sticky;
 			top: 0;

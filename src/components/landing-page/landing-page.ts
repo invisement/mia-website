@@ -1,4 +1,4 @@
-import { CSSResultGroup, LitElement, css, html } from "lit";
+import { LitElement, html } from "lit";
 import './top-menu/top-menu'
 
 class LandingPage extends LitElement {
