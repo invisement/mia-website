@@ -1,4 +1,6 @@
 import { LitElement, html, css } from "lit";
+import { gotoPage } from "/commons/pubsub/store.ts";
+
 
 export class HomePage extends LitElement {
     static styles = css`
@@ -14,7 +16,7 @@ export class HomePage extends LitElement {
             <h2> Questionnaires </h2>
             <ul>
                 <li>
-                    <a href="/questionnaires/insurance-questionnaire"> First questionnaire </a>
+                    <a @click=${() => gotoPage("/questionnaires/insurance-questionnaire")} > First questionnaire </a>
                 </li>
             </ul>
         </main>

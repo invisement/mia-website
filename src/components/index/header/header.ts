@@ -1,10 +1,9 @@
 import { css, html, LitElement } from "lit";
 import './company-logo'
-import './top-left'
 import './top-right'
 
 
-class TopMenu extends LitElement {
+class Header extends LitElement {
     static styles = css`
 		:host {
 			padding: 1em;
@@ -46,4 +45,4 @@ class TopMenu extends LitElement {
         </top-right>
     `}
 }
-customElements.define('top-menu', TopMenu)
+customElements.define('head-er', Header)

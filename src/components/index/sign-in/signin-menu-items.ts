@@ -1,10 +1,12 @@
 import { LitElement, css, html } from "lit";
+import { state, query } from "lit/decorators.js";
 
 import { loginIcon2, logoutIcon2} from "@static/svg/icons";
-import '../top-menu/menu-item'
-import './signin-dialog'
-import { state, query } from "lit/decorators.js";
 import { User, currentUser } from "/commons/pubsub/store";
+
+import '/components/index/header/menu-item'
+
+import './signin-dialog'
 
 const DEFAULT_NAME = 'Guest'
 

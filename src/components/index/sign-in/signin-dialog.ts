@@ -1,9 +1,10 @@
 import { LitElement, html, css } from "lit"
+import { query } from "lit/decorators.js";
 
 import { googleIcon, emailIcon, appleIcon, facebookIcon } from "@static/svg/brand-icons"
-import '../top-menu/menu-item'
-import { query } from "lit/decorators.js";
-import { signInPopup } from "./signin-providers";
+
+import '/components/index/header/menu-item'
+import { signInPopup } from "/commons/firebase/authentication/signin-providers";
 
 
 class SignIn extends LitElement {

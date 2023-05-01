@@ -1,6 +1,7 @@
 
-import { firebaseApp } from "./initiate-firebase";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+import { firebaseApp } from "../initiate-firebase";
 
 import { currentUser, User } from '/commons/pubsub/store'
 

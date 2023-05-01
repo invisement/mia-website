@@ -13,3 +13,8 @@ export interface User {
 
 export var currentUser = new PubSub<User>({ isSignedIn: false })
 
+export function gotoPage(url: string) {
+    console.log("goto", url)
+    window.history.pushState(url, "", url)
+    dispatchEvent(new PopStateEvent('popstate', {state: url}));
+}

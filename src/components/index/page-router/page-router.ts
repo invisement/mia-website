@@ -1,32 +1,35 @@
 import { LitElement, html } from "lit";
 import { state } from "lit/decorators.js"
-import "./home-page/home-page.ts"
-import "./landing-page/ques-tionnaire/ques-tionnaire.ts"
-import { isWindows } from "https://deno.land/std@0.183.0/_util/os.ts";
+
+import "/components/home-page/home-page.ts"
+import "/components/ques-tionnaire/ques-tionnaire.ts"
 
 type Params = {[key: string]: string}
 
-const routes = {
+export const routes = {
     "/questionnaires/:name": (params: Params) => html`<ques-tionnaire src="/questionnaires/${params.name}.html"></ques-tionnaire>`,
     "/": () => html`<home-page></home-page>`
 }
 
 
-export class PageRouter extends LitElement {
+class PageRouter extends LitElement {
 
     @state() pathname: string;
 
-    constructor() {
-        super()
+    popstate = (e: PopStateEvent) => {
+        e.preventDefault()
         this.pathname = window.location.pathname
     }
 
     connectedCallback() {
         super.connectedCallback()
-        document.addEventListener('popstate', (e) => {
-            console.log("in connected", e)
-            this.pathname = window.location.pathname
-        })
+        this.pathname = window.location.pathname
+        addEventListener("popstate", this.popstate)
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback()
+        removeEventListener("popstate", this.popstate)
     }
 
     matchPathname(pathname: string, routePathname: string) {
@@ -53,8 +56,6 @@ export class PageRouter extends LitElement {
         }
         return params;
     }
-
-
 
     render() {
         for (const route in routes) {

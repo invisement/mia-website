@@ -1,8 +1,8 @@
 import { LitElement, html } from "lit";
 
-import { auth } from "./signin-providers"
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { property, state } from "lit/decorators.js";
+
+import { auth } from "/commons/firebase/authentication/signin-providers"
 
 class SigninWithEmail extends LitElement {
 

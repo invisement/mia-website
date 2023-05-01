@@ -3,7 +3,7 @@ import { LitElement, html, css } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { property, state, query } from 'lit/decorators.js'
 
-import { post } from '../../../commons/firebase/firestore/post-questionnaire-data.ts';
+import { post } from '/commons/firebase/firestore/post-questionnaire-data.ts';
 
 const api_url = import.meta.env.VITE_API_BASE_URL
 const post_questionaire = "questionnaire/questionnaire-1"
@@ -26,8 +26,6 @@ export class QuesTionnaire extends LitElement {
 
     connectedCallback() {
         super.connectedCallback();
-
-        console.log("source", this.src);
         
         ["", "/"].includes(this.src) || fetch(this.src)
             .then(r => r.text())

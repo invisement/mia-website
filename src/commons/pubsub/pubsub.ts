@@ -26,7 +26,6 @@ class ConsumerComponent extends LitElement {
 }
 */
 
-import { LitElement } from "lit"
 
 export class PubSub<T> {
 	declare readonly FT: (t: T) => void
@@ -54,26 +53,3 @@ export class PubSub<T> {
         this.subscribers.delete(id)
     }
 }
-
-/*
-class ConsumerComponent extends LitElement {
-	constructor (...pubsubs: PubSub[]) {
-		super()
-		pubsubs.forEach()
-
-	}
-
-	@state() user: User
-    sub_id: number
-
-    connectedCallback() {
-        super.connectedCallback()
-        this.sub_id = user.sub(this.user)
-    }
-    disconnectedCallback() {
-        super.disconnectedCallback()
-        this.unsub(this.sub_id)
-    }
-    // the rest
-}
-*/
