@@ -97,17 +97,6 @@ export class QuesTionnaire extends LitElement {
         post("questionnaire-1", "heydari@gmail.com", data)
         .then(console.log)
 
-        // const response = await fetch(url, {
-        //     method: "post",
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data),
-        // });
-
-        // console.log("response", response)
-
     }
 }
 customElements.define('ques-tionnaire', QuesTionnaire)
