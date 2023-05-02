@@ -37,6 +37,7 @@ export class QuesTionnaire extends LitElement {
 
     render() {
         return html`
+        <card-board>
 		<form @submit=${this.submit}>
 			<main>
 				${unsafeHTML(this.content)}
@@ -46,6 +47,7 @@ export class QuesTionnaire extends LitElement {
 				<button type="submit">Submit form</button>
 			</footer>
 		<form>
+        </card-board>
 	`}
 
     static styles = css`
@@ -69,7 +71,7 @@ export class QuesTionnaire extends LitElement {
 		footer {
 			position: sticky;
 			bottom: 0;
-			padding: .5em;
+			padding: 2em;
 			display: flex;
 			justify-content: center;
 			background-color: var(--accent-background);

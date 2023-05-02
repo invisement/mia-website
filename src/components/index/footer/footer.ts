@@ -8,9 +8,10 @@ class Footer extends LitElement {
             background-color: var(--accent-background);
             color: var(--accent-color);
             fill: var(--accent-color);
+            box-shadow: var(--big-shadow);
+            border-radius: 1em 1em 0 0 ;
 
             padding: 1em;
-            margin-top: 2em;
             display: flex;
             flex-direction: column;
         }

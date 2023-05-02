@@ -1,7 +1,10 @@
 :root {
     --accent-color: rgb(255, 255, 255);
 
-    --primary-background: rgb(255, 255, 255);
+    --primary-background: rgb(221, 221, 221);
     --accent-background: rgb(100, 90, 100);
+
+    --big-shadow: 5px 5px 10px 5px gray;
+
 }
 
