@@ -5,10 +5,13 @@ import { property, state, query } from 'lit/decorators.js'
 
 import { post } from '/commons/firebase/firestore/post-questionnaire-data.ts';
 
-const api_url = import.meta.env.VITE_API_BASE_URL
-const post_questionaire = "questionnaire/questionnaire-1"
+import { currentUser, signInDialog } from '/commons/pubsub/store.ts';
+import { gotoPage } from '/commons/pubsub/store.ts';
 
-const url = `${api_url}/${post_questionaire}`
+//const api_url = import.meta.env.VITE_API_BASE_URL
+//const post_questionaire = "questionnaire/questionnaire-1"
+
+//const url = `${api_url}/${post_questionaire}`
 
 type QuestionAnswers = {
     [key: string]: string[]
@@ -16,7 +19,10 @@ type QuestionAnswers = {
 
 export class QuesTionnaire extends LitElement {
     @property()
-    src = "/default"
+    name = "";
+
+    @state()
+    src = () => `/questionnaires/${this.name}.html`
 
     @state()
     content = ""
@@ -27,7 +33,7 @@ export class QuesTionnaire extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         
-        ["", "/"].includes(this.src) || fetch(this.src)
+        ["", "/"].includes(this.src()) || fetch(this.src())
             .then(r => r.text())
             .then(doc => this.content = doc)
             .catch(() => {
@@ -35,18 +41,17 @@ export class QuesTionnaire extends LitElement {
             })
     }
 
-    render() {
-        return html`
+    render() {return html`
         <card-board>
-		<form @submit=${this.submit}>
-			<main>
-				${unsafeHTML(this.content)}
-			</main>
+            <form @submit=${this.submit}>
+                <main>
+                    ${unsafeHTML(this.content)}
+                </main>
 
-			<footer>
-				<button type="submit">Submit form</button>
-			</footer>
-		<form>
+                <footer>
+                    <button type="submit">Submit form</button>
+                </footer>
+            </form>
         </card-board>
 	`}
 
@@ -54,11 +59,6 @@ export class QuesTionnaire extends LitElement {
         form {
             background-color: var(--primary-background);
         }
-		h1 {
-            margin: 0;
-			text-align: center;
-            padding: 1em;
-		}
 		ul {
 			list-style-type: none;
 		}
@@ -68,15 +68,6 @@ export class QuesTionnaire extends LitElement {
 			max-width: 300px;
 		}
 
-		footer {
-			position: sticky;
-			bottom: 0;
-			padding: 2em;
-			display: flex;
-			justify-content: center;
-			background-color: var(--accent-background);
-			color: var(--highlight-color);
-		}
 
 		ul {
 			break-inside: avoid;
@@ -85,8 +76,22 @@ export class QuesTionnaire extends LitElement {
 		ol>li {
 			break-after: avoid;
 		}
+        h1, footer {
+            background-color: var(--accent-background);
+            color: var(--accent-color);
+            fill: var(--accent-color);
+            padding: 1em 0;
+			display: flex;
+			justify-content: center;
+            margin: 0;
+        }
+        footer > * {
+            font-size: larger;
+        }
+
 	`
     async submit(e) {
+        console.log
 
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
@@ -96,8 +101,29 @@ export class QuesTionnaire extends LitElement {
             data[key] = formData.getAll(key)
         }
 
-        post("questionnaire-1", "heydari@gmail.com", data)
-        .then(console.log)
+        // ask user to sign in until she is signed in or choosed to abort
+        while (!currentUser.value.isSignedIn) {
+            //dispatchEvent(new Event("signin"))
+            await signInDialog.show()
+            if (currentUser.value.isSignedIn) {
+                break;
+            }
+            if (!confirm(
+                `You did not sign in.\n
+                Do you want to try again to sign in?\n
+                If you choose cancel, you can not submit you form!`
+            )) {
+                gotoPage("/")
+                return
+            }
+        }
+
+        post(this.name, currentUser.value.email, data)
+        .then(() => {
+            alert("You submitted your insurance form successfully! \nThank you for doing business with us.")
+            gotoPage("/")
+        })
+        .catch(console.error)
 
     }
 }

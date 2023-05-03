@@ -7,8 +7,8 @@ import "/components/ques-tionnaire/ques-tionnaire.ts"
 type Params = {[key: string]: string}
 
 export const routes = {
-    "/questionnaires/:name": (params: Params) => html`<ques-tionnaire src="/questionnaires/${params.name}.html"></ques-tionnaire>`,
-    "/": () => html`<home-page></home-page>`
+    "/questionnaires/:name": (params: Params) => html`<ques-tionnaire name=${params.name}></ques-tionnaire>`,
+    "/": () => html`<home-page></home-page>`,
 }
 
 
@@ -61,6 +61,7 @@ class PageRouter extends LitElement {
         for (const route in routes) {
             const params = this.matchPathname(this.pathname, route)
             if (params) {
+                scrollTo(0, 0)
                 return routes[route](params)
             }
         }

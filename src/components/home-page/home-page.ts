@@ -5,14 +5,26 @@ import "/components/elements/card-board.ts"
 
 export class HomePage extends LitElement {
 
+    static styles = css`
+        button {
+            cursor: pointer;
+        }
+    `
+
     render() {
         return html`
-        <card-board>
-            <h1> Placeholder for Home Page </h1>
+        <card-board style="padding: 1em;">
+            <h1> Placeholder for Home Page <h1>
             <h2> Questionnaires </h2>
             <ul>
                 <li>
-                    <a @click=${() => gotoPage("/questionnaires/insurance-questionnaire")} > First questionnaire </a>
+                    <button @click=${() => gotoPage("/questionnaires/insurance-questionnaire")} > First questionnaire </button>
+                </li>
+                <li>
+                    <button @click=${() => gotoPage("/questionnaires/p&c-questionnaire")} > Personal Lines P & C </button>
+                </li>
+                <li>
+                    <button @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")} > New Home Purchase </button>
                 </li>
             </ul>
         </card-board>

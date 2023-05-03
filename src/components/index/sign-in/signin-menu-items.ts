@@ -1,12 +1,12 @@
 import { LitElement, css, html } from "lit";
-import { state, query } from "lit/decorators.js";
+import { state } from "lit/decorators.js";
 
 import { loginIcon2, logoutIcon2} from "@static/svg/icons";
-import { User, currentUser } from "/commons/pubsub/store";
+import { currentUser } from "/commons/pubsub/store";
 
 import '/components/index/header/menu-item'
 
-import './signin-dialog'
+import { signInDialog } from "/commons/pubsub/store.ts";
 
 const DEFAULT_NAME = 'Guest'
 
@@ -14,10 +14,7 @@ export class SigninMenuItems extends LitElement {
     @state()
     signedIn = false
 
-    @query('sign-in')
-    signInDialog: HTMLDialogElement
 
-    subId: number
     displayName = DEFAULT_NAME
 
 	static styles = css`
@@ -31,32 +28,23 @@ export class SigninMenuItems extends LitElement {
             ${this.signedIn? logoutIcon2 : loginIcon2}
 			<span>${this.displayName.split(" ")[0]}</span>
         </menu-item>
-
-        <sign-in></sign-in>    
     `}
 
-    connectedCallback(): void {
-        super.connectedCallback()
-        this.subId = currentUser.sub(this.changeUser)
-    }
-
-    disconnectedCallback(): void {
-        super.disconnectedCallback()
-        currentUser.unsub(this.subId)
-    }
-
-    toggleSignIn() {
+    async toggleSignIn() {
         if (this.signedIn) {
-            currentUser.pub({isSignedIn: false})
+            if (confirm("Are you sure you want to sign out?")) {
+                currentUser.pub({isSignedIn: false})
+                this.changeUser()            
+            }
         } else {
-            this.signInDialog.show()
+            await signInDialog.show()
+            this.changeUser()
         }
     }
 
-    changeUser = (user: User) => {
-        this.signedIn = user.isSignedIn
-//		this.photoURL = user.photoURL
-        this.displayName = user?.displayName || "Guest"
+    changeUser = () => {
+        this.signedIn = currentUser.value.isSignedIn
+        this.displayName = currentUser.value?.displayName || "Guest"
     }
 
 }
