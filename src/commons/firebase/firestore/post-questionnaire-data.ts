@@ -4,7 +4,6 @@ import { doc, setDoc } from "firebase/firestore";
 
 export async function post(docs: string, id: string, data) {
     const docRef = doc(db, docs, id);
-    await setDoc(docRef, data, { merge: true }).catch(console.error)
-    return docRef.id
+    return await setDoc(docRef, data, { merge: false })
 }
 

@@ -4,6 +4,7 @@ import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { property, state, query } from 'lit/decorators.js'
 
 import { post } from '/commons/firebase/firestore/post-questionnaire-data.ts';
+import { upload } from '/commons/firebase/storage/post-questionnaire-file.ts';
 
 import { currentUser, signInDialog } from '/commons/pubsub/store.ts';
 import { gotoPage } from '/commons/pubsub/store.ts';
@@ -101,6 +102,7 @@ export class QuesTionnaire extends LitElement {
             data[key] = formData.getAll(key)
         }
 
+/*
         // ask user to sign in until she is signed in or choosed to abort
         while (!currentUser.value.isSignedIn) {
             //dispatchEvent(new Event("signin"))
@@ -117,13 +119,14 @@ export class QuesTionnaire extends LitElement {
                 return
             }
         }
-
-        post(this.name, currentUser.value.email, data)
-        .then(() => {
+*/
+        const documentPath = `/${currentUser.value.email}/questionnaires/${this.name}`
+        post("users", documentPath, data)
+        .then(e => {
             alert("You submitted your insurance form successfully! \nThank you for doing business with us.")
-            gotoPage("/")
+            //gotoPage("/")
         })
-        .catch(console.error)
+        .catch(e => console.error("error", e))
 
     }
 }
