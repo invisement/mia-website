@@ -17,7 +17,7 @@ class Header extends LitElement {
 			color: var(--accent-color);
 			fill: var(--accent-color);
             box-shadow: var(--big-shadow);
-            border-radius: 0 0 1em 1em;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
 		}
 		
 		top-right {

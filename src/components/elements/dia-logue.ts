@@ -18,7 +18,7 @@ export class Dialogue extends LitElement {
 			text-align: center;
             background-color: var(--highlight-background);
             box-shadow: var(--small-shadow);
-            border-radius: 2em;
+            border-radius: var(--border-radius);
             line-height: 2em;
 		}
         dialog::backdrop {

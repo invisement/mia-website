@@ -9,7 +9,7 @@ class Footer extends LitElement {
             color: var(--accent-color);
             fill: var(--accent-color);
             box-shadow: var(--big-shadow);
-            border-radius: 1em 1em 0 0 ;
+            border-radius: var(--border-radius) var(--border-radius) 0 0 ;
 
             padding: 1em;
             display: flex;

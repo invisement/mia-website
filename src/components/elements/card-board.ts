@@ -11,7 +11,7 @@ class CardBoard extends LitElement {
             height: inherit;
             overflow: hidden;
             box-shadow: var(--big-shadow);
-            border-radius: 2em;
+            border-radius: var(--border-radius);
             background-color: var(--primary-background);
             margin: 2em 0;
         }
