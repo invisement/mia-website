@@ -1,11 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Marko+One&family=Marmelad');
+
 :root {
-    --accent-color: rgb(255, 255, 255);
+    --heading-font: Marko One, Sans-Serif;
+    --title-font: Oleo Script Swash Caps, Serif;
+    --primary-font: Marmelad, Sans-Serif;
 
-    --primary-background: rgb(245, 245, 245);
-    --accent-background: rgb(100, 90, 100);
+    --primary-color: rgb(0, 0, 0);
+    --accent-color: rgb(50, 80, 150);
+    --highlight-color: rgb(255, 122, 0);
+    --warning-color: rgb(255, 0, 0);
+    --inactive-color: rgb(210, 210, 210);
 
-    --big-shadow: 5px 5px 10px 5px gray;
+    --inactive-background: rgb(245, 245, 245);
+    --primary-background: white;
+    --accent-background: rgb(220, 230, 250);
+    --highlight-background: rgb(240, 230, 220);
+
+    --border-radius: .5em;
+    --big-shadow: 2px 2px 10px 2px var(--accent-color);
     --small-shadow: 0px 0px 3px 1px var(--highlight-color);
 
 }
-

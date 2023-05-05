@@ -1,0 +1,21 @@
+:root {
+    --heading-font: Sans-Serif;
+    --title-font: Serif;
+    --primary-font: Sans-Serif;
+
+    --primary-color: rgb(0, 0, 0);
+    --accent-color: rgb(255, 255, 255);
+    --highlight-color: rgb(255, 100, 0);
+    --warning-color: rgb(255, 0, 0);
+    --inactive-color: lightgray;
+    
+    --inactive-background: none;
+    --primary-background: rgb(245, 245, 245);
+    --accent-background: rgb(100, 90, 100);
+    --highlight-background: rgb(255, 245, 235);
+
+    --border-radius: 2em;
+    --big-shadow: 5px 5px 10px 5px gray;
+    --small-shadow: 0px 0px 3px 1px var(--highlight-color);
+}
+
