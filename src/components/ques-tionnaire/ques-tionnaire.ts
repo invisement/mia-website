@@ -1,13 +1,12 @@
-//import { LitElement, css, html } from "lit";
 import { LitElement, html, css } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { property, state, query } from 'lit/decorators.js'
 
 import { post } from '/commons/firebase/firestore/post-questionnaire-data.ts';
-import { upload } from '/commons/firebase/storage/post-questionnaire-file.ts';
 
 import { currentUser, signInDialog } from '/commons/pubsub/store.ts';
 import { gotoPage } from '/commons/pubsub/store.ts';
+import {Dialogue} from "/components/elements/dia-logue.ts"
 
 //const api_url = import.meta.env.VITE_API_BASE_URL
 //const post_questionaire = "questionnaire/questionnaire-1"
@@ -17,6 +16,7 @@ import { gotoPage } from '/commons/pubsub/store.ts';
 type QuestionAnswers = {
     [key: string]: string[]
 }
+
 
 export class QuesTionnaire extends LitElement {
     @property()
@@ -30,6 +30,12 @@ export class QuesTionnaire extends LitElement {
 
     @query('form')
     form: HTMLFormElement;
+
+    @query('#thank-you')
+    thankYou: Dialogue;
+
+    @query('#confirm')
+    confirm: Dialogue;
 
     connectedCallback() {
         super.connectedCallback();
@@ -54,6 +60,21 @@ export class QuesTionnaire extends LitElement {
                 </footer>
             </form>
         </card-board>
+        <dia-logue id="thank-you" .buttons=${["OK"]}>
+            <p>
+                You submitted your insurance form successfully!<br>
+                Thank you for doing business with us.
+            </p>
+        </dia-logue>
+
+        <dia-logue id="confirm">
+            <p>
+                You did not sign in.<br>
+                Do you want to try again to sign in?<br>
+                If you cancel, you can not submit your form!
+            </p>
+        </dia-logue>
+
 	`}
 
     static styles = css`
@@ -91,45 +112,37 @@ export class QuesTionnaire extends LitElement {
         }
 
 	`
-    async submit(e) {
-        console.log
+    async submit(e: Event) {
 
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
+
 
         const data: QuestionAnswers = {}
         for (const key of formData.keys()) {
             data[key] = formData.getAll(key)
         }
 
-/*
         // ask user to sign in until she is signed in or choosed to abort
         while (!currentUser.value.isSignedIn) {
-            //dispatchEvent(new Event("signin"))
             await signInDialog.show()
             if (currentUser.value.isSignedIn) {
                 break;
             }
-            if (!confirm(
-                `You did not sign in.\n
-                Do you want to try again to sign in?\n
-                If you choose cancel, you can not submit you form!`
-            )) {
+            if ((await this.confirm.show()) == "Cancel") {
                 gotoPage("/")
                 return
             }
         }
-*/
+
         const documentPath = `/${currentUser.value.email}/questionnaires/${this.name}`
         post("users", documentPath, data)
-        .then(e => {
-            alert("You submitted your insurance form successfully! \nThank you for doing business with us.")
-            //gotoPage("/")
+        .then(async () => {
+            await this.thankYou.show().then(console.log)
+            gotoPage("/")
         })
         .catch(e => console.error("error", e))
 
     }
 }
 customElements.define('ques-tionnaire', QuesTionnaire)
-
-

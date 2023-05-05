@@ -6,7 +6,7 @@ import { currentUser } from "/commons/pubsub/store";
 
 import '/components/index/header/menu-item'
 
-import { signInDialog } from "/commons/pubsub/store.ts";
+import { signInDialog, signOutDialog } from "/commons/pubsub/store.ts";
 
 const DEFAULT_NAME = 'Guest'
 
@@ -32,11 +32,12 @@ export class SigninMenuItems extends LitElement {
 
     async toggleSignIn() {
         if (this.signedIn) {
-            if (confirm("Are you sure you want to sign out?")) {
+            if ((await signOutDialog.show()) == "OK") {
                 currentUser.pub({isSignedIn: false})
                 this.changeUser()            
             }
         } else {
+            console.log(signInDialog)
             await signInDialog.show()
             this.changeUser()
         }

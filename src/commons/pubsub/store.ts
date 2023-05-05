@@ -19,4 +19,5 @@ export function gotoPage(url: string) {
 }
 
 
-export const signInDialog = document.querySelector("sign-in")
+export const signInDialog = document.querySelector("#sign-in-dialog")
+export const signOutDialog = document.querySelector("#sign-out-dialog")

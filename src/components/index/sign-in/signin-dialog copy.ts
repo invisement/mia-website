@@ -5,13 +5,21 @@ import { googleIcon, emailIcon, appleIcon, facebookIcon } from "@static/svg/bran
 
 import '/components/index/header/menu-item'
 import { signInPopup } from "/commons/firebase/authentication/signin-providers";
-import {Dialogue} from "/components/elements/dia-logue.ts"
+
 
 export class SignIn extends LitElement {
-    @query('dia-logue')
-    dialog: Dialogue
+    @query('dialog')
+    dialog: HTMLDialogElement
 
     static styles = css`
+		dialog {
+			font-size: 1rem;
+			text-align: center;
+            background-color: var(--primary-background);
+            box-shadow: var(--big-shadow);
+            border-radius: 2em;
+            border: 0;            
+		}
         a {
             color: unset;
         }
@@ -29,7 +37,7 @@ export class SignIn extends LitElement {
 
     render() {
         return html`
-            <dia-logue .buttons=${["OK"]}>
+        <dialog>
             Select your authentication method:
             <menu-item>
                 ${emailIcon}
@@ -52,15 +60,35 @@ export class SignIn extends LitElement {
             </menu-item>
 
             <p>Our <a href="/privacy-policy.html">Privacy Policy</a> and <a href="/tos.html">Terms Of Service</a></p>
-            </dia-logue>
+
+			<button autofocus @click=${this.close}>
+            	Close
+			</button>
+        </dialog>
     `}
-    async show() {
-        return await this.dialog.show()
-    }
 
     async signIn(provider: string) {
         await signInPopup(provider)
-        this.dialog.close()
+        this.close()
     }
+    // show the dialog and await until it is closed!
+    async show() {
+        this.dialog.showModal()
+        const x = this.dialog
+        await new Promise<void>(resolve => {
+            // add an event listener to the dialog's "close" event
+            this.dialog.addEventListener('close', function callback() {
+                // remove the dialog element from the DOM
+                x.removeEventListener('close', callback);
+                // resolve the Promise
+                resolve();
+            });
+        })
+    }
+
+	close() {
+            this.dialog.close()
+        }
+
 }
 customElements.define('sign-in', SignIn)
