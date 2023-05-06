@@ -26,10 +26,6 @@ class Header extends LitElement {
             border-radius: 0 0 var(--border-radius) var(--border-radius);
 		}
 		
-        :host > * {
-            flex: 1 1 0;
-        }
-
 		top-right {
 			height: 100%;
             text-align: right;
@@ -48,6 +44,8 @@ class Header extends LitElement {
     `
 
     render () {return html`
+        <company-logo @click=${() => gotoPage("/")}>
+        </company-logo>
         <top-left>
             <menu-item title="Support">
                 ${chatIcon}
@@ -66,8 +64,6 @@ class Header extends LitElement {
             </menu-item>
         </top-left>
 
-        <company-logo @click=${() => gotoPage("/")}>
-        </company-logo>
 
         <top-right>
             <signin-menu-items></signin-menu-items>
