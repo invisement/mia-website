@@ -2,10 +2,17 @@ import { LitElement, html, css } from "lit";
 import { gotoPage } from "/commons/pubsub/store.ts";
 import "./temp/carousel/carousel.ts"
 import "/components/elements/card-board.ts"
+import "/components/elements/chip.ts"
+import "/components/elements/chips.ts"
+
+import * as icons from "@static/svg/large-icons"
 
 export class HomePage extends LitElement {
 
     static styles = css`
+        :host > * {
+            margin: 2em 0;
+        }
         button {
             cursor: pointer;
         }
@@ -13,21 +20,30 @@ export class HomePage extends LitElement {
 
     render() {
         return html`
-        <card-board style="padding: 1em;">
-            <h1> Placeholder for Home Page <h1>
-            <h2> Questionnaires </h2>
-            <ul>
-                <li>
-                    <button @click=${() => gotoPage("/questionnaires/insurance-questionnaire")} > First questionnaire </button>
-                </li>
-                <li>
-                    <button @click=${() => gotoPage("/questionnaires/p&c-questionnaire")} > Personal Lines P & C </button>
-                </li>
-                <li>
-                    <button @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")} > New Home Purchase </button>
-                </li>
-            </ul>
-        </card-board>
+        <vise-chips>
+            <vise-chip @click=${() => gotoPage("/questionnaires/insurance-questionnaire")}>
+                ${icons.carIcon}
+                Car Insurance
+            </vise-chip>
+            <vise-chip @click=${() => gotoPage("/questionnaires/p&c-questionnaire")}>
+                ${icons.homeIcon}
+                Home Owner
+                <mark>attention</mark>
+            </vise-chip>
+            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+                ${icons.loanIcon}
+                Loan
+            </vise-chip>
+            <vise-chip>
+                ${icons.carIcon}
+                Car Insurance
+            </vise-chip>
+            <vise-chip>
+                ${icons.loanIcon}
+                Car Insurance
+                <mark>attention</mark>
+            </vise-chip>
+        </vise-chips>
 
         <card-board style="height: 30em;">
         <vise-carousel>

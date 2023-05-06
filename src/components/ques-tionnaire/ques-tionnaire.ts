@@ -80,6 +80,7 @@ export class QuesTionnaire extends LitElement {
     static styles = css`
         form {
             background-color: var(--primary-background);
+            padding: 1em;
         }
 		ul {
 			list-style-type: none;
@@ -99,9 +100,10 @@ export class QuesTionnaire extends LitElement {
 			break-after: avoid;
 		}
         h1, footer {
-            background-color: var(--accent-background);
+            background-color: var(--highlight-background);
             color: var(--accent-color);
             fill: var(--accent-color);
+
             padding: 1em 0;
 			display: flex;
 			justify-content: center;
@@ -109,6 +111,10 @@ export class QuesTionnaire extends LitElement {
         }
         footer > * {
             font-size: larger;
+        }
+
+        h1 {
+            font-size: large;
         }
 
 	`

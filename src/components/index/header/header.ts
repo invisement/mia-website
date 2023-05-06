@@ -1,15 +1,20 @@
 import { css, html, LitElement } from "lit";
 import './company-logo'
-import './top-right'
+import '../sign-in/signin-menu-items'
+import { settingIcon, chatIcon, dollarIcon } from "@static/svg/icons";
+import '/components/elements/menu-item.ts'
 
 
 class Header extends LitElement {
     static styles = css`
 		:host {
 			padding: 1em;
-			display: block;
+			display: flex;
+            justify-content: space-between;
+
 			position: sticky;
 			top: 0;
+            z-index: 20;
 
 			height: 2em;
 
@@ -20,29 +25,46 @@ class Header extends LitElement {
             border-radius: 0 0 var(--border-radius) var(--border-radius);
 		}
 		
+        :host > * {
+            flex: 1 1 0;
+        }
+
 		top-right {
 			height: 100%;
-			float: right;
+            text-align: right;
 		}
 
 		top-left {
 			height: 100%;
-			float: left;
+            text-align: left;
 		}
 		company-logo {
 			font-size: 2em;
 			line-height: 1em;
+            text-align: center;
 		}
     `
 
     render () {return html`
         <top-left>
-        	<company-logo>
-        	</company-logo>
+            <menu-item title="Support">
+                ${chatIcon}
+            </menu-item>
+            
+            <menu-item title="Setting">
+                ${settingIcon}
+            </menu-item>
+            
+            <menu-item title="Claim">
+                ${dollarIcon}
+            </menu-item>
         </top-left>
 
+        <company-logo>
+        </company-logo>
 
         <top-right>
+            <signin-menu-items></signin-menu-items>
         </top-right>
     `}
 }

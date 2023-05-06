@@ -3,7 +3,6 @@ import { query } from "lit/decorators.js";
 
 import { googleIcon, emailIcon, appleIcon, facebookIcon } from "@static/svg/brand-icons"
 
-import '/components/index/header/menu-item'
 import { signInPopup } from "/commons/firebase/authentication/signin-providers";
 import {Dialogue} from "/components/elements/dia-logue.ts"
 

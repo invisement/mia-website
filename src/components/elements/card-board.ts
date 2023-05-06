@@ -13,7 +13,6 @@ class CardBoard extends LitElement {
             box-shadow: var(--big-shadow);
             border-radius: var(--border-radius);
             background-color: var(--primary-background);
-            margin: 2em 0;
         }
 
     `

@@ -4,8 +4,6 @@ import { state } from "lit/decorators.js";
 import { loginIcon2, logoutIcon2} from "@static/svg/icons";
 import { currentUser } from "/commons/pubsub/store";
 
-import '/components/index/header/menu-item'
-
 import { signInDialog, signOutDialog } from "/commons/pubsub/store.ts";
 
 const DEFAULT_NAME = 'Guest'
