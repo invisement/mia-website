@@ -8,8 +8,8 @@ export class Chip extends LitElement {
 
     static styles = css`
         :host {
-            width: 8em;
-            height: 8em;
+            width: 6em;
+            height: 6em;
             padding: 1.5em;
 
             display: flex;
@@ -37,7 +37,10 @@ export class Chip extends LitElement {
             color: var(--warning-color);
         }
         ::slotted(svg) {
-            width: fit-contain;
+            width: 100%;
+        }
+        ::slotted(img) {
+            width: 100%;
         }
 
         /*

@@ -6,7 +6,7 @@ import { currentUser } from "/commons/pubsub/store";
 
 import { signInDialog, signOutDialog } from "/commons/pubsub/store.ts";
 
-const DEFAULT_NAME = 'Guest'
+const DEFAULT_NAME = 'SignIn'
 
 export class SigninMenuItems extends LitElement {
     @state()
@@ -23,8 +23,8 @@ export class SigninMenuItems extends LitElement {
 
     render() {return html`
         <menu-item @click=${this.toggleSignIn} title=${this.signedIn? "Sign Out" : "Sign In"}>
-            ${this.signedIn? logoutIcon2 : loginIcon2}
-			<span>${this.displayName.split(" ")[0]}</span>
+            <span>${this.displayName.split(" ")[0]}</span>
+            ${this.signedIn? html`<img src="/illustrations/exit.svg">` : html`<img src="/illustrations/door.svg">`}
         </menu-item>
     `}
 
@@ -43,7 +43,7 @@ export class SigninMenuItems extends LitElement {
 
     changeUser = () => {
         this.signedIn = currentUser.value.isSignedIn
-        this.displayName = currentUser.value?.displayName || "Guest"
+        this.displayName = currentUser.value?.displayName || DEFAULT_NAME
     }
 
 }

@@ -14,7 +14,7 @@ class Chips extends LitElement {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 2em;
+            gap: 1em;
             padding: 1em;
         }
     `

@@ -17,6 +17,9 @@ class MenuItem extends LitElement {
         ::slotted(svg) {
             height: 100%;
         }
+        ::slotted(img) {
+            height: 100%;
+        }
 
 		span:hover {
 			color: var(--highlight-color);

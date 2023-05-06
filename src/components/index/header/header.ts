@@ -3,12 +3,13 @@ import './company-logo'
 import '../sign-in/signin-menu-items'
 import { settingIcon, chatIcon, dollarIcon } from "@static/svg/icons";
 import '/components/elements/menu-item.ts'
+import { gotoPage } from "/commons/pubsub/store.ts";
 
 
 class Header extends LitElement {
     static styles = css`
 		:host {
-			padding: 1em;
+            padding: .5em;
 			display: flex;
             justify-content: space-between;
 
@@ -16,7 +17,7 @@ class Header extends LitElement {
 			top: 0;
             z-index: 20;
 
-			height: 2em;
+			height: 3em;
 
 			background-color: var(--accent-background);
 			color: var(--accent-color);
@@ -39,9 +40,10 @@ class Header extends LitElement {
             text-align: left;
 		}
 		company-logo {
-			font-size: 2em;
-			line-height: 1em;
+			font-size: 1.5em;
+			line-height: 2em;
             text-align: center;
+            cursor: pointer;
 		}
     `
 
@@ -58,9 +60,13 @@ class Header extends LitElement {
             <menu-item title="Claim">
                 ${dollarIcon}
             </menu-item>
+
+            <menu-item title="Support">
+                <img src="/illustrations/female-avatar.svg">
+            </menu-item>
         </top-left>
 
-        <company-logo>
+        <company-logo @click=${() => gotoPage("/")}>
         </company-logo>
 
         <top-right>

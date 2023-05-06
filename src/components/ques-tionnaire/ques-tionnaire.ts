@@ -101,8 +101,8 @@ export class QuesTionnaire extends LitElement {
 		}
         h1, footer {
             background-color: var(--highlight-background);
-            color: var(--accent-color);
-            fill: var(--accent-color);
+            color: var(--highlight-color);
+            fill: var(--highlight-color);
 
             padding: 1em 0;
 			display: flex;

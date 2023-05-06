@@ -25,32 +25,63 @@ export class HomePage extends LitElement {
                 ${icons.carIcon}
                 Car Insurance
             </vise-chip>
+            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+                <img src="/illustrations/sprinting.gif">
+                Fast and Fun
+            </vise-chip>
             <vise-chip @click=${() => gotoPage("/questionnaires/p&c-questionnaire")}>
                 ${icons.homeIcon}
                 Home Owner
-                <mark>attention</mark>
+                <mark>major saving</mark>
             </vise-chip>
             <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
                 ${icons.loanIcon}
                 Loan
             </vise-chip>
-            <vise-chip>
-                ${icons.carIcon}
-                Car Insurance
+            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+                <img src="/illustrations/words.png">
+                One Stop Shop
             </vise-chip>
-            <vise-chip>
-                ${icons.loanIcon}
-                Car Insurance
-                <mark>attention</mark>
+            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+                <img src="/illustrations/mindfulness.svg">
+                Loan
             </vise-chip>
+            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+                <img src="/illustrations/reading-side.svg">
+                Relax
+                <mark>major saving</mark>
+            </vise-chip>
+            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+                <img src="/illustrations/my-files.svg">
+                Easy Manage
+            </vise-chip>
+            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+                <img src="/illustrations/traveling.svg">
+                Travel
+                <mark>major saving</mark>
+            </vise-chip>
+            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+                <img src="/illustrations/trip.svg">
+                Travel
+            </vise-chip>
+            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+                <img src="/illustrations/beer.svg">
+                Celebrate
+            </vise-chip>
+            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+                <img src="/illustrations/yacht.svg">
+                Boats
+            </vise-chip>
+
+
         </vise-chips>
 
-        <card-board style="height: 30em;">
+        <card-board style="height: 40em;">
         <vise-carousel>
-            <img src="/images/sample5.jpg" caption="The best homeowner insurance" loading="lazy">
-            <img src="/images/sample1.jpg" caption="The lowest car insurance" loading="lazy">
-            <!--img src="/images/sample2.jpg" caption="The best inurances" loading="lazy"-->
-            <img src="/images/sample3.jpg" caption="The best car rate" loading="lazy">
+            <img src="/illustrations/fall.svg" caption="Relax, we are your agent" loading="lazy">
+            <img src="/illustrations/town.svg" caption="Relax, we are your agent" loading="lazy">
+            <img src="/illustrations/city.svg" caption="Relax, we are your agent" loading="lazy">
+            <img src="/illustrations/park.svg" caption="Relax, we are your agent" loading="lazy">
         </vise-carousel>
         </card-board>
     
