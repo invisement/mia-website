@@ -1,58 +1,80 @@
-<h1 id="insurance-questionnaire">Insurance Questionnaire</h1>
-<ol>
-<li><p>Do you buy your insurance online or in person</p>
-<ul>
-<li><label><input name=q1 type="radio" value=1>Online</label></li>
-<li><label><input name=q1 type="radio" value=2>In Person</label></li>
-</ul>
-</li>
-<li><p>If you need to file a claim, how do you prefer to contact your insurance company?</p>
-<ul>
-<li><label><input name=q2 type="radio" value=1>Chat/Text Message</label></li>
-<li><label><input name=q2 type="radio" value=2>Phone Call</label></li>
-<li><label><input name=q2 type="radio" value=3>In Person</label></li>
-</ul>
-</li>
-<li><p>Aside from price, what are you looking for your insurance company to provide?</p>
-<ul>
-<li><label><input name=q3  type="checkbox" value=1> Service</label></li>
-<li><label><input name=q3  type="checkbox" value=2> Claims Support</label></li>
-<li><label><input name=q3  type="checkbox" value=3> Convenience</label></li>
-<li><label><input name=q3  type="checkbox" value=4> Advice</label></li>
-<li><label><input name=q3  type="checkbox" value=5> Coverage</label></li>
-<li><label><input name=q3  type="checkbox" value=6> Informational Material</label></li>
-<li><label><input name=q3  type="checkbox" value=7> Other: <input></label></li>
-</ul>
-</li>
-<li><p>How much do you pay for car insurance per month?</p>
-<ul>
-<li><label><input name=q4 type="radio" value=1>$150-$200</label></li>
-<li><label><input name=q4 type="radio" value=2>$201-$300</label></li>
-<li><label><input name=q4 type="radio" value=3>$301-$400</label></li>
-<li><label><input name=q4 type="radio" value=4>$401-$500</label></li>
-<li><label><input name=q4 type="radio" value=5>$501-$600</label></li>
-<li><label><input name=q4 type="radio" value=6>I&#39;m not sure</label></li>
-</ul>
-</li>
-<li><p>How long have you been with your insurance company?</p>
-<ul>
-<li><label><input name=q5 type="radio" value=1>0 - 1.9 Years</label></li>
-<li><label><input name=q5 type="radio" value=2>2 - 3.9 Years</label></li>
-<li><label><input name=q5 type="radio" value=3>4 - 5.9 Years</label></li>
-<li><label><input name=q5 type="radio" value=4>6 - 7.9 Years</label></li>
-<li><label><input name=q5 type="radio" value=5>8+ Years</label></li>
-</ul>
-</li>
-<li><p>What do you value the most in your insurance company?</p>
-<input name=q6>
-</li>
-<li><p>What bothers you the most about your insurance company?</p>
- <input name=q7>
-</li>
-<li><p>What can your insurance company do to elevate their level of service?</p>
-<input name=q8>
-</li>
-<li><p>How satisfied are you with your insurance premium?</p>
-<p> Not at all <input name=q9 type="range" min=1 max=5> Very Satisfied</p>
-</li>
-</ol>
+<h1 id="insurance-questionnaire">PERSONAL AUTO QUESTIONNAIRE</h1>
+<p>Proposed Effective Date: </p>
+<input type="date" name="effective-date">
+<p>Named Insured: </p>
+<input type="text" name="name-insured">
+<p>Contact: </p>
+<select name="contact">
+    <option value="phone">Phone</option>
+    <option value="Fax">Fax</option>
+    <option value="email" selected>Email</option>
+</select>
+<p>Phone: </p>
+<input type="text" name="phone">
+
+<!-- <ol>
+    <li>
+        <p>Do you buy your insurance online or in person</p>
+        <ul>
+            <li><label><input name=q1 type="radio" value=1>Online</label></li>
+            <li><label><input name=q1 type="radio" value=2>In Person</label></li>
+        </ul>
+    </li>
+    <li>
+        <p>If you need to file a claim, how do you prefer to contact your insurance company?</p>
+        <ul>
+            <li><label><input name=q2 type="radio" value=1>Chat/Text Message</label></li>
+            <li><label><input name=q2 type="radio" value=2>Phone Call</label></li>
+            <li><label><input name=q2 type="radio" value=3>In Person</label></li>
+        </ul>
+    </li>
+    <li>
+        <p>Aside from price, what are you looking for your insurance company to provide?</p>
+        <ul>
+            <li><label><input name=q3 type="checkbox" value=1> Service</label></li>
+            <li><label><input name=q3 type="checkbox" value=2> Claims Support</label></li>
+            <li><label><input name=q3 type="checkbox" value=3> Convenience</label></li>
+            <li><label><input name=q3 type="checkbox" value=4> Advice</label></li>
+            <li><label><input name=q3 type="checkbox" value=5> Coverage</label></li>
+            <li><label><input name=q3 type="checkbox" value=6> Informational Material</label></li>
+            <li><label><input name=q3 type="checkbox" value=7> Other: <input></label></li>
+        </ul>
+    </li>
+    <li>
+        <p>How much do you pay for car insurance per month?</p>
+        <ul>
+            <li><label><input name=q4 type="radio" value=1>$150-$200</label></li>
+            <li><label><input name=q4 type="radio" value=2>$201-$300</label></li>
+            <li><label><input name=q4 type="radio" value=3>$301-$400</label></li>
+            <li><label><input name=q4 type="radio" value=4>$401-$500</label></li>
+            <li><label><input name=q4 type="radio" value=5>$501-$600</label></li>
+            <li><label><input name=q4 type="radio" value=6>I&#39;m not sure</label></li>
+        </ul>
+    </li>
+    <li>
+        <p>How long have you been with your insurance company?</p>
+        <ul>
+            <li><label><input name=q5 type="radio" value=1>0 - 1.9 Years</label></li>
+            <li><label><input name=q5 type="radio" value=2>2 - 3.9 Years</label></li>
+            <li><label><input name=q5 type="radio" value=3>4 - 5.9 Years</label></li>
+            <li><label><input name=q5 type="radio" value=4>6 - 7.9 Years</label></li>
+            <li><label><input name=q5 type="radio" value=5>8+ Years</label></li>
+        </ul>
+    </li>
+    <li>
+        <p>What do you value the most in your insurance company?</p>
+        <input name=q6>
+    </li>
+    <li>
+        <p>What bothers you the most about your insurance company?</p>
+        <input name=q7>
+    </li>
+    <li>
+        <p>What can your insurance company do to elevate their level of service?</p>
+        <input name=q8>
+    </li>
+    <li>
+        <p>How satisfied are you with your insurance premium?</p>
+        <p> Not at all <input name=q9 type="range" min=1 max=5> Very Satisfied</p>
+    </li>
+</ol> -->
