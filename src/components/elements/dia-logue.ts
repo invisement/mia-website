@@ -67,8 +67,8 @@ export class Dialogue extends LitElement {
         return this.dialog.returnValue
     }
 
-    close() {
-        this.dialog.close("")
+    close(value = "") {
+        this.dialog.close(value)
     }
 
 }

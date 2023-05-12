@@ -3,22 +3,28 @@ import {html, css, LitElement} from 'lit'
 export class Logo extends LitElement {
 
     static styles = css`
-        i {
-            font-family: Var(--title-font);
-            font-weight: normal;
-            padding: 0;
-            margin: 0;
-        }
-        
         span {
-            color: var(--highlight-color);
+            position: absolute;
+            top: .2em;
+            padding-left: .9em;
+            font-size: .7em;
+            color: black;
         }
-
+        b {
+            font-size: 2em;
+            padding: 0;
+            color: blue;
+        }
+        img {
+            color: blue;
+            fill: blue;
+            height: 100%;
+        }
     `
 
     render() {
         return html`
-            <i>MI<span>A</span><small>.io</small></i>
+            <span>MIA</span><b>🛡️</b>
         `
     }
 }

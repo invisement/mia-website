@@ -16,18 +16,24 @@ export class HomePage extends LitElement {
         button {
             cursor: pointer;
         }
+
+        @media (min-width: 45em) {
+            vise-chips {
+                font-size: larger;
+            }
+        }
     `
 
     render() {
         return html`
         <vise-chips>
+            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+                <img src="/illustrations/insurance-claim.svg">
+                Claim
+            </vise-chip>
             <vise-chip @click=${() => gotoPage("/questionnaires/insurance-questionnaire")}>
                 ${icons.carIcon}
                 Car Insurance
-            </vise-chip>
-            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
-                <img src="/illustrations/sprinting.gif">
-                Fast and Fun
             </vise-chip>
             <vise-chip @click=${() => gotoPage("/questionnaires/p&c-questionnaire")}>
                 ${icons.homeIcon}
@@ -35,21 +41,19 @@ export class HomePage extends LitElement {
                 <mark>major saving</mark>
             </vise-chip>
             <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
-                ${icons.loanIcon}
-                Loan
-            </vise-chip>
-            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
-                <img src="/illustrations/words.png">
-                One Stop Shop
-            </vise-chip>
-            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
                 <img src="/illustrations/mindfulness.svg">
                 Loan
             </vise-chip>
             <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+                <img src="/illustrations/money-bag.svg">
+                Loan
+            </vise-chip>
+
+
+            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
                 <img src="/illustrations/reading-side.svg">
                 Relax
-                <mark>major saving</mark>
+                <mark>New Service</mark>
             </vise-chip>
             <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
                 <img src="/illustrations/my-files.svg">
@@ -58,28 +62,17 @@ export class HomePage extends LitElement {
             <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
                 <img src="/illustrations/traveling.svg">
                 Travel
-                <mark>major saving</mark>
-            </vise-chip>
-            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
-                <img src="/illustrations/trip.svg">
-                Travel
-            </vise-chip>
-            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
-                <img src="/illustrations/beer.svg">
-                Celebrate
+                <mark>Limitted Time Offer</mark>
             </vise-chip>
             <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
                 <img src="/illustrations/yacht.svg">
-                Boats
+                Boat
             </vise-chip>
-
-
         </vise-chips>
 
         <card-board style="height: 40em;">
         <vise-carousel>
             <img src="/illustrations/fall.svg" caption="Relax, we are your agent" loading="lazy">
-            <img src="/illustrations/town.svg" caption="Relax, we are your agent" loading="lazy">
             <img src="/illustrations/city.svg" caption="Relax, we are your agent" loading="lazy">
             <img src="/illustrations/park.svg" caption="Relax, we are your agent" loading="lazy">
         </vise-carousel>

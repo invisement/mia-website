@@ -6,19 +6,23 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Provides one stop shop to access all insurance companies" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="./commons/style/global.css">
     <link rel="stylesheet" type="text/css" href="./commons/style/theme-blue-flat.css">
 
-    <script type="module" src="/components/index/header/header.ts"></script>
+    <script type="module" src="/components/index/header/head-er.ts"></script>
     <script type="module" src="/components/index/page-router/page-router.ts"></script>
     <script type="module" src="/components/index/footer/footer.ts"></script>
     <script type="module" src="/components/index/sign-in/signin-dialog.ts"></script>
     <script type="module" src="/components/elements/dia-logue.ts"></script>
 
+
 </head>
 
 <body>
+    <sign-in id="sign-in-dialog"></sign-in>
+
     <head-er>
     </head-er>
     
@@ -28,10 +32,20 @@
     <foot-er>
     </foot-er>
 
-    <sign-in id="sign-in-dialog"></sign-in>
+
     <dia-logue id="sign-out-dialog">
         Are you sure you want to sign out?
     </dia-logue>
+
+    <dia-logue id="not-authorized-dialog">
+        <p>
+            You are not authorized.
+            Please sign in with a proper authorization account.
+        </p>
+    </dia-logue>
+
+
 </body>
 
 </html>
+

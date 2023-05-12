@@ -6,26 +6,27 @@ import dotenv from 'dotenv';
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 export default defineConfig({
-	root: 'src',
-	publicDir: '../static',
+    root: 'src',
+    publicDir: '../static',
 
-	plugins: [
+
+    plugins: [
         basicSsl(),
-	],
+    ],
 
-	build: {
-		outDir: '../dist',
-	},
+    build: {
+        outDir: '../dist',
+    },
 
-	server: {
-		https: true,
-	},
-	assetsInclude: ['**/*.md'],
+    server: {
+        https: true,
+    },
+    assetsInclude: ['**/*.md'],
 
-	resolve: {
-		alias: [
-			{ find: '@static', replacement: path.resolve(__dirname, 'static') },
-		],
-	},
+    resolve: {
+        alias: [
+            { find: '@static', replacement: path.resolve(__dirname, 'static') },
+        ],
+    },
 
 })

@@ -1,24 +1,40 @@
 import { LitElement, html } from "lit";
 import { state } from "lit/decorators.js"
 
+import { Authorization, currentUser, notAuthorizedDialog, signInDialog } from "/commons/pubsub/store"
+
 import "/components/home-page/home-page.ts"
 import "/components/ques-tionnaire/ques-tionnaire.ts"
+import "/components/broker/broker-home.ts"
 
-type Params = {[key: string]: string}
+type Params = { [key: string]: string }
 
 export const routes = {
     "/questionnaires/:name": (params: Params) => html`<ques-tionnaire name=${params.name}></ques-tionnaire>`,
     "/": () => html`<home-page></home-page>`,
+    "/broker-home": () => html`<broker-home></broker-home>`,
 }
 
+const routeAuthorization: { [key: string]: Authorization } = {
+    "/broker-home": "broker",
+    "/questionnaires/insurance-questionnaire": "customer",
+}
+
+function wait(milliseconds) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
+  }
+  
 
 class PageRouter extends LitElement {
 
     @state() pathname: string;
 
-    popstate = (e: PopStateEvent) => {
+    popstate = async (e: PopStateEvent) => {
         e.preventDefault()
-        this.pathname = window.location.pathname
+        const isAuthorized = await this.isUserAuthorized(window.location.pathname)
+        if (isAuthorized) {
+            this.pathname = window.location.pathname
+        }
     }
 
     connectedCallback() {
@@ -55,6 +71,27 @@ class PageRouter extends LitElement {
             }
         }
         return params;
+    }
+
+    async isUserAuthorized(path: string) {
+        const requestedAuth = routeAuthorization[path]
+        if (!requestedAuth) {
+            return true
+        }
+        var userAuth = currentUser.getValue().authorization
+
+        if (requestedAuth != userAuth) {
+            await wait(10)
+            const x = await signInDialog.updateComplete
+            userAuth = await signInDialog.show(requestedAuth)
+        }
+
+        if (requestedAuth == userAuth) {
+            return true
+        }
+
+        return false
+
     }
 
     render() {

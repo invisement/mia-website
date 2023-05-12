@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 viewBox="0 0 512.8 512.8" xml:space="preserve">
-<path style="fill:#616161;" d="M289.2,9.6c-9.6-3.2-20.8-5.2-31.6-5.2c-56.4,0-103.2,45.2-103.2,101.6v374.4h92.8L289.2,9.6z"/>
+<path style="fill:#616161;" fill="red" d="M289.2,9.6c-9.6-3.2-20.8-5.2-31.6-5.2c-56.4,0-103.2,45.2-103.2,101.6v374.4h92.8L289.2,9.6z"/>
 <g>
 	<path style="fill:#140500;" d="M154.4,460.4c-2.4,0-4-1.6-4-4v-20c0-2.4,1.6-4,4-4s4,1.6,4,4v20
 		C158.4,458.8,156.8,460.4,154.4,460.4z"/>

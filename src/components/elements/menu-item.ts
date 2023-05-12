@@ -7,36 +7,46 @@ class MenuItem extends LitElement {
 
 
     static styles = css`
-        span {
+        div {
             display: inline-flex;
             height: 100%;
             align-items: center;
             width: inherit;
 			cursor: pointer;
+            position: relative;
         }
-        ::slotted(svg) {
-            height: 100%;
-        }
-        ::slotted(img) {
+        ::slotted(svg), ::slotted(img) {
             height: 100%;
         }
 
-		span:hover {
+		div:hover {
 			color: var(--highlight-color);
 			fill: var(--highlight-color);
 		}
-        span[disabled=true] {
+        div[disabled=true] {
             color: var(--inactive-color);
 			fill: var(--inactive-color);
             pointer-events: none;
         }
+        ::slotted(mark) {
+            position: absolute;
+            bottom: -1em;
+
+            white-space: nowrap;
+
+            font-size: smaller;
+            padding: 0;
+            color: inherit;
+
+            background: none;
+        }
     `
 
     render () {return html`
-        <span disabled=${this.disabled}>
+        <div disabled=${this.disabled}>
             <slot>
             </slot>
-		</span>
+        </div>
     `}
 
 }

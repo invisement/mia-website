@@ -4,11 +4,19 @@ import { query } from "lit/decorators.js";
 import { googleIcon, emailIcon, appleIcon, facebookIcon } from "@static/svg/brand-icons"
 
 import { signInPopup } from "/commons/firebase/authentication/signin-providers";
-import {Dialogue} from "/components/elements/dia-logue.ts"
+import { Dialogue } from "/components/elements/dia-logue.ts"
+import { User, currentUser, Authorization } from "/commons/pubsub/store";
+import { doesBrokerExist } from "/commons/firebase/firestore/get-post-data"
 
 export class SignIn extends LitElement {
-    @query('dia-logue')
+    @query('#signin-dialog')
     dialog: Dialogue
+
+    @query("#try-again-dialog")
+    tryAgainDialog: Dialogue
+
+    private requestedAuthLevel: Authorization
+    private returnedAuthLevel: Authorization | undefined
 
     static styles = css`
         a {
@@ -20,17 +28,17 @@ export class SignIn extends LitElement {
 			width: 8em;
 			height: 2em;
 			box-shadow: var(--small-shadow);
+            padding: .5em;
 		}
 		svg {
 			margin: .5em;
 		}
     `
 
-    render() {
-        return html`
-            <dia-logue .buttons=${["OK"]}>
+    render() {return html`
+        <dia-logue .buttons=${["Cancel"]} id="signin-dialog">
             Select your authentication method:
-            <menu-item>
+            <menu-item disabled=true>
                 ${emailIcon}
                 Email
             </menu-item>
@@ -40,26 +48,69 @@ export class SignIn extends LitElement {
                 Google
             </menu-item>
 
-            <menu-item>
+            <menu-item disabled=true>
                 ${appleIcon}
                 Apple
             </menu-item>
 
-            <menu-item>
+            <menu-item disabled=true>
                 ${facebookIcon}
                 Facebook
             </menu-item>
 
             <p>Our <a href="/privacy-policy.html">Privacy Policy</a> and <a href="/tos.html">Terms Of Service</a></p>
-            </dia-logue>
+        </dia-logue>
+
+        <dia-logue id="try-again-dialog">
+            <p>
+                You did not sign in.<br>
+                Do you want to try again to sign in?<br>
+                If you cancel, you can not submit your form!
+            </p>
+        </dia-logue>
+
     `}
-    async show() {
-        return await this.dialog.show()
+    async show(requestedAuthLevel: Authorization = "customer") {
+        this.returnedAuthLevel = undefined
+        this.requestedAuthLevel = requestedAuthLevel
+        await this.dialog.show()
+        return this.returnedAuthLevel
     }
 
-    async signIn(provider: string) {
-        await signInPopup(provider)
-        this.dialog.close()
+
+    private async authorize (newUser: User) {
+        const email = newUser.email
+        switch(this.requestedAuthLevel) {
+            case "broker":
+                if (await doesBrokerExist(email)) {
+                    this.returnedAuthLevel = this.requestedAuthLevel
+                    newUser.authorization = this.returnedAuthLevel
+                    currentUser.pub(newUser)
+                }
+                break;
+            case "customer":
+                this.returnedAuthLevel = this.requestedAuthLevel
+                newUser.authorization = this.returnedAuthLevel
+                currentUser.pub(newUser)
+                break
+        }
+    }
+
+    private async signIn(provider: string) {
+        const newUser = await signInPopup(provider)
+        if (!newUser) {
+            const tryAgain = await this.tryAgainDialog.show()
+            if (tryAgain == 'Cancel') {
+                this.dialog.close()
+            }
+        } else {
+            this.authorize(newUser)
+            this.dialog.close()
+        }
+
     }
 }
 customElements.define('sign-in', SignIn)
+
+
+

@@ -2,8 +2,10 @@
 
 import { PubSub } from "./pubsub"
 
+export type Authorization = "guest" | "broker" | "user"
+
 export interface User {
-    isSignedIn: boolean,
+    authorization: Authorization,
     signInMethod?: string,
     accessToken?: string,
     displayName?: string,
@@ -11,7 +13,7 @@ export interface User {
     uid?: string,
 }
 
-export var currentUser = new PubSub<User>({ isSignedIn: false })
+export var currentUser = new PubSub<User>({ authorization: 'guest' })
 
 export function gotoPage(url: string) {
     window.history.pushState(url, "", url)
@@ -21,3 +23,7 @@ export function gotoPage(url: string) {
 
 export const signInDialog = document.querySelector("#sign-in-dialog")
 export const signOutDialog = document.querySelector("#sign-out-dialog")
+export const notSignedInDialog = document.querySelector("#not-signed-in-dialog")
+export const notAuthorizedDialog = document.querySelector("#not-authorized-dialog")
+export const pageRouter = document.querySelector("page-router")
+

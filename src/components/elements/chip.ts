@@ -11,6 +11,7 @@ export class Chip extends LitElement {
             width: 6em;
             height: 6em;
             padding: 1.5em;
+            white-space: nowrap;
 
             display: flex;
             flex-direction: column;
@@ -21,7 +22,7 @@ export class Chip extends LitElement {
             background-color: white;
             box-shadow: var(--big-shadow);
             border-radius: 2em;
-            white-space: nowrap;
+            cursor: pointer;
         }
 
         ::slotted(mark) {
@@ -42,14 +43,6 @@ export class Chip extends LitElement {
         ::slotted(img) {
             width: 100%;
         }
-
-        /*
-        ::slotted(span) {
-            position: absolute;
-            bottom: 0;
-            left: 2em;
-        }
-*/    
     `
 }
 customElements.define("vise-chip", Chip)

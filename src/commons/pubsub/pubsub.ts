@@ -30,16 +30,18 @@ class ConsumerComponent extends LitElement {
 export class PubSub<T> {
 	declare readonly FT: (t: T) => void
 
-    subscribers: Map<number, typeof this.FT> = new Map()
-    counter: number = 0
-    value: T
+    private subscribers: Map<number, typeof this.FT> = new Map()
+    private counter: number = 0
+    private value: T
+    private defaultValue: T
 
-    constructor(initial: T) {
-        this.value = initial
+    constructor(defaultValue: T) {
+        this.defaultValue = defaultValue
+        this.value = defaultValue
     }
 
-    pub(val: T) {
-        this.value = val
+    pub(val: undefined | T) {
+        this.value = val? val : this.defaultValue
         this.subscribers.forEach(s => s(this.value))
     }
 
@@ -47,6 +49,10 @@ export class PubSub<T> {
         this.subscribers.set(this.counter, f)
         f(this.value)
         return this.counter++
+    }
+
+    getValue() {
+        return this.value
     }
 
     unsub(id: number) {

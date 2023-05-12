@@ -9,12 +9,8 @@ const signInProviders = {
     'google': signInGoogle
 }
 
-export async function signInPopup (provider: string) {
-	const newUser = await signInProviders[provider]()
-	if (!newUser) {
-		return
-	}
-	currentUser.pub(newUser)
+export async function signInPopup (provider: string): Promise<User | undefined> {
+	return await signInProviders[provider]()
 }
 
 // access firebase auth
@@ -22,7 +18,7 @@ export const auth = getAuth(firebaseApp);
 
 const googleProvider = new GoogleAuthProvider();
 
-async function signInGoogle () {
+async function signInGoogle (): Promise<User | undefined> {
     const result = await signInWithPopup(auth, googleProvider)
 	.catch(error => {
 		console.log("error in sign in to google", error)
@@ -38,7 +34,7 @@ async function signInGoogle () {
 	// IdP data available using getAdditionalUserInfo(result)
 	const {displayName, accessToken, email, photoURL, phoneNumber, uid} = result.user
 
-	const newUser: User = {isSignedIn: true, displayName, accessToken, email, photoURL, phoneNumber, uid}
+	const newUser: User = {displayName, accessToken, email, photoURL, phoneNumber, uid}
 	return newUser
 }
 

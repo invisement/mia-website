@@ -2,11 +2,10 @@ import { LitElement, html, css } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { property, state, query } from 'lit/decorators.js'
 
-import { post } from '/commons/firebase/firestore/post-questionnaire-data.ts';
+import { post } from '/commons/firebase/firestore/get-post-data.ts';
 
-import { currentUser, signInDialog } from '/commons/pubsub/store.ts';
-import { gotoPage } from '/commons/pubsub/store.ts';
-import {Dialogue} from "/components/elements/dia-logue.ts"
+import { currentUser, gotoPage, notAuthorizedDialog, signInDialog } from '/commons/pubsub/store.ts';
+import { Dialogue } from "/components/elements/dia-logue.ts"
 
 //const api_url = import.meta.env.VITE_API_BASE_URL
 //const post_questionaire = "questionnaire/questionnaire-1"
@@ -39,7 +38,7 @@ export class QuesTionnaire extends LitElement {
 
     connectedCallback() {
         super.connectedCallback();
-        
+
         ["", "/"].includes(this.src()) || fetch(this.src())
             .then(r => r.text())
             .then(doc => this.content = doc)
@@ -48,7 +47,8 @@ export class QuesTionnaire extends LitElement {
             })
     }
 
-    render() {return html`
+    render() {
+        return html`
         <card-board>
             <form @submit=${this.submit}>
                 <main>
@@ -67,17 +67,26 @@ export class QuesTionnaire extends LitElement {
             </p>
         </dia-logue>
 
-        <dia-logue id="confirm">
-            <p>
-                You did not sign in.<br>
-                Do you want to try again to sign in?<br>
-                If you cancel, you can not submit your form!
-            </p>
-        </dia-logue>
-
 	`}
 
     static styles = css`
+        p:focus-within, li:focus-within {
+            background-color: var(--accent-background);
+            scroll-snap-align: start;
+        }
+
+        p:focus-within+p, li:focus-within+li {
+            font-weight: bold;
+        }
+
+        /* TODO:for later when questionnaire is read and firefox support is complete 
+        li:has(input:valid) {
+            //inactiv
+        } 
+         and use scroll-snap-align (create a scroller)
+        
+        */
+
         form {
             background-color: var(--primary-background);
             padding: 1em;
@@ -129,25 +138,22 @@ export class QuesTionnaire extends LitElement {
             data[key] = formData.getAll(key)
         }
 
-        // ask user to sign in until she is signed in or choosed to abort
-        while (!currentUser.value.isSignedIn) {
-            await signInDialog.show()
-            if (currentUser.value.isSignedIn) {
-                break;
-            }
-            if ((await this.confirm.show()) == "Cancel") {
-                gotoPage("/")
+        // make sure the user has customer authorization (signed in)
+        if (currentUser.getValue().authorization != 'customer') {
+            const authLevel = await signInDialog.show("customer")
+            if (authLevel != 'customer') {
+                await notAuthorizedDialog.show()
                 return
             }
         }
 
         const documentPath = `/${currentUser.value.email}/questionnaires/${this.name}`
         post("users", documentPath, data)
-        .then(async () => {
-            await this.thankYou.show().then(console.log)
-            gotoPage("/")
-        })
-        .catch(e => console.error("error", e))
+            .then(async () => {
+                await this.thankYou.show().then(console.log)
+                gotoPage("/")
+            })
+            .catch(e => console.error("error", e))
 
     }
 }
