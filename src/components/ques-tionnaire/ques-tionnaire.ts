@@ -13,8 +13,10 @@ import { Dialogue } from "/components/elements/dia-logue.ts"
 
 //const url = `${api_url}/${post_questionaire}`
 
+type Value = string | Date | number | boolean
+
 type QuestionAnswers = {
-    [key: string]: string[]
+    [key: string]: Value[]
 }
 
 
@@ -77,7 +79,7 @@ export class QuesTionnaire extends LitElement {
             font-weight: bold;
         }
 
-        /* TODO:for later when questionnaire is read and firefox support is complete 
+        /* TODO:for later when questionnaire is ready and firefox support of has is stable 
         li:has(input:valid) {
             //inactiv
         } 
@@ -135,6 +137,8 @@ export class QuesTionnaire extends LitElement {
         for (const key of formData.keys()) {
             data[key] = formData.getAll(key)
         }
+
+        data["submitted time"] = [new Date()]
 
         // make sure the user has customer authorization (signed in)
         if (currentUser.getValue().authorization != 'customer') {
