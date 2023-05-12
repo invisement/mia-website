@@ -1,4 +1,32 @@
 
+## Main Components
+Our main components are written in Web Component to be browser native, lightweight and fast, future-proof, and isolated. We use Lit V2 as a helper library.
+- page-router
+
+    Used for client side routing especially in index.html page but can be used everywhere. It exposes a function `gotoPage` in `store.ts`.
+
+    Listens to window.popstate and loads the proper component. 
+
+    - routing to a page from another page:
+        ```ts
+        import {gotoPage} from store.ts
+        // the rest
+        <some-tag @click={() => gotoPage("/path-to/desired-page")}
+        ```
+
+    - adding a new page:
+
+        add an entry to routes varibale in page-router.ts. 
+        
+
+    - restrict a page to specific authorizaion level (have to sig in)
+
+        you can enforce visitors to login to an appropriate level (customer, broker, etc) before viewing a page (if they have not loggen in already).
+        Add an entry to routeAuthorication variable in page-router.ts
+
+        Look at the type definition for Routes. It is from a path to a function, which accept parameters and returns html template.
+        It is from a path to an Authorization like "/path-to/broker-specific-page": "broker"
+    
 
 ### commons/style/shared.ts
 - To have a consistent and desired look all over the website, import from "/components/style/shared.ts"

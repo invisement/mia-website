@@ -38,6 +38,9 @@ export class Dialogue extends LitElement {
             width: 5em;
             font-size: inherit;
 		}
+        ::slotted(p), ::slotted(ul), ::slotted(ol) {
+            text-align: left;
+        }
     `
 
     render() {return html`

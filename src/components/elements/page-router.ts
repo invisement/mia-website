@@ -1,23 +1,45 @@
+/* client site routing
+Listens to window.popstate and loads the proper component. 
+
+## adding a new page:
+add an entry to routes varibale in page-router.ts. 
+> Look at the type definition for Routes. It is from a path to a function, which accept parameters and returns html template.
+
+## routing to a page from another page:
+import {gotoPage} from store.ts
+// the rest
+<some-tag @click={() => gotoPage("/path-to/desired-page")}
+
+## restrict a page to specific authorizaion level (have to sig in)
+you can enforce visitors to login to an appropriate level (customer, broker, etc) before viewing a page (if they have not loggen in already).
+Add an entry to routeAuthorication variable in page-router.ts
+> It is from a path to an Authorization like "/path-to/broker-specific-page": "broker"
+*/
+
+type Path = string // like /path-to/some-page
+type Params = { [key: string]: string }
+type HTMLFunc = (params: Params) => TemplateResult<1>
+type Routes = {[key:Path]: HTMLFunc}
+type RouteAuthorization = { [key: string]: Authorization }
+
 import { LitElement, html } from "lit";
 import { state } from "lit/decorators.js"
 
-import { Authorization, currentUser, notAuthorizedDialog, signInDialog } from "/commons/pubsub/store"
+import { Authorization, currentUser, signInDialog } from "/commons/pubsub/store"
 
 import "/components/home-page/home-page.ts"
 import "/components/ques-tionnaire/ques-tionnaire.ts"
 import "/components/broker/broker-home.ts"
 
-type Params = { [key: string]: string }
 
-export const routes = {
+export const routes: Routes = {
     "/questionnaires/:name": (params: Params) => html`<ques-tionnaire name=${params.name}></ques-tionnaire>`,
     "/": () => html`<home-page></home-page>`,
     "/broker-home": () => html`<broker-home></broker-home>`,
 }
 
-const routeAuthorization: { [key: string]: Authorization } = {
+const routeAuthorization: RouteAuthorization = {
     "/broker-home": "broker",
-    "/questionnaires/insurance-questionnaire": "customer",
 }
 
 function wait(milliseconds) {

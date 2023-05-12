@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { property, state, query } from 'lit/decorators.js'
+import { successfulSubmission } from '@static/html-content/messages';
 
 import { post } from '/commons/firebase/firestore/get-post-data.ts';
 
@@ -61,10 +62,7 @@ export class QuesTionnaire extends LitElement {
             </form>
         </card-board>
         <dia-logue id="thank-you" .buttons=${["OK"]}>
-            <p>
-                You submitted your insurance form successfully!<br>
-                Thank you for doing business with us.
-            </p>
+            ${successfulSubmission}
         </dia-logue>
 
 	`}

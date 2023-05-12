@@ -25,6 +25,7 @@ headerHtmls["guest"] = name => html`
 
     <menu-item title="Broker Sign In" @click=${() => {
         //signInDialog.show("broker")
+        // no need fo signin dialog because /broker-home is a restricted page
         gotoPage("/broker-home")
     }}>
         ${brokerIcon}
