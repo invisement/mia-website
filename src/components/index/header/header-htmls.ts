@@ -11,7 +11,7 @@ headerHtmls["guest"] = name => html`
         <img src="/images/favicon.ico">
     </menu-item>
 
-    <menu-item title="Feedback">
+    <menu-item @click=${() => gotoPage("/feedback-form")} title="Feedback">
         ${chatIcon}
     </menu-item>
 
@@ -44,7 +44,7 @@ headerHtmls["customer"] = name => html`
         <img src="/images/favicon.ico">
     </menu-item>
 
-    <menu-item title="Support">
+    <menu-item title="Support" @click=${() => gotoPage("/feedback-form")}>
         ${chatIcon}
     </menu-item>
     

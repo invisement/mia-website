@@ -99,15 +99,7 @@ export class QuesTionnaire extends LitElement {
 			width: 80%;
 			max-width: 300px;
 		}
-
-
-		ul {
-			break-inside: avoid;
-		}
 		
-		ol>li {
-			break-after: avoid;
-		}
         h1, footer {
             background-color: var(--highlight-background);
             color: var(--highlight-color);
@@ -120,10 +112,6 @@ export class QuesTionnaire extends LitElement {
         }
         footer > * {
             font-size: larger;
-        }
-
-        h1 {
-            font-size: large;
         }
 
 	`
@@ -155,7 +143,7 @@ export class QuesTionnaire extends LitElement {
                 await this.thankYou.show().then(console.log)
                 gotoPage("/")
             })
-            .catch(e => console.error("error", e))
+            .catch(console.error)
 
     }
 }

@@ -30,12 +30,15 @@ import { Authorization, currentUser, signInDialog } from "/commons/pubsub/store"
 import "/components/home-page/home-page.ts"
 import "/components/ques-tionnaire/ques-tionnaire.ts"
 import "/components/broker/broker-home.ts"
+import "./simple-form.ts"
+import {feedbackForm} from "@static/html-content/messages.ts"
 
 
 export const routes: Routes = {
     "/questionnaires/:name": (params: Params) => html`<ques-tionnaire name=${params.name}></ques-tionnaire>`,
     "/": () => html`<home-page></home-page>`,
     "/broker-home": () => html`<broker-home></broker-home>`,
+    "/feedback-form": () => html`<simple-form .content=${feedbackForm} name="MIA Feedback Form"></simple-form>`,
 }
 
 const routeAuthorization: RouteAuthorization = {
