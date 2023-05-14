@@ -58,6 +58,7 @@ export class SimpleForm extends LitElement {
             margin: 1em;
             box-shadow: var(--small-shadow);
             background-color: var(--primary-background);
+            line-height: 2em;
 
         }
         main {
@@ -72,7 +73,6 @@ export class SimpleForm extends LitElement {
             width: 100%;
             height: 10em;
         }
-
         input {
             max-width: 45%;
         }
@@ -93,12 +93,16 @@ export class SimpleForm extends LitElement {
             font-size: inherit;
             margin: 0 1em;
         }
-        :invalid {
+        input:invalid {
             box-shadow: var(--small-shadow);
         } 
+
+        label {
+            display: block;
+        }
         
         div:focus-within {
-            font-weight: bold;
+            box-shadow: var(--outset);
         }
 
     `
