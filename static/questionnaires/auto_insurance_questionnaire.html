@@ -1,24 +1,4 @@
-<!-- 
-Online HTML, CSS and JavaScript editor to run code online.
--->
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Browser</title>
-</head>
-
-<body>
-  <h1>
-    Write, edit and run HTML, CSS and JavaScript code online.
-  </h1>
-  <p>
-    Our HTML editor updates the webview automatically in real-time as you write code.
-    
-    <ol>
 
         
       <label for="option-select">What do you want to see in this quote?:</label>
@@ -53,18 +33,6 @@ Online HTML, CSS and JavaScript editor to run code online.
   <input type="text" id="additional-input" name="additional">
 </div>
 
-<script>
-function showAdditionalField() {
-  var selectElement = document.getElementById("option-select");
-  var additionalField = document.getElementById("additional-field");
-
-  if (selectElement.value === "banana") {
-    additionalField.style.display = "block";
-  } else {
-    additionalField.style.display = "none";
-  }
-}
-</script>
 
       <label for="Phone-input">Phone Number:</label>
       <input type="text" id="name-input" name="name"><br><label 				 for="name-input">Name (Last, First, MI):</label>
@@ -79,10 +47,10 @@ function showAdditionalField() {
       <input type="text" id="name-input" name="name">
       <br><label for="Zip-Code-input">Zip Code:</label>
       <input type="text" id="name-input" name="name">
-    </ol>
         
-<p> Last Garaging Location, if different from address (3 years minimum):
-        <br><label for="Address-input">Address:</label>
+<p> Last Garaging Location, if different from address (3 years minimum):</p>
+        <br>
+  <label for="Address-input">Address:</label>
       <input type="text" id="name-input" name="name">
       <br><label for="City-input">City:</label>
       <input type="text" id="name-input" name="name">
@@ -195,7 +163,4 @@ function showAdditionalField() {
       <li>Zipcode  
   </p>
  
-  <script src="script.js"></script>
-</body>
-
-</html>
+ 
