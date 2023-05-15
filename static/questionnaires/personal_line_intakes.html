@@ -1,53 +1,69 @@
-
-  <h2>Personal Lines P & C Intake Form</h2>
-  <form>
+<h2>Personal Lines P & C Intake Form</h2>
+<form>
     <h3>Household Information</h3>
-    <label for="current-address">Current Address:</label>
-    <input type="text" id="current-address" name="currentAddress"><br>
 
-    <label for="mailing-address">Mailing Address (if different from above):</label>
-    <input type="text" id="mailing-address" name="mailingAddress"><br>
+    <label>
+        Current Address:
+        <input required type="address" name="current-address">
+    </label>
 
-    <label for="full-names">Full Legal Names:</label><br>
-    <input type="text" id="name1" name="name1"><br>
-    <input type="text" id="name2" name="name2"><br>
-    <input type="text" id="name3" name="name3"><br>
+    <label>
+        Mailing Address (if different from above):
+        <input type="address" name="mailing-address">
+    </label>
 
-    <label for="contact-telephone">Contact Telephone(s):</label><br>
-    <input type="tel" id="telephone1" name="telephone1"><br>
-    <input type="tel" id="telephone2" name="telephone2"><br>
+    <label>
+        Full Legal Names:
+        <input name="first-name">
+        <input name="middle-name">
+        <input name="last-name">
+    </label>
 
-    <label for="contact-email">Contact Email:</label><br>
-    <input type="email" id="email1" name="email1"><br>
-    <input type="email" id="email2" name="email2"><br>
+    <label>
+        Contact Telephone(s):
+        <input type="tel" name="telephone1">
+        <input type="tel" name="telephone2">
+    </label>
 
-    <label for="dob">Dates of Birth:</label><br>
-    <input type="date" id="dob1" name="dob1"><br>
-    <input type="date" id="dob2" name="dob2"><br>
+    <label>
+        Contact Email:
+        <input type="email" name="email1">
+        <input type="email" name="email2">    
+    </label>
 
-    <label for="ssn">*SS#'s (Named Insureds Only):</label><br>
-    <input type="text" id="ssn1" name="ssn1"><br>
-    <input type="text" id="ssn2" name="ssn2"><br>
+    <label>
+        Dates of Birth:
+        <input type="date" id="dob1" name="dob1">
+        <input type="date" id="dob2" name="dob2">
+    </label>
 
-    <label for="occupation">Occupations (Named Insured Only):</label><br>
-    <input type="text" id="occupation1" name="occupation1"><br>
-    <input type="text" id="occupation2" name="occupation2"><br>
+    <label>
+        *SS#'s (Named Insureds Only):
+        <input name="ssn1">
+        <input name="ssn2">
+    </label>
 
-    <label for="driver-license">Driver's License #:</label><br>
-    <input type="text" id="license1" name="license1"><br>
-    <input type="text" id="license2" name="license2"><br>
-    <input type="text" id="license3" name="license3"><br>
-    
-    <label for="accidents">List any known accidents or violations for household members Dates & Description:</label><br>
-    <textarea id="accidents" name="accidents" rows="4" cols="50"></textarea><br>
+    <label>
+        Occupations (Named Insured Only):
+        <input name="occupation1"><br>
+        <input name="occupation2">
+    </label>
+
+    <label>Driver's License #:
+        <input name="license1">
+        <input name="license2">
+        <input name="license3">    
+    </label>
+
+    <label for="accidents">List any known accidents or violations for household members Dates & Description:
+        <textarea id="accidents" name="accidents" rows="4" cols="50">
+        </textarea>
+    </label>
 
     <h3>For Youthful Operators (any member of household under 25)</h3>
     <p>Please provide most recent report card if A/B Student – good student credit</p>
     <p>Please provide Driver Training document – Completion Certificate</p>
-    <p>For drivers over 100 Miles away at school without a vehicle provide class schedule which includes institution (address) and student name on document</p>
-
+    <p>For drivers over 100 Miles away at school without a vehicle provide class schedule which includes institution
+        (address) and student name on document</p>
+        
     <h3>Provide declaration pages of any policies currently enforce to provide full evaluation of protection.</h3>
-
-    
-
-    

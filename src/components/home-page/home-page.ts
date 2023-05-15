@@ -40,13 +40,13 @@ export class HomePage extends LitElement {
                 Home Owner
                 <mark>major saving</mark>
             </vise-chip>
-            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+            <vise-chip @click=${() => gotoPage("/simple-form/personal-loan")}>
                 <img src="/illustrations/mindfulness.svg">
                 Loan
             </vise-chip>
-            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+            <vise-chip @click=${() => gotoPage("/questionnaires/personal_line_intakes")}>
                 <img src="/illustrations/money-bag.svg">
-                Loan
+                Loan2
             </vise-chip>
 
 
@@ -72,6 +72,7 @@ export class HomePage extends LitElement {
 
         <card-board style="height: 40em;">
         <vise-carousel>
+            <img src="/images/how-it-works.png" loading="lazy" caption="<a href='/feedback-form'>Contact us</a> if you have a question or feedback and we will get back to you ASAP">
             <img src="/illustrations/fall.svg" caption="Relax, we are your agent" loading="lazy">
             <img src="/illustrations/city.svg" caption="Relax, we are your agent" loading="lazy">
             <img src="/illustrations/park.svg" caption="Relax, we are your agent" loading="lazy">

@@ -32,13 +32,15 @@ import "/components/ques-tionnaire/ques-tionnaire.ts"
 import "/components/broker/broker-home.ts"
 import "./simple-form.ts"
 import {feedbackForm} from "@static/html-content/messages.ts"
-
+import {personalLoan} from "@static/questionnaires/personal-line-intakes.ts"
 
 export const routes: Routes = {
     "/questionnaires/:name": (params: Params) => html`<ques-tionnaire name=${params.name}></ques-tionnaire>`,
     "/": () => html`<home-page></home-page>`,
     "/broker-home": () => html`<broker-home></broker-home>`,
     "/feedback-form": () => html`<simple-form .content=${feedbackForm} name="MIA Feedback Form"></simple-form>`,
+    "/simple-form/personal-loan": (params: Params) => html`<simple-form .content=${personalLoan} name="Personal Lines P&C"></simple-form>`,
+
 }
 
 const routeAuthorization: RouteAuthorization = {
