@@ -15,7 +15,7 @@ headerHtmls["guest"] = name => html`
         ${chatIcon}
     </menu-item>
 
-    <menu-item title="Contact Us">
+    <menu-item title="Contact Us" @click=${() => gotoPage("/about-us")}>
         ${phoneIcon}
     </menu-item>
 

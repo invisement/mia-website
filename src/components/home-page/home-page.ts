@@ -76,12 +76,13 @@ export class HomePage extends LitElement {
             </vise-chip>
         </vise-chips>
 
+        <img width="100%" src="/images/how-it-works.png" loading="lazy">
+
         <card-board style="height: 40em;">
         <vise-carousel>
-            <img src="/images/how-it-works.png" loading="lazy" caption="<a href='/feedback-form'>Contact us </a> for more info if you have an inquiry">
-            <img src="/illustrations/fall.svg" caption="You relax, we will find the best rates for you, guaranteed!" loading="lazy">
+            <img src="/illustrations/fall.svg"  caption="<a href='/feedback-form'>Contact us </a> for more info if you have an inquiry" loading="lazy">
             <img src="/illustrations/city.svg" caption="We represent you, we are your agent, not the insurance companies!" loading="lazy">
-            <img src="/illustrations/park.svg" caption="We offer complete 360 insurance management from finding the best rate to claim management to canceling the insurance" loading="lazy">
+            <img src="/illustrations/park.svg"  caption="You relax, we will find the best rates for you, guaranteed!" loading="lazy">
         </vise-carousel>
         </card-board>
     

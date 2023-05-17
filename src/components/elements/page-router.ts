@@ -31,8 +31,10 @@ import "/components/home-page/home-page.ts"
 import "/components/ques-tionnaire/ques-tionnaire.ts"
 import "/components/broker/broker-home.ts"
 import "./simple-form.ts"
-import {feedbackForm} from "@static/html-content/messages.ts"
+import {feedbackForm, aboutUs} from "@static/html-content/messages.ts"
 import {personalLoan} from "@static/questionnaires/personal-line-intakes.ts"
+
+import {gotoPage} from "/commons/pubsub/store.ts"
 
 export const routes: Routes = {
     "/questionnaires/:name": (params: Params) => html`<ques-tionnaire name=${params.name}></ques-tionnaire>`,
@@ -40,6 +42,7 @@ export const routes: Routes = {
     "/broker-home": () => html`<broker-home></broker-home>`,
     "/feedback-form": () => html`<simple-form .content=${feedbackForm} name="MIA Feedback Form"></simple-form>`,
     "/simple-form/personal-loan": (params: Params) => html`<simple-form .content=${personalLoan} name="Personal Lines P&C"></simple-form>`,
+    "/about-us": () => aboutUs,
 
 }
 
