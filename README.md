@@ -1,3 +1,4 @@
+# MIA Website
 
 ## Main Components
 Our main components are written in Web Component to be browser native, lightweight and fast, future-proof, and isolated. We use Lit V2 as a helper library.
