@@ -27,16 +27,16 @@ export class HomePage extends LitElement {
     render() {
         return html`
         <vise-chips>
-            <vise-chip @click=${() => gotoPage("/questionnaires/insurance-questionnaire")}>
+            <vise-chip @click=${() => gotoPage("/questionnaires/auto-insurance-questionnaire")}>
                 ${icons.carIcon}
                 Car Insurance
             </vise-chip>
-            <vise-chip @click=${() => gotoPage("/questionnaires/p&c-questionnaire")}>
+            <vise-chip @click=${() => gotoPage("/questionnaires/home-insurance-questionnaire")}>
                 ${icons.homeIcon}
                 Home Owner
                 <mark>major saving</mark>
             </vise-chip>
-            <vise-chip @click=${() => gotoPage("/simple-form/personal-loan")}>
+            <vise-chip @click=${() => gotoPage("/questionnaires/personal-line-intakes")}>
                 <img src="/illustrations/mindfulness.svg">
                 Loan
             </vise-chip>

@@ -24,7 +24,7 @@ export class Chip extends LitElement {
             border-radius: 2em;
             cursor: pointer;
             animation-duration: 1s;
-            transition: 2s;
+            transition: 1s;
         }
 
         div:hover {
@@ -33,7 +33,7 @@ export class Chip extends LitElement {
 
             animation-name: bounce;
             animation-timing-function: linear;
-            animation-iteration-count: 2;
+            animation-iteration-count: 1;
         }
 
         @keyframes bounce {

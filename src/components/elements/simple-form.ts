@@ -1,24 +1,40 @@
+/* How to use
+<simple-form 
+    src="questionnaires/auto-insurance-questionnaire"
+    auth="guest" 
+    afterPage="/"
+>
+</simple-form>
+
+*/
+
+
 import { LitElement, TemplateResult, css, html } from "lit";
-import { property, query, queryAll } from 'lit/decorators.js'
+import { property, state, query, queryAll } from 'lit/decorators.js'
 
 import { Dialogue } from "/components/elements/dia-logue.ts"
 import { currentUser, signInDialog, notAuthorizedDialog, gotoPage } from "/commons/pubsub/store"
 import { putDoc } from "/commons/firebase/firestore/get-post-data"
 
 import { addIcon, removeIcon } from "@static/svg/icons";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
 export class SimpleForm extends LitElement {
     @property()
-    name = "Untitled Form"
-
-    @property()
-    content: TemplateResult<1>
+    src: string
 
     @property()
     auth: Authorization = "guest"
 
     @property()
-    page = "/"
+    afterPage = "/"
+
+
+    @state()
+    content: TemplateResult<1>
+
+    private collection: string;
+    private name: string;
 
     @query('form')
     form: HTMLFormElement;
@@ -32,8 +48,14 @@ export class SimpleForm extends LitElement {
     @queryAll('clone-me')
     cloneMeElements: NodeList
 
-    connectedCallback() {
+    async connectedCallback() {
         super.connectedCallback()
+
+        // fetch src html and set name and target and content
+        this.content = unsafeHTML(await fetch(`${this.src}.html`).then(r => r.text()))
+        this.collection = this.src.split("/").at(-1)
+        this.name = this.collection.replaceAll("-", " ")
+
         this.addMore()
     }
 
@@ -86,7 +108,7 @@ export class SimpleForm extends LitElement {
 
                 <footer>
                     <button type="submit">Submit</button>
-                    <button type="button"  @click=${() => gotoPage(this.page)}>Cancel</button>
+                    <button type="button"  @click=${() => gotoPage(this.afterPage)}>Cancel</button>
                 </footer>
             </form> 
         <dia-logue id="thank-you" .buttons=${["OK"]}>
@@ -155,6 +177,10 @@ export class SimpleForm extends LitElement {
             height: 10em;
         }
 
+        header {
+            text-transform: capitalize;
+        }
+
         header, footer {
             background-color: var(--highlight-background);
             color: var(--highlight-color);
@@ -171,8 +197,8 @@ export class SimpleForm extends LitElement {
             font-size: inherit;
             margin: 0 1em;
         }
-        input:invalid {
-            box-shadow: var(--small-shadow);
+        label input:invalid {
+            box-shadow: 0 0 0px .5px var(--warning-color);
         } 
 
         label {
@@ -197,8 +223,6 @@ export class SimpleForm extends LitElement {
         const formData = new FormData(this.form)
         const data = Object.fromEntries(formData);
 
-        data["submitted time"] = (new Date()).toISOString()
-
         // make sure the user has customer authorization (signed in)
         if (this.auth != 'guest' && currentUser.getValue().authorization != this.auth) {
             const authLevel = await signInDialog.show(this.auth)
@@ -210,11 +234,16 @@ export class SimpleForm extends LitElement {
 
         //const userId = currentUser.getValue().email || "guest" + Math.random().toString(16).slice(2)
 
+        // extra info for each submission
+        data["submitted time"] = (new Date()).toISOString()
+        data["signedUserEmail"] = currentUser.email || ""
+        data["signedUserId"] = currentUser.userId || ""
+
         //const documentPath = `/${userId}`
-        const docRef = await putDoc(`${this.name.toLowerCase().replaceAll(" ", "-")}`, data)
+        const docRef = await putDoc(this.collection, data)
         if (docRef) {
             await this.thankYou.show()
-            gotoPage(this.page)
+            gotoPage(this.afterPage)
         } else {
             await this.serverError.show()
         }

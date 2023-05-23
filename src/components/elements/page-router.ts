@@ -19,7 +19,7 @@ Add an entry to routeAuthorication variable in page-router.ts
 type Path = string // like /path-to/some-page
 type Params = { [key: string]: string }
 type HTMLFunc = (params: Params) => TemplateResult<1>
-type Routes = {[key:Path]: HTMLFunc}
+type Routes = { [key: Path]: HTMLFunc }
 type RouteAuthorization = { [key: string]: Authorization }
 
 import { LitElement, html } from "lit";
@@ -31,17 +31,18 @@ import "/components/home-page/home-page.ts"
 import "/components/ques-tionnaire/ques-tionnaire.ts"
 import "/components/broker/broker-home.ts"
 import "./simple-form.ts"
-import {feedbackForm, aboutUs} from "@static/html-content/messages.ts"
-import {personalLoan} from "@static/questionnaires/personal-line-intakes.ts"
+import { feedbackForm, aboutUs } from "@static/html-content/messages.ts"
+import { personalLoan } from "@static/questionnaires/personal-line-intakes.ts"
 
-import {gotoPage} from "/commons/pubsub/store.ts"
+import { gotoPage } from "/commons/pubsub/store.ts"
 
 export const routes: Routes = {
-    "/questionnaires/:name": (params: Params) => html`<ques-tionnaire name=${params.name}></ques-tionnaire>`,
+
+    "/questionnaires/:name": (params: Params) => html`<simple-form auth="customer" src="/questionnaires/${params.name}"></simple-form>`,
     "/": () => html`<home-page></home-page>`,
     "/broker-home": () => html`<broker-home></broker-home>`,
     "/feedback-form": () => html`<simple-form .content=${feedbackForm} name="MIA Feedback Form"></simple-form>`,
-    "/simple-form/personal-loan": (params: Params) => html`<simple-form .content=${personalLoan} name="Personal Lines P&C"></simple-form>`,
+//    "/simple-form/personal-loan": (params: Params) => html`<simple-form .content=${personalLoan} name="Personal Lines P&C"></simple-form>`,
     "/about-us": () => aboutUs,
 
 }
@@ -52,8 +53,8 @@ const routeAuthorization: RouteAuthorization = {
 
 function wait(milliseconds) {
     return new Promise(resolve => setTimeout(resolve, milliseconds));
-  }
-  
+}
+
 
 class PageRouter extends LitElement {
 
