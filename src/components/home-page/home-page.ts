@@ -4,6 +4,7 @@ import "./temp/carousel/carousel.ts"
 import "/components/elements/card-board.ts"
 import "/components/elements/chip.ts"
 import "/components/elements/chips.ts"
+import "/components/home-page/changing-word.ts"
 
 import * as icons from "@static/svg/large-icons"
 
@@ -26,6 +27,8 @@ export class HomePage extends LitElement {
 
     render() {
         return html`
+        <changing-word .words=${["Home‎‎‎‎", "Car‎‎‎‎", "Travel‎‎‎‎", "Medical‎‎‎‎"]} .speed=${200}></changing-word>
+
         <vise-chips>
             <vise-chip @click=${() => gotoPage("/questionnaires/auto-insurance-questionnaire")}>
                 ${icons.carIcon}
@@ -37,7 +40,7 @@ export class HomePage extends LitElement {
                 <mark>major saving</mark>
             </vise-chip>
             <vise-chip @click=${() => gotoPage("/questionnaires/personal-line-intakes")}>
-                <img src="/illustrations/mindfulness.svg">
+                <img src="/illustrations/bank-note.svg">
                 Loan
             </vise-chip>
             <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
@@ -67,6 +70,8 @@ export class HomePage extends LitElement {
                 Easy Manage
             </vise-chip>
         </vise-chips>
+
+
 
         <img width="100%" src="/images/how-it-works.png" loading="lazy">
 

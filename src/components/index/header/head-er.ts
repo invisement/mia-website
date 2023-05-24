@@ -32,6 +32,7 @@ class Header extends LitElement {
         display: flex;
         text-align: center;
         padding: .5em;
+        justify-content: space-around;
 
         position: sticky;
         top: 0;
@@ -45,13 +46,14 @@ class Header extends LitElement {
         fill: var(--accent-color);
         border-radius: 0 0 var(--border-radius) var(--border-radius);
     }
-    header > ul {
-        flex-basis: 0;
-        flex-grow: 1; 
-    }
+    /*header > ul {
+        //flex-basis: 0;
+        //flex-grow: 1; 
+    }*/
 
     ul {
         margin: 0;
+        padding: 0;
     }
 
     li, menu-item {

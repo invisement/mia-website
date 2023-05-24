@@ -18,17 +18,21 @@ headerHtmls["guest"] = name => html`
     </ul>
 
     <ul>
+        <li>
         <button title="Broker Sign In" @click=${() => {
             //signInDialog.show("broker")
             // no need fo signin dialog because /broker-home is a restricted page
             gotoPage("/broker-home")
         }}>
             Become A Broker
-    </button>
+        </button>
+        </li>
 
+        <li>
         <button class="reverse" title="User Sign In" @click=${() => signInDialog.show("customer")}>
             Log In
-    </button>
+        </button>
+        </li>
     </ul>
 `
 
@@ -49,7 +53,9 @@ headerHtmls["customer"] = name => html`
     <ul>
         <button>Claim</button>
         <button class="reverse">${name}</button>
+        <li>
         <img title="Sign out" @click=${signOut} src="/illustrations/exit.svg">
+        </li>
     </ul>
 `
 

@@ -80,19 +80,17 @@ export class SignIn extends LitElement {
 
     private async authorize (newUser: User) {
         const email = newUser.email
-        switch(this.requestedAuthLevel) {
-            case "broker":
-                if (await doesBrokerExist(email)) {
-                    this.returnedAuthLevel = this.requestedAuthLevel
-                    newUser.authorization = this.returnedAuthLevel
-                    currentUser.pub(newUser)
-                }
-                break;
-            case "customer":
-                this.returnedAuthLevel = this.requestedAuthLevel
+        const requestedAuthLevel = this.requestedAuthLevel
+        if (requestedAuthLevel == "broker") {
+            if (await doesBrokerExist(email)) {
+                this.returnedAuthLevel = requestedAuthLevel
                 newUser.authorization = this.returnedAuthLevel
                 currentUser.pub(newUser)
-                break
+            }
+        } else if (requestedAuthLevel == "customer") {
+            this.returnedAuthLevel = requestedAuthLevel
+            newUser.authorization = this.returnedAuthLevel
+            currentUser.pub(newUser)
         }
     }
 
@@ -104,7 +102,7 @@ export class SignIn extends LitElement {
                 this.dialog.close()
             }
         } else {
-            this.authorize(newUser)
+            await this.authorize(newUser)
             this.dialog.close()
         }
 

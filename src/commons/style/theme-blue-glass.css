@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Marko+One&family=Marmelad');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&family=Oleo+Script+Swash+Caps&family=Marko+One&family=Marmelad');
 
 
 :root {
-    --heading-font: "Oleo Script Swash Caps", Sans-Serif;
-    --title-font: "Oleo Script Swash Caps", Serif;
-    --primary-font: "Marko One", Sans-Serif;
+    --title-font: "Oleo Script Swash Caps", Sans-Serif;
+    --heading-font: "Marko One", Sans-Serif;
+    --primary-font: "Marmelad", Sans-Serif;
 
     --primary-color: rgb(0, 0, 0);
     --accent-color: rgb(0, 100, 200);
@@ -12,7 +12,7 @@
     --warning-color: rgb(255, 0, 0);
     --inactive-color: lightgray;
     
-    --inactive-background: rgb(245, 245, 245);
+    --inactive-background: rgb(242, 245, 242);
     --primary-background: rgb(255, 255, 255);
     --accent-background: rgb(235, 235, 255);
     --highlight-background: rgb(255, 245, 235);

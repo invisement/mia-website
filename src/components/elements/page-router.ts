@@ -24,6 +24,8 @@ type RouteAuthorization = { [key: string]: Authorization }
 
 import { LitElement, css, html } from "lit";
 import { state } from "lit/decorators.js"
+import {until} from 'lit/directives/until.js';
+
 
 import { Authorization, currentUser, signInDialog } from "/commons/pubsub/store"
 
@@ -41,7 +43,7 @@ export const routes: Routes = {
     "/questionnaires/:name": (params: Params) => html`<simple-form auth="customer" src="/questionnaires/${params.name}"></simple-form>`,
     "/": () => html`<home-page></home-page>`,
     "/broker-home": () => html`<broker-home></broker-home>`,
-    "/feedback-form": () => html`<simple-form .content=${feedbackForm} name="MIA Feedback Form"></simple-form>`,
+    "/feedback-form": () => html`<simple-form src="html-content/feedback-form"></simple-form>`,
 //    "/simple-form/personal-loan": (params: Params) => html`<simple-form .content=${personalLoan} name="Personal Lines P&C"></simple-form>`,
     "/about-us": () => aboutUs,
 
@@ -62,14 +64,22 @@ class PageRouter extends LitElement {
 
     popstate = async (e: PopStateEvent) => {
         e.preventDefault()
+        //const isAuthorized = await this.isUserAuthorized(window.location.pathname)
+        //if (isAuthorized) {
+            this.pathname = window.location.pathname
+        //}
+    }
+
+    async checkAndFetchPage(route, params) {
         const isAuthorized = await this.isUserAuthorized(window.location.pathname)
         if (isAuthorized) {
-            this.pathname = window.location.pathname
+            return routes[route](params)
         }
     }
 
-    connectedCallback() {
+    async connectedCallback() {
         super.connectedCallback()
+
         this.pathname = window.location.pathname
         addEventListener("popstate", this.popstate)
     }
@@ -105,6 +115,7 @@ class PageRouter extends LitElement {
     }
 
     async isUserAuthorized(path: string) {
+
         const requestedAuth = routeAuthorization[path]
         if (!requestedAuth) {
             return true
@@ -112,12 +123,14 @@ class PageRouter extends LitElement {
         var userAuth = currentUser.getValue().authorization
 
         if (requestedAuth != userAuth) {
-            await wait(10)
-            const x = await signInDialog.updateComplete
+
+            await wait(1)
+            //await signInDialog.updateComplete
             userAuth = await signInDialog.show(requestedAuth)
         }
 
         if (requestedAuth == userAuth) {
+
             return true
         }
 
@@ -130,7 +143,7 @@ class PageRouter extends LitElement {
             const params = this.matchPathname(this.pathname, route)
             if (params) {
                 scrollTo(0, 0)
-                return routes[route](params)
+                return until(this.checkAndFetchPage(route, params), html`<span>Checking Authorization ...</span>`)
             }
         }
     }

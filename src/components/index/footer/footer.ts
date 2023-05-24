@@ -21,6 +21,9 @@ class Footer extends LitElement {
             gap: 2em;
             padding: .5em;
         }
+        a, button, li {
+            cursor: pointer;
+        }
     `
 
     render () {return html`
