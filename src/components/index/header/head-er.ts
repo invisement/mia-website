@@ -82,7 +82,7 @@ class Header extends LitElement {
 
     render () {return html`
         <header>
-            ${headerHtmls["broker"]("Ali")}
+            ${headerHtmls[this.userAuthorization](currentUser.getValue()?.displayName)}
         </header>
     `}
 
