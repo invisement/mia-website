@@ -22,7 +22,7 @@ type HTMLFunc = (params: Params) => TemplateResult<1>
 type Routes = { [key: Path]: HTMLFunc }
 type RouteAuthorization = { [key: string]: Authorization }
 
-import { LitElement, html } from "lit";
+import { LitElement, css, html } from "lit";
 import { state } from "lit/decorators.js"
 
 import { Authorization, currentUser, signInDialog } from "/commons/pubsub/store"
@@ -134,6 +134,14 @@ class PageRouter extends LitElement {
             }
         }
     }
+
+    static styles = css`
+        :host {
+            display: block;
+            margin: auto;
+            max-width: 65rem;
+        }
+    `
 }
 
 customElements.define('page-router', PageRouter)

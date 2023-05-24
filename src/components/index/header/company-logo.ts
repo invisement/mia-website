@@ -24,7 +24,7 @@ export class Logo extends LitElement {
 
     render() {
         return html`
-            <span>MIA</span><b>🛡️</b>
+            <span>My Insurance Agency</span>
         `
     }
 }

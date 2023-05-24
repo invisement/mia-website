@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Marko+One&family=Marmelad');
 
 :root {
-    --heading-font: Marko One, Sans-Serif;
-    --title-font: Oleo Script Swash Caps, Serif;
-    --primary-font: Marmelad, Sans-Serif;
+    --heading-font: Sans-Serif;
+    --title-font: Serif;
+    --primary-font: Sans-Serif;
 
     --primary-color: rgb(0, 0, 0);
     --accent-color: rgb(50, 80, 150);

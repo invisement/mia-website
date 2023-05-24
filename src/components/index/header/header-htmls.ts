@@ -7,63 +7,50 @@ export const headerHtmls: {[key in Authorization]: (name: string | undefined) =>
 
 
 headerHtmls["guest"] = name => html`
-    <menu-item @click=${() => gotoPage("/")} title="Home">
-        <img src="/images/favicon.ico">
-    </menu-item>
+    <ul>
+        <li>
+        <img @click=${() => gotoPage("/")} title="Home" src="/images/favicon.ico">
+        </li>
+        
+        <li @click=${() => gotoPage("/feedback-form")} title="Feedback">
+                Contact Us
+        </li>
+    </ul>
 
-    <menu-item @click=${() => gotoPage("/feedback-form")} title="Feedback">
-        ${chatIcon}
-    </menu-item>
+    <ul>
+        <button title="Broker Sign In" @click=${() => {
+            //signInDialog.show("broker")
+            // no need fo signin dialog because /broker-home is a restricted page
+            gotoPage("/broker-home")
+        }}>
+            Become A Broker
+    </button>
 
-    <menu-item title="Contact Us" @click=${() => gotoPage("/about-us")}>
-        ${phoneIcon}
-    </menu-item>
-
-    <menu-item title="Schedule">
-        ${calendarIcon}
-    </menu-item>
-
-    <menu-item title="Broker Sign In" @click=${() => {
-        //signInDialog.show("broker")
-        // no need fo signin dialog because /broker-home is a restricted page
-        gotoPage("/broker-home")
-    }}>
-        ${brokerIcon}
-        <mark>Broker Login</mark>
-    </menu-item>
-
-    <menu-item title="User Sign In" @click=${() => signInDialog.show("customer")}>
-        ${doorIcon}
-        <mark>Customer Login</mark>
-    </menu-item>
+        <button class="reverse" title="User Sign In" @click=${() => signInDialog.show("customer")}>
+            Log In
+    </button>
+    </ul>
 `
 
 
 headerHtmls["customer"] = name => html`
-    <menu-item @click=${() => gotoPage("/")}>
-        <img src="/images/favicon.ico">
-    </menu-item>
 
-    <menu-item title="Support" @click=${() => gotoPage("/feedback-form")}>
-        ${chatIcon}
-    </menu-item>
+    <ul>
+    <li>
+        <img @click=${() => gotoPage("/")} title="Home" src="/images/favicon.ico">
+    </li>
+    <li>
+            Contact Us
+    </li>
     
-    <menu-item title="Setting">
-        ${settingIcon}
-    </menu-item>
-    
-    <menu-item title="Claim">
-        ${dollarIcon}
-    </menu-item>
 
-    <menu-item title="Edit">
-        ${editIcon}
-    </menu-item>
+    </ul>
 
-    <menu-item title="Sign out" @click=${signOut}>
-        <img src="/illustrations/exit.svg">
-        <mark>${name}</mark>
-    </menu-item>
+    <ul>
+        <button>Claim</button>
+        <button class="reverse">${name}</button>
+        <img title="Sign out" @click=${signOut} src="/illustrations/exit.svg">
+    </ul>
 `
 
 async function signOut () {
@@ -75,6 +62,7 @@ async function signOut () {
 } 
 
 headerHtmls["broker"] = name => html`
+    <ul>
     <menu-item @click=${() => gotoPage("/")}>
         <img src="/images/favicon.ico">
     </menu-item>
@@ -82,27 +70,25 @@ headerHtmls["broker"] = name => html`
     <menu-item title="Broker Portal"  @click=${() => gotoPage("/broker-home")}>
         ${brokerIcon}
     </menu-item>
-
-
-    <menu-item title="Celebrate">
-        <img src="/illustrations/beer.svg">
-    </menu-item>
-    
-    <menu-item title="profile">
-        <img src="/illustrations/profile-female.svg">
-    </menu-item>
-    
-    <menu-item title="Offer">
-        <img src="/illustrations/bank-note.svg">        
-    </menu-item>
-
     <menu-item title="Edit">
         ${editIcon}
     </menu-item>
 
+
+    </ul>
+    
+    <ul>
+    <menu-item title="Celebrate">
+        <img src="/illustrations/beer.svg">
+    </menu-item>
+    <menu-item title="Offer">
+        <img src="/illustrations/bank-note.svg">        
+    </menu-item>
+
+
     <menu-item title="Sign out" @click=${signOut}>
         <img src="/illustrations/exit.svg">
-        <mark>${name}</mark>
     </menu-item>
+</ul>
 `
 
