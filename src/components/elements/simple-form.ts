@@ -98,7 +98,7 @@ export class SimpleForm extends LitElement {
 
     render() {
         return html`
-            <form @submit=${this.submit}>
+            <form>
                 <header>
                     ${this.name}
             </header>
@@ -107,7 +107,7 @@ export class SimpleForm extends LitElement {
                 </main>
 
                 <footer>
-                    <button type="submit">Submit</button>
+                    <button type="submit" @click=${this.submit}>Submit</button>
                     <button type="button"  @click=${() => gotoPage(this.afterPage)}>Cancel</button>
                 </footer>
             </form> 
@@ -197,8 +197,9 @@ export class SimpleForm extends LitElement {
             font-size: inherit;
             margin: 0 1em;
         }
-        label input:invalid {
-            box-shadow: 0 0 0px .5px var(--warning-color);
+        :invalid {
+            //box-shadow: 0 0 0px .5px var(--warning-color);
+            box-shadow: var(--small-shadow);
         } 
 
         label {
@@ -216,12 +217,35 @@ export class SimpleForm extends LitElement {
         */
 
     `
+
+    checkValidityForVisibleInputs () {
+        const hiddenElements: HTMLElement[] = []
+
+        const invalids = 
+            Array.from(this.form.querySelectorAll(":invalid"))
+            .filter(input => {
+                const isHidden = window.getComputedStyle(input).display == "none"
+                if (isHidden) {
+                    hiddenElements.push(input)
+                }
+
+                return !isHidden
+            })
+
+        if (invalids.length == 0) {// there is no invalid
+
+            // remove all hidden elements so they do not send data
+            hiddenElements.forEach(el => el.disabled = true)
+            return true
+        }
+
+        return false
+    }
+    
+
     async submit(e: Event) {
 
         e.preventDefault()
-
-        const formData = new FormData(this.form)
-        const data = Object.fromEntries(formData);
 
         // make sure the user has customer authorization (signed in)
         if (this.auth != 'guest' && currentUser.getValue().authorization != this.auth) {
@@ -231,6 +255,17 @@ export class SimpleForm extends LitElement {
                 return
             }
         }
+        
+        
+        if (!this.checkValidityForVisibleInputs()) {
+            //TODO: create a pretty alert dialog
+            this.form.reportValidity()
+            alert("There are invalid inputs, please check all highlighted input fields to make sure they have valid entries!")
+            return
+        }
+
+        const formData = new FormData(this.form)
+        const data = Object.fromEntries(formData);
 
         //const userId = currentUser.getValue().email || "guest" + Math.random().toString(16).slice(2)
 

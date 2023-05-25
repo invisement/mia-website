@@ -43,7 +43,7 @@ export class HomePage extends LitElement {
                 <img src="/illustrations/bank-note.svg">
                 Loan
             </vise-chip>
-            <vise-chip @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+            <vise-chip disabled @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
                 <img src="/illustrations/traveling.svg">
                 Travel
                 <mark>Coming Soon</mark>

@@ -16,7 +16,6 @@ export interface User {
 export var currentUser = new PubSub<User>({ authorization: 'guest' })
 
 export function gotoPage(url: string) {
-    console.log("in goto", url, window.location.pathname)
     window.history.pushState(url, "", url)
     dispatchEvent(new PopStateEvent('popstate', { state: url }));
 }
