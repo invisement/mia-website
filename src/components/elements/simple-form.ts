@@ -276,7 +276,7 @@ export class SimpleForm extends LitElement {
     }
 
     emailMessage = () => `
-        <h3>Dear ${currentUser.displayName || "User"}</h3>
+        <h3>Dear ${currentUser.getValue().displayName || "User"}</h3>
         <p>Your ${this.name} was successfully submitted at <a href="https://mia.invisement.com">MIA</a> and we will be in touch with you very soon.
         </p>
 
@@ -296,11 +296,14 @@ export class SimpleForm extends LitElement {
     async sendEmail (data = {}) {
         if (this.name=="feedback form") {
             data["email"] = miaReceiverEmail
-            data["message"] = JSON.stringify(Object.fromEntries(new FormData(this.form).entries()), null, 4)
+            data["message"] = Object.fromEntries(new FormData(this.form).entries())
         }
 
         const url = "https://api.mia.invisement.com/send-email"
         //const url = "http://127.0.0.1:8000/send-email"
+
+        console.log("data", data)
+
         const response = await fetch(url, {
             method: "POST", 
             mode: "cors",
@@ -311,7 +314,7 @@ export class SimpleForm extends LitElement {
             // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             referrerPolicy: "no-referrer",               
-            body: JSON.stringify(data),
+            body: JSON.stringify(data, null, 4),
         });
     }
 
@@ -344,8 +347,10 @@ export class SimpleForm extends LitElement {
 
         // extra info for each submission
         data["submitted time"] = (new Date()).toISOString()
-        data["signedUserEmail"] = currentUser.email || ""
-        data["signedUserId"] = currentUser.userId || ""
+        data["signedUserEmail"] = currentUser.getValue().email || ""
+        data["signedUserId"] = currentUser.getValue().userId || ""
+
+        console.log("user", currentUser)
 
         //const documentPath = `/${userId}`
         const docRef = await putDoc(this.collection, data)
@@ -353,7 +358,7 @@ export class SimpleForm extends LitElement {
             await this.thankYou.show()
             gotoPage(this.afterPage)
             
-            this.sendEmail({"email": currentUser.email, "message": this.emailMessage()}).catch(console.error)
+            this.sendEmail({"email": currentUser.getValue().email, "message": this.emailMessage()}).catch(console.error)
         } else {
             await this.serverError.show()
         }
