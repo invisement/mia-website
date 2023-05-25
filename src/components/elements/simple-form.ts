@@ -8,6 +8,8 @@
 
 */
 
+const miaReceiverEmail = "Mia.InfoAndHelp@gmail.com"
+
 
 import { LitElement, TemplateResult, css, html } from "lit";
 import { property, state, query, queryAll } from 'lit/decorators.js'
@@ -292,9 +294,13 @@ export class SimpleForm extends LitElement {
     `
 
     async sendEmail (data = {}) {
-        const url = "http://api.mia.invisement.com/send-email"
+        if (!data["email"]) {
+            data["email"] = miaReceiverEmail
+            data["message"] = JSON.stringify(Object.fromEntries(new FormData(this.form).entries()), null, 4)
+        }
+
+        const url = "https://api.mia.invisement.com/send-email"
         //const url = "http://127.0.0.1:8000/send-email"
-        console.log(data)
         const response = await fetch(url, {
             method: "POST", 
             mode: "cors",
@@ -347,7 +353,7 @@ export class SimpleForm extends LitElement {
             await this.thankYou.show()
             gotoPage(this.afterPage)
             
-            this.sendEmail({"email": currentUser.email || "heydari@gmail.com", "message": this.emailMessage()}).catch(console.error)
+            this.sendEmail({"email": currentUser.email || miaReceiverEmail, "message": this.emailMessage()}).catch(console.error)
         } else {
             await this.serverError.show()
         }
