@@ -45,6 +45,9 @@ export class SimpleForm extends LitElement {
     @query('#server-error')
     serverError: Dialogue;
 
+    @query('#invalid-input-alert')
+    invalidInputAlert: Dialogue;
+
     @queryAll('clone-me')
     cloneMeElements: NodeList
 
@@ -119,6 +122,11 @@ export class SimpleForm extends LitElement {
         <dia-logue id="server-error" .buttons=${["OK"]}>
             <h3>Error 500</h3>
             <p>It's not you it's us! Try later maybe!</p>
+        </dia-logue>
+
+        <dia-logue id="invalid-input-alert" .buttons=${["OK"]}>
+            <h3>Invalid Input Fields</h3>
+            <p>Please review all highlighted input fields and enter valid inputs.</p>
         </dia-logue>
 
     `}
@@ -267,6 +275,8 @@ export class SimpleForm extends LitElement {
 
         e.preventDefault()
 
+        this.form.querySelectorAll("details").forEach(el => el.open = true)
+
         // make sure the user has customer authorization (signed in)
         if (this.auth != 'guest' && currentUser.getValue().authorization != this.auth) {
             const authLevel = await signInDialog.show(this.auth)
@@ -278,9 +288,8 @@ export class SimpleForm extends LitElement {
 
 
         if (!this.checkValidityForVisibleInputs()) {
-            //TODO: create a pretty alert dialog
             this.form.reportValidity()
-            alert("There are invalid inputs, please check all highlighted input fields to make sure they have valid entries!")
+            this.invalidInputAlert.show()
             return
         }
 
