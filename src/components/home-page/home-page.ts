@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { gotoPage } from "/commons/pubsub/store.ts";
-import "./temp/carousel/carousel.ts"
+import "./carousel/carousel.ts"
 import "/components/elements/card-board.ts"
 import "/components/elements/chip.ts"
 import "/components/elements/chips.ts"
