@@ -294,7 +294,7 @@ export class SimpleForm extends LitElement {
     `
 
     async sendEmail (data = {}) {
-        if (!data["email"]) {
+        if (this.name=="feedback form") {
             data["email"] = miaReceiverEmail
             data["message"] = JSON.stringify(Object.fromEntries(new FormData(this.form).entries()), null, 4)
         }
