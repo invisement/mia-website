@@ -99,9 +99,31 @@
             <label>
                 <input type="radio" name="driving-claims-yesno" value="yes" required>
                 Yes
-                <ul>
+                <!-- <ul>
                     How many accidents or claims have you had?
                     <input type="number" size="2" max="99" name="driving-claims-yesno-yes" required>
+                </ul> -->
+                <ul>
+                    <label>
+                        <input type="radio" name="accident-history" value="no" required>
+                        No Accident
+                    </label>
+                    <label>
+                        <input type="radio" name="accident-history" value="yes" required>
+                        Yes.
+                        <p>Please list any known accidents or violations in the past 5 years:</p>
+                        <clone-me>
+                            <input name="accident-driver-name" placeholder="Driver's Name">
+                            <input name="accident-month" type="date">
+                            <span>
+                                Was the accident at fault?
+                                <input type="radio" name="accident-at-fault-yesno" value="yes"> Yes
+                            </span>
+                            <span>
+                                <input type="radio" name="accident-at-fault-yesno" value="no"> No
+                            </span>
+                        </clone-me>
+                    </label>
                 </ul>
             </label>
         </ul>
@@ -170,97 +192,105 @@
     <summary>Drivers</summary>
     <label>
         Do you have any other drivers in your household?
-        <label>
-            <input type="radio" name="drivers-yesno" value="no"> No
-        </label>
-        <label>
-            <input type="radio" name="drivers-yesno" value="yes" required> Yes
-            <p>
-                Please provide the following details for all who you wish to be covered:
-            </p>
-            <clone-me>
-                <label>
-                    Full Legal Name:
-                    <input required name="first-name" placeholder="First" size="5">
-                    <input name="middle-name" placeholder="M" size="2">
-                    <input required name="last-name" placeholder="Last">
-                </label>
-                <label>
-                    Contact Telephone(s):
-                    <input required type="tel" name="telephone" placeholder="tel: 10 digits no space"
-                        pattern="[0-9]{10}">
-                </label>
-                <label>
-                    Contact Email:
-                    <input required type="email" name="email">
-                </label>
-                <label>
-                    Dates of Birth:
-                    <input required type="date" name="dob">
-                </label>
-                <label>
-                    *SS#'s (Named Insureds Only):
-                    <input required name="ssn" type="password" pattern="[0-9]{9}" placeholder="SSN: 9 digits no space">
-                </label>
-                <label>
-                    Occupations (Named Insured Only):
-                    <select name="demographics-occupation" required>
-                        <option value="" disabled selected>Select Occupation</option>
-                        <option value="Employed">Employed</option>
-                        <option value="Self-Employed">Self-Employed</option>
-                        <option value="Unemployed">Unemployed</option>
-                        <option value="Student">Student</option>
-                        <option value="Retired">Retired</option>
-                        <option value="Homemaker">Homemaker</option>
-                        <option value="Freelancer">Freelancer</option>
-                        <option value="Artist">Artist</option>
-                        <option value="Engineer">Engineer</option>
-                        <option value="Doctor">Doctor</option>
-                        <option value="Teacher">Teacher</option>
-                        <option value="Nurse">Nurse</option>
-                        <option value="Lawyer">Lawyer</option>
-                        <option value="Accountant">Accountant</option>
-                        <option value="Salesperson">Salesperson</option>
-                        <option value="Consultant">Consultant</option>
-                        <option value="Manager">Manager</option>
-                        <option value="Administrative Assistant">Administrative Assistant</option>
-                        <option value="Technician">Technician</option>
-                        <option value="Driver">Driver</option>
-                        <option value="Tradesperson">Tradesperson</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <input name="demographics-occupation-other" placeholder="Other">
-                </label>
-                <label>
-                    Driver's License #:
-                    <input required name="driver-license" placeholder="driver license">
-                </label>
-                <label>
-                    Any accidents in the past 5 years?
-                    <ul>
-                        <label>
-                            <input type="radio" name="accident-history" value="no" required>
-                            No Accident
-                        </label>
-                        <label>
-                            <input type="radio" name="accident-history" value="yes" required>
-                            Yes.
-                            <p>Please list any known accidents or violations in the past 5 years:</p>
-                            <clone-me>
-                                <input name="accident-driver-name" placeholder="Driver's Name">
-                                <input name="accident-month" type="date">
-                                <span>
-                                    Was the accident at fault?
-                                    <input type="radio" name="accident-at-fault-yesno" value="yes"> Yes
-                                </span>
-                                <span>
-                                    <input type="radio" name="accident-at-fault-yesno" value="no"> No
-                                </span>
-                            </clone-me>
-                        </label>
-                </label>
-            </clone-me>
-        </label>
+        <ul>
+            <label>
+                <input type="radio" name="drivers-yesno" value="no"> No
+            </label>
+            <label>
+                <input type="radio" name="drivers-yesno" value="yes" required> Yes
+                <p>
+                    Please provide the following details for all who you wish to be covered:
+                </p>
+                <clone-me>
+                    <label>
+                        Full Legal Name:
+                        <input required name="first-name" placeholder="First" size="5">
+                        <input name="middle-name" placeholder="M" size="2">
+                        <input required name="last-name" placeholder="Last">
+                    </label>
+                    <!-- <label>
+                        Contact Telephone(s):
+                        <input required type="tel" name="telephone" placeholder="tel: 10 digits no space"
+                            pattern="[0-9]{10}">
+                    </label>
+                    <label>
+                        Contact Email:
+                        <input required type="email" name="email">
+                    </label> -->
+                    <label>
+                        Dates of Birth:
+                        <input required type="date" name="dob">
+                    </label>
+                    <!-- <label>
+                        *SS#'s (Named Insureds Only):
+                        <input required name="ssn" type="password" pattern="[0-9]{9}"
+                            placeholder="SSN: 9 digits no space">
+                    </label> -->
+                    <label>
+                        Occupations (Named Insured Only):
+                        <select name="demographics-occupation" required>
+                            <option value="" disabled selected>Select Occupation</option>
+                            <option value="Employed">Employed</option>
+                            <option value="Self-Employed">Self-Employed</option>
+                            <option value="Unemployed">Unemployed</option>
+                            <option value="Student">Student</option>
+                            <option value="Retired">Retired</option>
+                            <option value="Homemaker">Homemaker</option>
+                            <option value="Freelancer">Freelancer</option>
+                            <option value="Artist">Artist</option>
+                            <option value="Engineer">Engineer</option>
+                            <option value="Doctor">Doctor</option>
+                            <option value="Teacher">Teacher</option>
+                            <option value="Nurse">Nurse</option>
+                            <option value="Lawyer">Lawyer</option>
+                            <option value="Accountant">Accountant</option>
+                            <option value="Salesperson">Salesperson</option>
+                            <option value="Consultant">Consultant</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Administrative Assistant">Administrative Assistant</option>
+                            <option value="Technician">Technician</option>
+                            <option value="Driver">Driver</option>
+                            <option value="Tradesperson">Tradesperson</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <input name="demographics-occupation-other" placeholder="Other">
+                    </label>
+                    <label>
+                        Driver's License #:
+                        <input required name="driver-license" placeholder="driver license">
+                    </label>
+                    <label>
+                        How many years have you had a driver's license?
+                        <input type="number" min="0" step="1" max="80" placeholder="0" size="2" name="drivers-yoe">
+                    </label>
+                    <label>
+                        Any accidents in the past 5 years?
+                        <ul>
+                            <label>
+                                <input type="radio" name="accident-history" value="no" required>
+                                No Accident
+                            </label>
+                            <label>
+                                <input type="radio" name="accident-history" value="yes" required>
+                                Yes.
+                                <p>Please list any known accidents or violations in the past 5 years:</p>
+                                <clone-me>
+                                    <input name="accident-driver-name" placeholder="Driver's Name">
+                                    <input name="accident-month" type="date">
+                                    <span>
+                                        Was the accident at fault?
+                                        <input type="radio" name="accident-at-fault-yesno" value="yes"> Yes
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="accident-at-fault-yesno" value="no"> No
+                                    </span>
+                                </clone-me>
+                            </label>
+                        </ul>
+                    </label>
+                </clone-me>
+            </label>
+        </ul>
     </label>
 
 
