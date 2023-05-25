@@ -229,7 +229,7 @@ export class SimpleForm extends LitElement {
 
         details > summary {
             list-style-type: '📕  ';
-            font-size: x-large;
+            font-size: large;
             cursor: pointer;
         }
 
@@ -273,6 +273,41 @@ export class SimpleForm extends LitElement {
         return false
     }
 
+    emailMessage = () => `
+        <h3>Dear ${currentUser.displayName || "User"}</h3>
+        <p>Your ${this.name} was successfully submitted at <a href="https://mia.invisement.com">MIA</a> and we will be in touch with you very soon.
+        </p>
+
+        <p>
+        If you would like to leave a message or feedback, please visit:<br>
+        <a href="https://mia.invisement.com/feedback-form">https://mia.invisement.com/feedback-form</a>
+        </p>
+        <p>If you would like to contact us:</p>
+        <ul>
+            <li>📞 Tel: <a href="tel:201-916-5068">201-916-5068</a></li>
+            <li>📧 Email: <a href="mailto: Mia.InfoAndHelp@gmail.com">Mia.InfoAndHelp@gmail.com</a></li>
+            <li>📝 Message: <a href="/feedback-form">Leave us a message</a> </li>
+        </ul>
+        We appreciate your business.
+    `
+
+    async sendEmail (data = {}) {
+        //const url = "http://api.mia.invisement.com/send-email"
+        const url = "http://127.0.0.1:8000/send-email"
+        console.log(data)
+        const response = await fetch(url, {
+            method: "POST", 
+            mode: "cors",
+            cache: "no-cache", 
+            credentials: "same-origin", // include, *same-origin, omit
+            headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            referrerPolicy: "no-referrer",               
+            body: JSON.stringify(data),
+        });
+    }
 
     async submit(e: Event) {
 
@@ -311,6 +346,8 @@ export class SimpleForm extends LitElement {
         if (docRef) {
             await this.thankYou.show()
             gotoPage(this.afterPage)
+            
+            this.sendEmail({"email": currentUser.email || "heydari@gmail.com", "message": this.emailMessage()}).catch(console.error)
         } else {
             await this.serverError.show()
         }

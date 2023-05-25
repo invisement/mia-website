@@ -43,14 +43,14 @@ export class HomePage extends LitElement {
                 <img src="/illustrations/bank-note.svg">
                 Loan
             </vise-chip>
-            <vise-chip disabled @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+            <vise-chip disabled @click=${() => gotoPage("/")}>
                 <img src="/illustrations/traveling.svg">
                 Travel
                 <mark>Coming Soon</mark>
             </vise-chip>
 
 
-            <vise-chip disabled @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
+            <!--vise-chip disabled @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
                 <img src="/illustrations/yacht.svg">
                 Boat
                 <mark>Coming Soon</mark>
@@ -68,7 +68,7 @@ export class HomePage extends LitElement {
             <vise-chip disabled @click=${() => gotoPage("/questionnaires/new-home-purchase-questionnaire")}>
                 <img src="/illustrations/my-files.svg">
                 Easy Manage
-            </vise-chip>
+            </vise-chip-->
         </vise-chips>
 
 

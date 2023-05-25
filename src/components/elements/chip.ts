@@ -8,8 +8,8 @@ export class Chip extends LitElement {
 
     static styles = css`
         div {
-            width: 8em;
-            height: 8em;
+            width: 6em;
+            height: 6em;
             padding: 1.5em;
             white-space: nowrap;
 
@@ -45,7 +45,7 @@ export class Chip extends LitElement {
 
         :host([disabled]) {
             pointer-events: none;
-            opacity: .2;
+            opacity: .3;
         }
 
         ::slotted(mark) {
