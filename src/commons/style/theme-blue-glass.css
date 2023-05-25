@@ -4,7 +4,7 @@
 :root {
     --title-font: "Oleo Script Swash Caps", Sans-Serif;
     --heading-font: "Marko One", Sans-Serif;
-    --primary-font: "Marmelad", Sans-Serif;
+    --primary-font: Sans-Serif;
 
     --primary-color: rgb(0, 0, 0);
     --accent-color: rgb(0, 100, 200);

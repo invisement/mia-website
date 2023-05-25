@@ -86,7 +86,7 @@ export class SimpleForm extends LitElement {
                 el.remove()
             })
         }
-        
+
         await this.updateComplete
         // add two icons: add and remove
 
@@ -197,13 +197,33 @@ export class SimpleForm extends LitElement {
             font-size: inherit;
             margin: 0 1em;
         }
+
         :invalid {
-            //box-shadow: 0 0 0px .5px var(--warning-color);
-            box-shadow: var(--small-shadow);
+            box-shadow: 0 0 0px 1px var(--warning-color);
         } 
+
+        details:not(:has(:invalid)) > summary:after {
+            content: " 🗹";
+        }
 
         label {
             display: block;
+        }
+
+        details {
+            box-shadow: var(--big-shadow);
+            margin: 0em -1em;
+            padding: 1em;
+        }
+
+        details > summary {
+            list-style-type: '📕  ';
+            font-size: x-large;
+            cursor: pointer;
+        }
+
+        details[open] > summary {
+            list-style-type: '📖  ';
         }
         
         input[type="radio"]:not(:checked) ~ * {
@@ -218,19 +238,19 @@ export class SimpleForm extends LitElement {
 
     `
 
-    checkValidityForVisibleInputs () {
+    checkValidityForVisibleInputs() {
         const hiddenElements: HTMLElement[] = []
 
-        const invalids = 
+        const invalids =
             Array.from(this.form.querySelectorAll(":invalid"))
-            .filter(input => {
-                const isHidden = window.getComputedStyle(input).display == "none"
-                if (isHidden) {
-                    hiddenElements.push(input)
-                }
+                .filter(input => {
+                    const isHidden = window.getComputedStyle(input).display == "none"
+                    if (isHidden) {
+                        hiddenElements.push(input)
+                    }
 
-                return !isHidden
-            })
+                    return !isHidden
+                })
 
         if (invalids.length == 0) {// there is no invalid
 
@@ -241,7 +261,7 @@ export class SimpleForm extends LitElement {
 
         return false
     }
-    
+
 
     async submit(e: Event) {
 
@@ -255,8 +275,8 @@ export class SimpleForm extends LitElement {
                 return
             }
         }
-        
-        
+
+
         if (!this.checkValidityForVisibleInputs()) {
             //TODO: create a pretty alert dialog
             this.form.reportValidity()

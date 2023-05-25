@@ -1,92 +1,90 @@
-<div id="demographics">
-    <h3>Your Information</h3>
+<details closed id="demographics">
+    <summary>Your Information</summary>
+    <label>
+        Full Name:
+        <input name="demographics-first-name" placeholder="First" size="12" required>
+        <input name="demographics-middle-name" placeholder="M" size="8">
+        <input name="demographics-last-name" placeholder="Last" required>
+    </label>
+
+    <label>
+        Marital Status
+        <select name="demographics-marital-status">
+            <option value="" selected>Select Marital Status</option>
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <option value="divorced">Divorced</option>
+            <option value="widowed">Widowed</option>
+            <option value="separated">Separated</option>
+        </select>
+    </label>
+
+    <label>
+        Date Of Birth
+        <input type="date" name="demographics-dob">
+    </label>
+
+    <label>
+        <input name="demographics-occupation-type" checked type="radio">
+        Select Your Occupation:
+        <select name="demographics-occupation" required>
+            <option value="" disabled selected>Select Occupation</option>
+            <option value="Employed">Employed</option>
+            <option value="Self-Employed">Self-Employed</option>
+            <option value="Unemployed">Unemployed</option>
+            <option value="Student">Student</option>
+            <option value="Retired">Retired</option>
+            <option value="Homemaker">Homemaker</option>
+            <option value="Freelancer">Freelancer</option>
+            <option value="Artist">Artist</option>
+            <option value="Engineer">Engineer</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Nurse">Nurse</option>
+            <option value="Lawyer">Lawyer</option>
+            <option value="Accountant">Accountant</option>
+            <option value="Salesperson">Salesperson</option>
+            <option value="Consultant">Consultant</option>
+            <option value="Manager">Manager</option>
+            <option value="Administrative Assistant">Administrative Assistant</option>
+            <option value="Technician">Technician</option>
+            <option value="Driver">Driver</option>
+            <option value="Tradesperson">Tradesperson</option>
+        </select>
+    </label>
     <ul>
         <label>
-            Full Name:
-            <input name="demographics-first-name" placeholder="First" size="12" required>
-            <input name="demographics-middle-name" placeholder="M" size="8">
-            <input name="demographics-last-name" placeholder="Last" required>
-        </label>
-
-        <label>
-            Marital Status
-            <select name="demographics-marital-status">
-                <option value="" selected>Select Marital Status</option>
-                <option value="single">Single</option>
-                <option value="married">Married</option>
-                <option value="divorced">Divorced</option>
-                <option value="widowed">Widowed</option>
-                <option value="separated">Separated</option>
-            </select>
-        </label>
-
-        <label>
-            Date Of Birth
-            <input type="date" name="demographics-dob">
-        </label>
-
-        <label>
-            <input name="demographics-occupation-type" checked type="radio">
-            Occupation:
-            <select name="demographics-occupation" required>
-                <option value="" disabled selected>Select Occupation</option>
-                <option value="Employed">Employed</option>
-                <option value="Self-Employed">Self-Employed</option>
-                <option value="Unemployed">Unemployed</option>
-                <option value="Student">Student</option>
-                <option value="Retired">Retired</option>
-                <option value="Homemaker">Homemaker</option>
-                <option value="Freelancer">Freelancer</option>
-                <option value="Artist">Artist</option>
-                <option value="Engineer">Engineer</option>
-                <option value="Doctor">Doctor</option>
-                <option value="Teacher">Teacher</option>
-                <option value="Nurse">Nurse</option>
-                <option value="Lawyer">Lawyer</option>
-                <option value="Accountant">Accountant</option>
-                <option value="Salesperson">Salesperson</option>
-                <option value="Consultant">Consultant</option>
-                <option value="Manager">Manager</option>
-                <option value="Administrative Assistant">Administrative Assistant</option>
-                <option value="Technician">Technician</option>
-                <option value="Driver">Driver</option>
-                <option value="Tradesperson">Tradesperson</option>
-            </select>
-        </label>
-        <ul>
-            <label>
-                <input name="demographics-occupation-type" type="radio">Other Occupation:
-                <input required name="demographics-occupation-other" placeholder="Other">
-            </label>
-        </ul>
-
-
-        <label>
-            Residential Address:
-            <ul>
-                <li>
-                    <input name="address-street1" placeholder="Street Adress" required>
-                </li>
-                <li>
-                    <input name="address-street2" placeholder="Apt/Suite" size="10">
-                </li>
-                <li>
-                    <input name="address-city" placeholder="City" required size="10">
-                    <input name="address-state" placeholder="State" pattern="[A-Za-z]{2}" required size="2">
-                    <input name="address-zip" placeholder="5-digit zip code" pattern="[0-9]{5}" required size="2">
-                </li>
-                <li>
-                </li>
-                <li>
-                </li>
-            </ul>
+            <input name="demographics-occupation-type" type="radio">Other Occupation:
+            <input required name="demographics-occupation-other" placeholder="Other">
         </label>
     </ul>
-</div>
 
 
-<div id="driving">
-    <h3>Driving History</h3>
+    <label>
+        Residential Address:
+        <ul>
+            <li>
+                <input name="address-street1" placeholder="Street Adress" required>
+            </li>
+            <li>
+                <input name="address-street2" placeholder="Apt/Suite" size="10">
+            </li>
+            <li>
+                <input name="address-city" placeholder="City" required size="10">
+                <input name="address-state" placeholder="State" pattern="[A-Za-z]{2}" required size="2">
+                <input name="address-zip" placeholder="5-digit zip code" pattern="[0-9]{5}" required size="2">
+            </li>
+            <li>
+            </li>
+            <li>
+            </li>
+        </ul>
+    </label>
+</details>
+
+
+<details closed id="driving">
+    <summary>Driving History</summary>
     <label>
         How many years have you been driving?
         <input type="number" min="0" max="99" step="1" pattern="\d+" placeholder="years of driving" size="2" required>
@@ -113,10 +111,10 @@
         How many miles do you typically drive per year?
         <input type="number" min="1000" step="1000" name="driving-miles" required>
     </label>
-</div>
+</details>
 
-<div id="car">
-    <h3>Vehicle Information</h3>
+<details closed id="car">
+    <summary>Vehicle Information</summary>
     <div>
         <label>
             What is the make, model, and year of your vehicle?
@@ -168,171 +166,170 @@
         </label>
     </div>
 
-</div>
+</details>
 
-<div id="drivers">
-    <h3>Drivers</h3>
+<details closed id="drivers">
+    <summary>Drivers</summary>
     <label>
         Do you have any other drivers in your household?
-        <ul>
-            <label>
-                <input type="radio" name="drivers-yesno" value="no"> No
-            </label>
-            <label>
-                <input type="radio" name="drivers-yesno" value="yes" required> Yes
-                <div>
-                    Please provide the following details for all who you wish to be covered:
-                    <clone-me>
-                        <ul>
-                            <li>
-                                Full Legal Name:
-                                <input required name="first-name" placeholder="First" size="5">
-                                <input name="middle-name" placeholder="M" size="2">
-                                <input required name="last-name" placeholder="Last">
-                            </li>
-                            <li>
-                                Contact Telephone(s):
-                                <input required type="tel" name="telephone" placeholder="tel: 10 digits no space"
-                                    pattern="[0-9]{10}">
-                            </li>
-                            <li>
-                                Contact Email:
-                                <input required type="email" name="email">
-                            </li>
-                            <li>
-                                Dates of Birth:
-                                <input required type="date" name="dob">
-                            </li>
-                            <li>
-                                *SS#'s (Named Insureds Only):
-                                <input required name="ssn" type="password" pattern="[0-9]{9}"
-                                    placeholder="SSN: 9 digits no space">
-                            </li>
-                            <li>
-                                Occupations (Named Insured Only):
-                                <select name="demographics-occupation" required>
-                                    <option value="" disabled selected>Select Occupation</option>
-                                    <option value="Employed">Employed</option>
-                                    <option value="Self-Employed">Self-Employed</option>
-                                    <option value="Unemployed">Unemployed</option>
-                                    <option value="Student">Student</option>
-                                    <option value="Retired">Retired</option>
-                                    <option value="Homemaker">Homemaker</option>
-                                    <option value="Freelancer">Freelancer</option>
-                                    <option value="Artist">Artist</option>
-                                    <option value="Engineer">Engineer</option>
-                                    <option value="Doctor">Doctor</option>
-                                    <option value="Teacher">Teacher</option>
-                                    <option value="Nurse">Nurse</option>
-                                    <option value="Lawyer">Lawyer</option>
-                                    <option value="Accountant">Accountant</option>
-                                    <option value="Salesperson">Salesperson</option>
-                                    <option value="Consultant">Consultant</option>
-                                    <option value="Manager">Manager</option>
-                                    <option value="Administrative Assistant">Administrative Assistant</option>
-                                    <option value="Technician">Technician</option>
-                                    <option value="Driver">Driver</option>
-                                    <option value="Tradesperson">Tradesperson</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                                <input name="demographics-occupation-other" placeholder="Other">
-                            </li>
-                            <li>
-                                Driver's License #:
-                                <input required name="driver-license" placeholder="driver license">
-                            </li>
-                            <li>
-                                Any accidents in the past 5 years?
+        <label>
+            <input type="radio" name="drivers-yesno" value="no"> No
+        </label>
+        <label>
+            <input type="radio" name="drivers-yesno" value="yes" required> Yes
+            <div>
+                Please provide the following details for all who you wish to be covered:
+                <clone-me>
+                    <ul>
+                        <li>
+                            Full Legal Name:
+                            <input required name="first-name" placeholder="First" size="5">
+                            <input name="middle-name" placeholder="M" size="2">
+                            <input required name="last-name" placeholder="Last">
+                        </li>
+                        <li>
+                            Contact Telephone(s):
+                            <input required type="tel" name="telephone" placeholder="tel: 10 digits no space"
+                                pattern="[0-9]{10}">
+                        </li>
+                        <li>
+                            Contact Email:
+                            <input required type="email" name="email">
+                        </li>
+                        <li>
+                            Dates of Birth:
+                            <input required type="date" name="dob">
+                        </li>
+                        <li>
+                            *SS#'s (Named Insureds Only):
+                            <input required name="ssn" type="password" pattern="[0-9]{9}"
+                                placeholder="SSN: 9 digits no space">
+                        </li>
+                        <li>
+                            Occupations (Named Insured Only):
+                            <select name="demographics-occupation" required>
+                                <option value="" disabled selected>Select Occupation</option>
+                                <option value="Employed">Employed</option>
+                                <option value="Self-Employed">Self-Employed</option>
+                                <option value="Unemployed">Unemployed</option>
+                                <option value="Student">Student</option>
+                                <option value="Retired">Retired</option>
+                                <option value="Homemaker">Homemaker</option>
+                                <option value="Freelancer">Freelancer</option>
+                                <option value="Artist">Artist</option>
+                                <option value="Engineer">Engineer</option>
+                                <option value="Doctor">Doctor</option>
+                                <option value="Teacher">Teacher</option>
+                                <option value="Nurse">Nurse</option>
+                                <option value="Lawyer">Lawyer</option>
+                                <option value="Accountant">Accountant</option>
+                                <option value="Salesperson">Salesperson</option>
+                                <option value="Consultant">Consultant</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Administrative Assistant">Administrative Assistant</option>
+                                <option value="Technician">Technician</option>
+                                <option value="Driver">Driver</option>
+                                <option value="Tradesperson">Tradesperson</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <input name="demographics-occupation-other" placeholder="Other">
+                        </li>
+                        <li>
+                            Driver's License #:
+                            <input required name="driver-license" placeholder="driver license">
+                        </li>
+                        <li>
+                            Any accidents in the past 5 years?
+                            <div>
+                                <input type="radio" name="accident-history" value="no" required>
+                                No Accident
+                            </div>
+                            <div>
+                                <input type="radio" name="accident-history" value="yes" required>
+                                Yes.
                                 <div>
-                                    <input type="radio" name="accident-history" value="no" required>
-                                    No Accident
-                                </div>
-                                <div>
-                                    <input type="radio" name="accident-history" value="yes" required>
-                                    Yes.
+                                    List any known accidents or violations in the past 5 years:
                                     <div>
-                                        List any known accidents or violations in the past 5 years:
-                                        <div>
-                                            <clone-me class="row">
-                                                <input name="accident-driver-name" placeholder="Driver's Name">
-                                                <input name="accident-month" type="date" placeholder="Accident's Date">
-                                                <div>
-                                                    Was the accident at fault?
-                                                    <input type="radio" name="accident-at-fault-yesno" value="yes"> Yes
-                                                    <input type="radio" name="accident-at-fault-yesno" value="no"> No
-                                                </div>
-                                            </clone-me>
-                                        </div>
+                                        <clone-me class="row">
+                                            <input name="accident-driver-name" placeholder="Driver's Name">
+                                            <input name="accident-month" type="date" placeholder="Accident's Date">
+                                            <div>
+                                                Was the accident at fault?
+                                                <input type="radio" name="accident-at-fault-yesno" value="yes"> Yes
+                                                <input type="radio" name="accident-at-fault-yesno" value="no"> No
+                                            </div>
+                                        </clone-me>
                                     </div>
                                 </div>
-                            </li>
-                        </ul>
-                    </clone-me>
-                </div>
-            </label>
-
-        </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </clone-me>
+            </div>
+        </label>
     </label>
 
 
-</div>
+</details>
 
+<details id="other-questions">
+    <summary>Other Questions</summary>
+    <div id="prof-org">
+        <label>
+            Are you a member of any professional organizations? if yes, please specify:
+            <input name="prof-org-name" placeholder="Your Professional Organization">
+        </label>
+    </div>
 
-<div id="prof-org">
-    <label>
-        Are you a member of any professional organizations? if yes, please specify:
-        <input name="prof-org-name" placeholder="Your Professional Organization">
-    </label>
-</div>
+    <div id="current-insurance">
+        <label>
+            Do you currently have insurance, and if yes by whom:
+            <select name="current-insurance-company">
+                <option value="" selected>Select One</option>
+                <option value="no-insurance">I do not have insurance</option>
+                <option value="Allstate">Allstate</option>
+                <option value="GEICO">GEICO</option>
+                <option value="Progressive">Progressive</option>
+                <option value="State Farm">State Farm</option>
+                <option value="USAA">USAA</option>
+                <option value="Liberty Mutual">Liberty Mutual</option>
+                <option value="Farmers Insurance">Farmers Insurance</option>
+                <option value="Nationwide">Nationwide</option>
+                <option value="American Family">American Family</option>
+                <option value="Travelers">Travelers</option>
+                <option value="Safeco">Safeco</option>
+                <option value="Mercury Insurance">Mercury Insurance</option>
+                <option value="Auto-Owners Insurance">Auto-Owners Insurance</option>
+                <option value="MetLife">MetLife</option>
+                <option value="Erie Insurance">Erie Insurance</option>
+                <option value="The Hartford">The Hartford</option>
+                <option value="CSAA Insurance Group">CSAA Insurance Group</option>
+                <option value="Kemper">Kemper</option>
+                <option value="Infinity Insurance">Infinity Insurance</option>
+                <option value="other">Other</option>
+            </select>
+        </label>
+    </div>
 
-<div id="current-insurance">
-    <label>
-        Do you currently have insurance, and if yes by whom:
-        <select name="current-insurance-company">
-            <option value="" selected>Select One</option>
-            <option value="no-insurance">I do not have insurance</option>
-            <option value="Allstate">Allstate</option>
-            <option value="GEICO">GEICO</option>
-            <option value="Progressive">Progressive</option>
-            <option value="State Farm">State Farm</option>
-            <option value="USAA">USAA</option>
-            <option value="Liberty Mutual">Liberty Mutual</option>
-            <option value="Farmers Insurance">Farmers Insurance</option>
-            <option value="Nationwide">Nationwide</option>
-            <option value="American Family">American Family</option>
-            <option value="Travelers">Travelers</option>
-            <option value="Safeco">Safeco</option>
-            <option value="Mercury Insurance">Mercury Insurance</option>
-            <option value="Auto-Owners Insurance">Auto-Owners Insurance</option>
-            <option value="MetLife">MetLife</option>
-            <option value="Erie Insurance">Erie Insurance</option>
-            <option value="The Hartford">The Hartford</option>
-            <option value="CSAA Insurance Group">CSAA Insurance Group</option>
-            <option value="Kemper">Kemper</option>
-            <option value="Infinity Insurance">Infinity Insurance</option>
-            <option value="other">Other</option>
-        </select>
-    </label>
-</div>
+    <div id="coverage">
+        <label>
+            What coverage are you seeking?
+            <select name="coverage-prederred" required>
+                <option value="" selected>Select Coverage Option</option>
+                <option value="legal-minimum">Legal Minimum</option>
+                <option value="best-bang-minimum-cost">Best Bang for Buck - Minimum Cost</option>
+                <option value="best-bang-maximum-coverage">Best Bang for Buck - Maximum Coverage</option>
+                <option value="maximum-coverage">Maximum Coverage</option>
+                <option value="not-sure">I'm Not Sure</option>
+            </select>
+        </label>
+    </div>
 
-<div id="coverage">
-    <label>
-        What coverage are you seeking?
-        <select name="coverage-prederred" required>
-            <option value="" selected>Select Coverage Option</option>
-            <option value="legal-minimum">Legal Minimum</option>
-            <option value="best-bang-minimum-cost">Best Bang for Buck - Minimum Cost</option>
-            <option value="best-bang-maximum-coverage">Best Bang for Buck - Maximum Coverage</option>
-            <option value="maximum-coverage">Maximum Coverage</option>
-            <option value="not-sure">I'm Not Sure</option>
-        </select>
-    </label>
-</div>
-
-<div id="other-preferrences">
-    <label>
-        Do you have any specific requirements or preferences?
-        <textarea name="other-preferrences-message" rows="4" width="100%" maxlength="280"
-            placeholder="Tell us anything"></textarea>
-    </label>
-</div>
+    <div id="other-preferrences">
+        <label>
+            Do you have any specific requirements or preferences?
+            <textarea name="other-preferrences-message" rows="4" width="100%" maxlength="280"
+                placeholder="Tell us anything"></textarea>
+        </label>
+    </div>
+</details>
