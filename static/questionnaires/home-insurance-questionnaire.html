@@ -181,19 +181,22 @@
     <h2>Insurance History</h2>
     <label>
         Is the house currently insured?
-        <ul>
-            <label>
-                <input type="radio" name="current-insurance" value="yes" required> Yes
-            </label>
-            <label>
-                <input type="radio" name="current-insurance" value="no" required> No
-            </label>
-        </ul>
+        <span>
+            <input type="radio" name="current-insurance" value="yes" required> Yes
+        </span>
+        <span>
+            <input type="radio" name="current-insurance" value="no" required> No
+        </span>
     </label>
     <label>
         Have you filed claims in the past?
-        <input type="radio" name="past-claims" value="yes" required> Yes
-        <input type="radio" name="past-claims" value="no" required> No
+        <span>
+            <input type="radio" name="past-claims" value="yes" required> Yes
+        </span>
+        <span>
+            <input type="radio" name="past-claims" value="no"> No
+        </span>
+
         <div>
             List any known claims in the past 5 years:
             <div>
@@ -226,8 +229,12 @@
 <h2>Additional Structures</h2>
 <label>
     Detached Structures (e.g., garage, shed):
-    <input type="radio" name="detached-structures" value="yes" required> Yes
-    <input type="radio" name="detached-structures" value="no"> No
+    <span>
+        <input type="radio" name="detached-structures" value="yes" required> Yes
+    </span>
+    <span>
+        <input type="radio" name="detached-structures" value="no"> No
+    </span>
 </label>
 <label>
     Additional Structures Coverage:
@@ -237,16 +244,28 @@
 <h2>Special Circumstances</h2>
 <label>
     Pets in the Household:
-    <input type="radio" name="pets" value="yes" required> Yes
-    <input type="radio" name="pets" value="no" required> No
+    <span>
+        <input type="radio" name="pets" value="yes" required> Yes
+    </span>
+    <span>
+        <input type="radio" name="pets" value="no"> No
+    </span>
 </label>
 <label>
     High-Risk Features (e.g., trampoline, swimming pool):
-    <input type="radio" name="high-risk-features" value="yes" required> Yes
-    <input type="radio" name="high-risk-features" value="no" required> No
+    <span>
+        <input type="radio" name="high-risk-features" value="yes" required> Yes
+    </span>
+    <span>
+        <input type="radio" name="high-risk-features" value="no"> No
+    </span>
 </label>
 <label>
     Home-Based Business:
-    <input type="radio" name="home-based-business" value="yes" required> Yes
-    <input type="radio" name="home-based-business" value="no" required> No
+    <span>
+        <input type="radio" name="home-based-business" value="yes" required> Yes
+    </span>
+    <span>
+        <input type="radio" name="home-based-business" value="no"> No
+    </span>
 </label>
