@@ -175,6 +175,9 @@ export class SimpleForm extends LitElement {
         main {
             padding: 0 1em;
         }
+        label {
+            margin-top: 1em;
+        }
 
         li {
 			list-style-type: none;

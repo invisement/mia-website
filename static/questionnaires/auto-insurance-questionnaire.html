@@ -9,7 +9,7 @@
 
     <label>
         Marital Status
-        <select name="demographics-marital-status">
+        <select required name="demographics-marital-status">
             <option value="" selected>Select Marital Status</option>
             <option value="single">Single</option>
             <option value="married">Married</option>
@@ -21,44 +21,45 @@
 
     <label>
         Date Of Birth
-        <input type="date" name="demographics-dob">
+        <input required type="date" name="demographics-dob">
     </label>
 
     <label>
-        <input name="demographics-occupation-type" checked type="radio">
-        Select Your Occupation:
-        <select name="demographics-occupation" required>
-            <option value="" disabled selected>Select Occupation</option>
-            <option value="Employed">Employed</option>
-            <option value="Self-Employed">Self-Employed</option>
-            <option value="Unemployed">Unemployed</option>
-            <option value="Student">Student</option>
-            <option value="Retired">Retired</option>
-            <option value="Homemaker">Homemaker</option>
-            <option value="Freelancer">Freelancer</option>
-            <option value="Artist">Artist</option>
-            <option value="Engineer">Engineer</option>
-            <option value="Doctor">Doctor</option>
-            <option value="Teacher">Teacher</option>
-            <option value="Nurse">Nurse</option>
-            <option value="Lawyer">Lawyer</option>
-            <option value="Accountant">Accountant</option>
-            <option value="Salesperson">Salesperson</option>
-            <option value="Consultant">Consultant</option>
-            <option value="Manager">Manager</option>
-            <option value="Administrative Assistant">Administrative Assistant</option>
-            <option value="Technician">Technician</option>
-            <option value="Driver">Driver</option>
-            <option value="Tradesperson">Tradesperson</option>
-        </select>
+        Occupation:
+        <ul>
+            <label>
+                <input name="demographics-occupation-type" checked type="radio">
+                <select name="demographics-occupation" required>
+                    <option value="" disabled selected>Select Occupation</option>
+                    <option value="Employed">Employed</option>
+                    <option value="Self-Employed">Self-Employed</option>
+                    <option value="Unemployed">Unemployed</option>
+                    <option value="Student">Student</option>
+                    <option value="Retired">Retired</option>
+                    <option value="Homemaker">Homemaker</option>
+                    <option value="Freelancer">Freelancer</option>
+                    <option value="Artist">Artist</option>
+                    <option value="Engineer">Engineer</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Nurse">Nurse</option>
+                    <option value="Lawyer">Lawyer</option>
+                    <option value="Accountant">Accountant</option>
+                    <option value="Salesperson">Salesperson</option>
+                    <option value="Consultant">Consultant</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Administrative Assistant">Administrative Assistant</option>
+                    <option value="Technician">Technician</option>
+                    <option value="Driver">Driver</option>
+                    <option value="Tradesperson">Tradesperson</option>
+                </select>
+            </label>
+            <label>
+                <input name="demographics-occupation-type" type="radio">Other Occupation:
+                <input required name="demographics-occupation-other" placeholder="Other">
+            </label>
+        </ul>
     </label>
-    <ul>
-        <label>
-            <input name="demographics-occupation-type" type="radio">Other Occupation:
-            <input required name="demographics-occupation-other" placeholder="Other">
-        </label>
-    </ul>
-
 
     <label>
         Residential Address:
@@ -74,10 +75,6 @@
                 <input name="address-state" placeholder="State" pattern="[A-Za-z]{2}" required size="2">
                 <input name="address-zip" placeholder="5-digit zip code" pattern="[0-9]{5}" required size="2">
             </li>
-            <li>
-            </li>
-            <li>
-            </li>
         </ul>
     </label>
 </details>
@@ -87,7 +84,7 @@
     <summary>Driving History</summary>
     <label>
         How many years have you been driving?
-        <input type="number" min="0" max="99" step="1" pattern="\d+" placeholder="years of driving" size="2" required>
+        <input type="number" min="0" max="99" step="1" placeholder="years of driving" size="2" required>
     </label>
     <label>
         Have you had any accidents or claims in the past?
@@ -99,72 +96,70 @@
             <label>
                 <input type="radio" name="driving-claims-yesno" value="yes" required>
                 Yes
-                <span>
+                <ul>
                     How many accidents or claims have you had?
                     <input type="number" size="2" max="99" name="driving-claims-yesno-yes" required>
-                </span>
+                </ul>
             </label>
         </ul>
     </label>
 
     <label>
         How many miles do you typically drive per year?
-        <input type="number" min="1000" step="1000" name="driving-miles" required>
+        <input placeholder="min: 1000" type="number" min="1000" step="1000" name="driving-miles" required>
     </label>
 </details>
 
 <details closed id="car">
     <summary>Vehicle Information</summary>
-    <div>
-        <label>
-            What is the make, model, and year of your vehicle?
-            <ul>
-                <li>
-                    <input name="car-make" placeholder="Car Make" required>
-                </li>
-                <li>
-                    <input name="car-model" placeholder="Car Model" required>
-                </li>
-                <li>
-                    <input type="number" min="2016" name="car-year" placeholder="Select Year" required>
-                </li>
-            </ul>
-        </label>
-    </div>
-    <div>
-        <label>
-            Is your vehicle owned, leased, or financed?
-            <select name="car-ownership" required>
-                <option value="" disabled selected>Select Option</option>
-                <option value="owned">Owned</option>
-                <option value="leased">Leased</option>
-                <option value="financed">Financed</option>
-            </select>
-        </label>
-    </div>
-    <div>
-        <label>
-            What is the primary use of your vehicle?
-            <select name="car-primary-use" required>
-                <option value="" disabled selected>Select Primary Use</option>
-                <option value="personal-commute">Personal/Commute</option>
-                <option value="business">Business</option>
-                <option value="pleasure-recreational">Pleasure/Recreational</option>
-                <option value="commercial">Commercial</option>
-                <option value="farming-agricultural">Farming/Agricultural</option>
-                <option value="off-road-recreational">Off-Road/Recreational Vehicles</option>
-                <option value="ridesharing">Ridesharing</option>
-                <option value="collector-antique">Collector/Antique</option>
-            </select>
-        </label>
-    </div>
-    <div>
-        <label>
-            Do you have any anti-theft devices installed?
-            <input type="radio" name="car-anti-theft-yesno" value="yes" required> Yes
-            <input type="radio" name="car-anti-theft-yesno" value="no"> No
-        </label>
-    </div>
+    <label>
+        What is the make, model, and year of your vehicle?
+        <ul>
+            <li>
+                <input name="car-make" placeholder="Car Make" required>
+            </li>
+            <li>
+                <input name="car-model" placeholder="Car Model" required>
+            </li>
+            <li>
+                <input type="number" min="1916" name="car-year" placeholder="Select Year" required>
+            </li>
+        </ul>
+    </label>
+    <label>
+        Is your vehicle owned, leased, or financed?
+        <select name="car-ownership" required>
+            <option value="" disabled selected>Select Option</option>
+            <option value="owned">Owned</option>
+            <option value="leased">Leased</option>
+            <option value="financed">Financed</option>
+        </select>
+    </label>
+    <label>
+        What is the primary use of your vehicle?
+        <select name="car-primary-use" required>
+            <option value="" disabled selected>Select Primary Use</option>
+            <option value="personal-commute">Personal/Commute</option>
+            <option value="business">Business</option>
+            <option value="pleasure-recreational">Pleasure/Recreational</option>
+            <option value="commercial">Commercial</option>
+            <option value="farming-agricultural">Farming/Agricultural</option>
+            <option value="off-road-recreational">Off-Road/Recreational Vehicles</option>
+            <option value="ridesharing">Ridesharing</option>
+            <option value="collector-antique">Collector/Antique</option>
+        </select>
+    </label>
+    <label>
+        Do you have any anti-theft devices installed?
+        <ul>
+            <label>
+                <input type="radio" name="car-anti-theft-yesno" value="yes" required> Yes
+            </label>
+            <label>
+                <input type="radio" name="car-anti-theft-yesno" value="no"> No
+            </label>
+        </ul>
+    </label>
 
 </details>
 
@@ -177,95 +172,91 @@
         </label>
         <label>
             <input type="radio" name="drivers-yesno" value="yes" required> Yes
-            <div>
+            <p>
                 Please provide the following details for all who you wish to be covered:
-                <clone-me>
+            </p>
+            <clone-me>
+                <label>
+                    Full Legal Name:
+                    <input required name="first-name" placeholder="First" size="5">
+                    <input name="middle-name" placeholder="M" size="2">
+                    <input required name="last-name" placeholder="Last">
+                </label>
+                <label>
+                    Contact Telephone(s):
+                    <input required type="tel" name="telephone" placeholder="tel: 10 digits no space"
+                        pattern="[0-9]{10}">
+                </label>
+                <label>
+                    Contact Email:
+                    <input required type="email" name="email">
+                </label>
+                <label>
+                    Dates of Birth:
+                    <input required type="date" name="dob">
+                </label>
+                <label>
+                    *SS#'s (Named Insureds Only):
+                    <input required name="ssn" type="password" pattern="[0-9]{9}" placeholder="SSN: 9 digits no space">
+                </label>
+                <label>
+                    Occupations (Named Insured Only):
+                    <select name="demographics-occupation" required>
+                        <option value="" disabled selected>Select Occupation</option>
+                        <option value="Employed">Employed</option>
+                        <option value="Self-Employed">Self-Employed</option>
+                        <option value="Unemployed">Unemployed</option>
+                        <option value="Student">Student</option>
+                        <option value="Retired">Retired</option>
+                        <option value="Homemaker">Homemaker</option>
+                        <option value="Freelancer">Freelancer</option>
+                        <option value="Artist">Artist</option>
+                        <option value="Engineer">Engineer</option>
+                        <option value="Doctor">Doctor</option>
+                        <option value="Teacher">Teacher</option>
+                        <option value="Nurse">Nurse</option>
+                        <option value="Lawyer">Lawyer</option>
+                        <option value="Accountant">Accountant</option>
+                        <option value="Salesperson">Salesperson</option>
+                        <option value="Consultant">Consultant</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Administrative Assistant">Administrative Assistant</option>
+                        <option value="Technician">Technician</option>
+                        <option value="Driver">Driver</option>
+                        <option value="Tradesperson">Tradesperson</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input name="demographics-occupation-other" placeholder="Other">
+                </label>
+                <label>
+                    Driver's License #:
+                    <input required name="driver-license" placeholder="driver license">
+                </label>
+                <label>
+                    Any accidents in the past 5 years?
                     <ul>
-                        <li>
-                            Full Legal Name:
-                            <input required name="first-name" placeholder="First" size="5">
-                            <input name="middle-name" placeholder="M" size="2">
-                            <input required name="last-name" placeholder="Last">
-                        </li>
-                        <li>
-                            Contact Telephone(s):
-                            <input required type="tel" name="telephone" placeholder="tel: 10 digits no space"
-                                pattern="[0-9]{10}">
-                        </li>
-                        <li>
-                            Contact Email:
-                            <input required type="email" name="email">
-                        </li>
-                        <li>
-                            Dates of Birth:
-                            <input required type="date" name="dob">
-                        </li>
-                        <li>
-                            *SS#'s (Named Insureds Only):
-                            <input required name="ssn" type="password" pattern="[0-9]{9}"
-                                placeholder="SSN: 9 digits no space">
-                        </li>
-                        <li>
-                            Occupations (Named Insured Only):
-                            <select name="demographics-occupation" required>
-                                <option value="" disabled selected>Select Occupation</option>
-                                <option value="Employed">Employed</option>
-                                <option value="Self-Employed">Self-Employed</option>
-                                <option value="Unemployed">Unemployed</option>
-                                <option value="Student">Student</option>
-                                <option value="Retired">Retired</option>
-                                <option value="Homemaker">Homemaker</option>
-                                <option value="Freelancer">Freelancer</option>
-                                <option value="Artist">Artist</option>
-                                <option value="Engineer">Engineer</option>
-                                <option value="Doctor">Doctor</option>
-                                <option value="Teacher">Teacher</option>
-                                <option value="Nurse">Nurse</option>
-                                <option value="Lawyer">Lawyer</option>
-                                <option value="Accountant">Accountant</option>
-                                <option value="Salesperson">Salesperson</option>
-                                <option value="Consultant">Consultant</option>
-                                <option value="Manager">Manager</option>
-                                <option value="Administrative Assistant">Administrative Assistant</option>
-                                <option value="Technician">Technician</option>
-                                <option value="Driver">Driver</option>
-                                <option value="Tradesperson">Tradesperson</option>
-                                <option value="Other">Other</option>
-                            </select>
-                            <input name="demographics-occupation-other" placeholder="Other">
-                        </li>
-                        <li>
-                            Driver's License #:
-                            <input required name="driver-license" placeholder="driver license">
-                        </li>
-                        <li>
-                            Any accidents in the past 5 years?
-                            <div>
-                                <input type="radio" name="accident-history" value="no" required>
-                                No Accident
-                            </div>
-                            <div>
-                                <input type="radio" name="accident-history" value="yes" required>
-                                Yes.
-                                <div>
-                                    List any known accidents or violations in the past 5 years:
-                                    <div>
-                                        <clone-me class="row">
-                                            <input name="accident-driver-name" placeholder="Driver's Name">
-                                            <input name="accident-month" type="date" placeholder="Accident's Date">
-                                            <div>
-                                                Was the accident at fault?
-                                                <input type="radio" name="accident-at-fault-yesno" value="yes"> Yes
-                                                <input type="radio" name="accident-at-fault-yesno" value="no"> No
-                                            </div>
-                                        </clone-me>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </clone-me>
-            </div>
+                        <label>
+                            <input type="radio" name="accident-history" value="no" required>
+                            No Accident
+                        </label>
+                        <label>
+                            <input type="radio" name="accident-history" value="yes" required>
+                            Yes.
+                            <p>Please list any known accidents or violations in the past 5 years:</p>
+                            <clone-me>
+                                <input name="accident-driver-name" placeholder="Driver's Name">
+                                <input name="accident-month" type="date">
+                                <span>
+                                    Was the accident at fault?
+                                    <input type="radio" name="accident-at-fault-yesno" value="yes"> Yes
+                                </span>
+                                <span>
+                                    <input type="radio" name="accident-at-fault-yesno" value="no"> No
+                                </span>
+                            </clone-me>
+                        </label>
+                </label>
+            </clone-me>
         </label>
     </label>
 
