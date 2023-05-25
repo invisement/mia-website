@@ -1,122 +1,122 @@
 <div id="personal-info">
     <h2>Personal Information</h2>
-        <label>
-            What is your full name?
-            <input name="personal-info-first-name" placeholder="First" size="12" required>
-            <input name="personal-info-middle-name" placeholder="M" size="8">
-            <input name="personal-info-last-name" placeholder="Last" required>
-        </label>
-        <label>
-            Contact Telephone(s):
-            <input required type="tel" name="personal-info-telephone" placeholder="tel: 10 digits no space"
-                pattern="[0-9]{10}">
-        </label>
-        <label>
-            Email Address:
-            <input type="email" name="email" required>
-        </label>
+    <label>
+        What is your full name?
+        <input name="personal-info-first-name" placeholder="First" size="12" required>
+        <input name="personal-info-middle-name" placeholder="M" size="8">
+        <input name="personal-info-last-name" placeholder="Last" required>
+    </label>
+    <label>
+        Contact Telephone(s):
+        <input required type="tel" name="personal-info-telephone" placeholder="tel: 10 digits no space"
+            pattern="[0-9]{10}">
+    </label>
+    <label>
+        Email Address:
+        <input type="email" name="email" required>
+    </label>
 </div>
 <div id="property-info">
     <h2>Property Information</h2>
-        <label name="property-info-address">
-            Property Address:
-            <ul>
-                <li>
-                    <input name="address-street1" placeholder="Street" required>
-                </li>
-                <li>
-                    <input name="address-street2" placeholder="Apt/Suite" required>
-                </li>
-                <li>
-                    <input name="address-city" placeholder="City" required>
-                </li>
-                <li>
-                    <input name="address-state" placeholder="State" pattern="[A-Za-z]{2}" required>
-                </li>
-                <li>
-                    <input name="address-zip" placeholder="5-digit zip code" pattern="[0-9]{5}" required>
-                </li>
-            </ul>
-        </label>
-        <label>
-            Property Type:
-            <select name="property-info-type" required>
-                <option value="" selected>Select Property Type</option>
-                <option value="house">House</option>
-                <option value="condo">Condo</option>
-                <option value="apartment">Apartment</option>
-                <option value="other">Other</option>
-            </select>
-        </label>
-        <label>
-            Ownership Status:
-            <select name="property-info-status" required>
-                <option value="" selected>Select Ownership Status</option>
-                <option value="own">Own</option>
-                <option value="rent">Rent</option>
-                <option value="lease">Lease</option>
-            </select>
-        </label>
-        <label>
-            Year Built:
-            <input type="number" name="year-built" min="1800" required>
-        </label>
+    <label name="property-info-address">
+        Property Address:
+        <ul>
+            <li>
+                <input name="address-street1" placeholder="Street" required>
+            </li>
+            <li>
+                <input name="address-street2" placeholder="Apt/Suite" required>
+            </li>
+            <li>
+                <input name="address-city" placeholder="City" required>
+            </li>
+            <li>
+                <input name="address-state" placeholder="State" pattern="[A-Za-z]{2}" required>
+            </li>
+            <li>
+                <input name="address-zip" placeholder="5-digit zip code" pattern="[0-9]{5}" required>
+            </li>
+        </ul>
+    </label>
+    <label>
+        Property Type:
+        <select name="property-info-type" required>
+            <option value="" selected>Select Property Type</option>
+            <option value="house">House</option>
+            <option value="condo">Condo</option>
+            <option value="apartment">Apartment</option>
+            <option value="other">Other</option>
+        </select>
+    </label>
+    <label>
+        Ownership Status:
+        <select name="property-info-status" required>
+            <option value="" selected>Select Ownership Status</option>
+            <option value="own">Own</option>
+            <option value="rent">Rent</option>
+            <option value="lease">Lease</option>
+        </select>
+    </label>
+    <label>
+        Year Built:
+        <input type="number" name="year-built" min="1800" required>
+    </label>
 </div>
 
 <div id="propert-details">
     <h2>Property Details</h2>
-        <label>
-            Number of Stories:
-            <input type="number" name="num-stories" min="1" required>
-        </label>
-        <label>
-            Square Footage:
-            <input type="number" name="square-footage" min="1" step="25" required>
-        </label>
-        <label>
-            Construction Type:
-            <select name="construction-type" required>
-                <option value="" selected>Select Construction Type</option>
-                <option value="Wood Frame">Wood Frame</option>
-                <option value="Brick">Brick</option>
-                <option value="Concrete">Concrete</option>
-                <option value="Stone">Stone</option>
-                <option value="Steel Frame">Steel Frame</option>
-                <option value="Log Home">Log Home</option>
-                <option value="Manufactured Home">Manufactured Home</option>
-                <option value="Modular Home">Modular Home</option>
-                <option value="Mixed Construction">Mixed Construction</option>
-                <option value="Other">Other</option>
-                <option value="I don't know">I don't know</option>
-            </select>
-        </label>
-        <label>
-            Roof Type:
-            <select name="roof-type" required>
-                <option value="" selected>Select Roof Type</option>
-                <option value="Asphalt Shingles">Asphalt Shingles</option>
-                <option value="Metal">Metal</option>
-                <option value="Tile">Tile</option>
-                <option value="Slate">Slate</option>
-                <option value="Wood Shake">Wood Shake</option>
-                <option value="Flat">Flat</option>
-                <option value="Rubber">Rubber</option>
-                <option value="Other">Other</option>
-                <option value="I don't know">I don't know</option>
-            </select>
-        </label>
-        <label>
-            Roof Age:
-            <input type="number" name="roof-age" min="0" required>
-        </label>
-        <label>
-            Number of Rooms:
-            <input type="number" name="num-rooms" min="1" required>
-        </label>
-        <label>
-            Number of Bathrooms:
-            <input type="number" name="num-bathrooms" min="1" required>
-        </label>
+    <label>
+        Number of Stories:
+        <input type="number" name="num-stories" min="1" required>
+    </label>
+    <label>
+        Square Footage:
+        <input type="number" name="square-footage" min="1" step="25" required>
+    </label>
+    <label>
+        Construction Type:
+        <select name="construction-type" required>
+            <option value="" selected>Select Construction Type</option>
+            <option value="Wood Frame">Wood Frame</option>
+            <option value="Brick">Brick</option>
+            <option value="Concrete">Concrete</option>
+            <option value="Stone">Stone</option>
+            <option value="Steel Frame">Steel Frame</option>
+            <option value="Log Home">Log Home</option>
+            <option value="Manufactured Home">Manufactured Home</option>
+            <option value="Modular Home">Modular Home</option>
+            <option value="Mixed Construction">Mixed Construction</option>
+            <option value="Other">Other</option>
+            <option value="I don't know">I don't know</option>
+        </select>
+    </label>
+    <label>
+        Roof Type:
+        <select name="roof-type" required>
+            <option value="" selected>Select Roof Type</option>
+            <option value="Asphalt Shingles">Asphalt Shingles</option>
+            <option value="Metal">Metal</option>
+            <option value="Tile">Tile</option>
+            <option value="Slate">Slate</option>
+            <option value="Wood Shake">Wood Shake</option>
+            <option value="Flat">Flat</option>
+            <option value="Rubber">Rubber</option>
+            <option value="Other">Other</option>
+            <option value="I don't know">I don't know</option>
+        </select>
+    </label>
+    <label>
+        Roof Age:
+        <input type="number" name="roof-age" min="0" required>
+    </label>
+    <label>
+        Number of Rooms:
+        <input type="number" name="num-rooms" min="1" required>
+    </label>
+    <label>
+        Number of Bathrooms:
+        <input type="number" name="num-bathrooms" min="1" required>
+    </label>
 </div>
 
 <div id="property-usage">
@@ -179,46 +179,49 @@
 
 <div id="history">
     <h2>Insurance History</h2>
-    <ul>
-        <li>
-            <label>
-                Is the house currently insured?
-                <input type="radio" name="current-insurance" value="yes" required> Yes
-                <input type="radio" name="current-insurance" value="no" required> No
-            </label>
-        </li>
-        <li>
-            <label>
-                Have you filed claims in the past?
-                <input type="radio" name="past-claims" value="yes" required> Yes
-                <input type="radio" name="past-claims" value="no" required> No
-                <div>
-                    List any known claims in the past 5 years:
-                    <div>
-                        <clone-me class="row">
-                            <input name="claim-date" type="date">
-                        </clone-me>
-                    </div>
-                </div>
-            </label>
-        </li>
-    </ul>
+    <label>
+        Is the house currently insured?
+        <span>
+            <input type="radio" name="current-insurance" value="yes" required> Yes
+        </span>
+        <span>
+            <input type="radio" name="current-insurance" value="no" required> No
+        </span>
+    </label>
+    <label>
+        Have you filed claims in the past?
+        <span>
+            <input type="radio" name="past-claims" value="yes" required> Yes
+        </span>
+        <span>
+            <input type="radio" name="past-claims" value="no"> No
+        </span>
+
+        <div>
+            List any known claims in the past 5 years:
+            <div>
+                <clone-me class="row">
+                    <input name="claim-date" type="date">
+                </clone-me>
+            </div>
+        </div>
+    </label>
 
 </div>
 <div id="coverage">
     <h2>Coverage Requirements</h2>
-        <label>
-            Desired Coverage Limits (Dwelling):
-            <input type="number" name="coverage-dwelling" required min="0" step="10000" placeholder="100000">
-        </label>
-        <label>
-            Desired Coverage Limits (Personal Property):
-            <input type="number" name="coverage-property" required min="0" step="10000" placeholder="100000">
-        </label>
-        <label>
-            Desired Coverage Limits (Liability):
-            <input type="number" name="coverage-liability" required min="0" step="10000" placeholder="100000">
-        </label>
+    <label>
+        Desired Coverage Limits (Dwelling):
+        <input type="number" name="coverage-dwelling" required min="0" step="10000" placeholder="100000">
+    </label>
+    <label>
+        Desired Coverage Limits (Personal Property):
+        <input type="number" name="coverage-property" required min="0" step="10000" placeholder="100000">
+    </label>
+    <label>
+        Desired Coverage Limits (Liability):
+        <input type="number" name="coverage-liability" required min="0" step="10000" placeholder="100000">
+    </label>
 </div>
 
 
@@ -226,8 +229,12 @@
 <h2>Additional Structures</h2>
 <label>
     Detached Structures (e.g., garage, shed):
-    <input type="radio" name="detached-structures" value="yes" required> Yes
-    <input type="radio" name="detached-structures" value="no"> No
+    <span>
+        <input type="radio" name="detached-structures" value="yes" required> Yes
+    </span>
+    <span>
+        <input type="radio" name="detached-structures" value="no"> No
+    </span>
 </label>
 <label>
     Additional Structures Coverage:
@@ -237,16 +244,28 @@
 <h2>Special Circumstances</h2>
 <label>
     Pets in the Household:
-    <input type="radio" name="pets" value="yes" required> Yes
-    <input type="radio" name="pets" value="no" required> No
+    <span>
+        <input type="radio" name="pets" value="yes" required> Yes
+    </span>
+    <span>
+        <input type="radio" name="pets" value="no"> No
+    </span>
 </label>
 <label>
     High-Risk Features (e.g., trampoline, swimming pool):
-    <input type="radio" name="high-risk-features" value="yes" required> Yes
-    <input type="radio" name="high-risk-features" value="no" required> No
+    <span>
+        <input type="radio" name="high-risk-features" value="yes" required> Yes
+    </span>
+    <span>
+        <input type="radio" name="high-risk-features" value="no"> No
+    </span>
 </label>
 <label>
     Home-Based Business:
-    <input type="radio" name="home-based-business" value="yes" required> Yes
-    <input type="radio" name="home-based-business" value="no" required> No
+    <span>
+        <input type="radio" name="home-based-business" value="yes" required> Yes
+    </span>
+    <span>
+        <input type="radio" name="home-based-business" value="no"> No
+    </span>
 </label>
