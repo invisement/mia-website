@@ -292,8 +292,8 @@ export class SimpleForm extends LitElement {
     `
 
     async sendEmail (data = {}) {
-        //const url = "http://api.mia.invisement.com/send-email"
-        const url = "http://127.0.0.1:8000/send-email"
+        const url = "http://api.mia.invisement.com/send-email"
+        //const url = "http://127.0.0.1:8000/send-email"
         console.log(data)
         const response = await fetch(url, {
             method: "POST", 
