@@ -257,14 +257,14 @@ export class SimpleForm extends LitElement {
         const invalids =
             Array.from(this.form.querySelectorAll(":invalid"))
                 .filter(input => {
-                    const isHidden = window.getComputedStyle(input).display == "none"
+                    const isHidden = (input.offsetParent === null)
                     if (isHidden) {
                         hiddenElements.push(input)
                     }
 
                     return !isHidden
                 })
-
+        
         if (invalids.length == 0) {// there is no invalid
 
             // remove all hidden elements so they do not send data
@@ -353,7 +353,7 @@ export class SimpleForm extends LitElement {
             await this.thankYou.show()
             gotoPage(this.afterPage)
             
-            this.sendEmail({"email": currentUser.email || miaReceiverEmail, "message": this.emailMessage()}).catch(console.error)
+            this.sendEmail({"email": currentUser.email, "message": this.emailMessage()}).catch(console.error)
         } else {
             await this.serverError.show()
         }

@@ -43,8 +43,8 @@ headerHtmls["customer"] = name => html`
     <li>
         <img @click=${() => gotoPage("/")} title="Home" src="/images/favicon.ico">
     </li>
-    <li>
-            Contact Us
+    <li @click=${() => gotoPage("/feedback-form")} title="Feedback">
+                Contact Us
     </li>
     
 
