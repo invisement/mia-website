@@ -1,5 +1,9 @@
-<div id="personal-info">
-    <h2>Personal Information</h2>
+<p>
+    Please click and open each section and answer all required (highlighted) questions.
+</p>
+
+<details id="personal-info">
+    <summary>Personal Information</summary>
     <label>
         What is your full name?
         <input name="personal-info-first-name" placeholder="First" size="12" required>
@@ -15,9 +19,10 @@
         Email Address:
         <input type="email" name="email" required>
     </label>
-</div>
-<div id="property-info">
-    <h2>Property Information</h2>
+</details>
+
+<details id="property-info">
+    <summary>Property Information</summary>
     <label name="property-info-address">
         Property Address:
         <ul>
@@ -61,10 +66,10 @@
         Year Built:
         <input type="number" name="year-built" min="1800" required>
     </label>
-</div>
+</details>
 
-<div id="propert-details">
-    <h2>Property Details</h2>
+<details id="propert-details">
+    <summary>Property Details</summary>
     <label>
         Number of Stories:
         <input type="number" name="num-stories" min="1" required>
@@ -117,10 +122,10 @@
         Number of Bathrooms:
         <input type="number" name="num-bathrooms" min="1" required>
     </label>
-</div>
+</details>
 
-<div id="property-usage">
-    <h2>Property Usage</h2>
+<details id="property-usage">
+    <summary>Property Usage</summary>
     <p>Check all that apply:</p>
     <ul>
         <li>
@@ -149,10 +154,10 @@
         </li>
     </ul>
 
-</div>
+</details>
 
-<div id="security-safety-features">
-    <h2>Security and Safety Features</h2>
+<details id="security-safety-features">
+    <summary>Security and Safety Features</summary>
     <p>Check all that apply:</p>
     <ul>
         <li>
@@ -175,10 +180,10 @@
         </li>
     </ul>
 
-</div>
+</details>
 
-<div id="history">
-    <h2>Insurance History</h2>
+<details id="history">
+    <summary>Insurance History</summary>
     <label>
         Is the house currently insured?
         <span>
@@ -207,9 +212,10 @@
         </div>
     </label>
 
-</div>
-<div id="coverage">
-    <h2>Coverage Requirements</h2>
+</details>
+
+<details id="coverage">
+    <summary>Coverage Requirements</summary>
     <label>
         Desired Coverage Limits (Dwelling):
         <input type="number" name="coverage-dwelling" required min="0" step="10000" placeholder="100000">
@@ -222,11 +228,10 @@
         Desired Coverage Limits (Liability):
         <input type="number" name="coverage-liability" required min="0" step="10000" placeholder="100000">
     </label>
-</div>
+</details>
 
-
-
-<h2>Additional Structures</h2>
+<details>
+<summary>Additional Structures</summary>
 <label>
     Detached Structures (e.g., garage, shed):
     <span>
@@ -269,3 +274,4 @@
         <input type="radio" name="home-based-business" value="no"> No
     </span>
 </label>
+</details>
