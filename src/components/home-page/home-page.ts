@@ -27,7 +27,7 @@ export class HomePage extends LitElement {
 
     render() {
         return html`
-        <changing-word .words=${["Home‎‎‎‎", "Car‎‎‎‎", "Travel‎‎‎‎", "Medical‎‎‎‎"]} .speed=${200}></changing-word>
+        <changing-word .words=${["Home‎‎‎‎", "Car‎‎‎‎", "Pet‎‎‎‎", "Travel‎‎‎‎"]} .speed=${200}></changing-word>
 
         <vise-chips>
             <vise-chip @click=${() => gotoPage("/questionnaires/auto-insurance-questionnaire")}>
@@ -39,9 +39,10 @@ export class HomePage extends LitElement {
                 Home Owner
                 <mark>major saving</mark>
             </vise-chip>
-            <vise-chip @click=${() => gotoPage("/questionnaires/personal-line-intakes")}>
-                <img src="/illustrations/bank-note.svg">
-                Loan
+            <vise-chip disabled @click=${() => gotoPage("/questionnaires/personal-line-intakes")}>
+                <img src="/illustrations/petting.svg">
+                Pet Insurance
+                <mark>Coming Soon</mark>
             </vise-chip>
             <vise-chip disabled @click=${() => gotoPage("/")}>
                 <img src="/illustrations/traveling.svg">

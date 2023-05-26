@@ -45,7 +45,7 @@ export class Chip extends LitElement {
 
         :host([disabled]) {
             pointer-events: none;
-            opacity: .3;
+            opacity: .4;
         }
 
         ::slotted(mark) {
