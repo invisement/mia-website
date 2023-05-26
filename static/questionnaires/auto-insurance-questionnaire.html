@@ -6,13 +6,16 @@
     <summary>Your Information</summary>
     <label>
         Full Name:
-        <input name="demographics-first-name" placeholder="First" size="12" required>
-        <input name="demographics-middle-name" placeholder="M" size="8">
-        <input name="demographics-last-name" placeholder="Last" required>
+        <div>
+        <input name="demographics-first-name" placeholder="First" size="8" required>
+        <input name="demographics-middle-name" placeholder="M" size="5">
+        <input name="demographics-last-name" placeholder="Last" required size="12">
+        </div>
     </label>
 
     <label>
         Marital Status
+        <div>
         <select required name="demographics-marital-status">
             <option value="" selected>Select Marital Status</option>
             <option value="single">Single</option>
@@ -21,18 +24,21 @@
             <option value="widowed">Widowed</option>
             <option value="separated">Separated</option>
         </select>
+        </div>
     </label>
 
     <label>
         Date Of Birth
-        <input required type="date" name="demographics-dob">
+        <div>
+            <input required type="date" name="demographics-dob">
+        </div>
     </label>
 
     <label>
         Occupation:
-        <ul>
             <label>
                 <input name="demographics-occupation-type" checked type="radio">
+                Select:
                 <select name="demographics-occupation" required>
                     <option value="" disabled selected>Select Occupation</option>
                     <option value="Employed">Employed</option>
@@ -62,12 +68,10 @@
                 <input name="demographics-occupation-type" type="radio">Other Occupation:
                 <input required name="demographics-occupation-other" placeholder="Other">
             </label>
-        </ul>
     </label>
 
     <label>
         Residential Address:
-        <ul>
             <li>
                 <input name="address-street1" placeholder="Street Adress" required>
             </li>
@@ -79,7 +83,6 @@
                 <input name="address-state" placeholder="State" pattern="[A-Za-z]{2}" required size="2">
                 <input name="address-zip" placeholder="5-digit zip code" pattern="[0-9]{5}" required size="2">
             </li>
-        </ul>
     </label>
 </details>
 
@@ -92,7 +95,6 @@
     </label>
     <label>
         Have you had any accidents or claims in the past?
-        <ul>
             <label>
                 <input type="radio" name="driving-claims-yesno" value="no">
                 No
@@ -114,7 +116,6 @@
                     </span>
                 </clone-me>
             </label>
-        </ul>
     </label>
 
     <label>

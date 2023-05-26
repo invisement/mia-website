@@ -244,6 +244,11 @@ export class SimpleForm extends LitElement {
             display: none;
         }
 
+        ul {
+            margin-top: 0;
+            padding-left: 0em;
+        }
+
         /*TODO: for when we want to add animation or similar to each div of the form (show one by one)
         div:focus-within {
             box-shadow: var(--outset);
