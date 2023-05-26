@@ -8,8 +8,8 @@ export class Chip extends LitElement {
 
     static styles = css`
         div {
-            width: 6em;
-            height: 6em;
+            width: 7em;
+            height: 7em;
             padding: 1.5em;
             white-space: nowrap;
 

@@ -215,24 +215,22 @@ export class SimpleForm extends LitElement {
             box-shadow: 0 0 0px 1px var(--warning-color);
         } 
 
-        details:not(:has(:invalid)) > summary:after {
+        /*details:not(:has(:invalid)) > summary:after {
             content: " 🗹";
-        }
+        }*/
 
         label {
             display: block;
         }
 
-        details {
-            box-shadow: var(--big-shadow);
-            margin: 0em -1em;
-            padding: 1em;
-        }
 
         details > summary {
             list-style-type: '📕  ';
             font-size: large;
             cursor: pointer;
+            margin: .3em -.4em;
+            padding: .3em;
+            background-color: var(--accent-background);
         }
 
         details[open] > summary {
