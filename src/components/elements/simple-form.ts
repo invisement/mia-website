@@ -223,14 +223,17 @@ export class SimpleForm extends LitElement {
             display: block;
         }
 
+        details {
+            border-top: 2px solid var(--accent-background);
+            margin: 0 -1em;
+            padding: 1em;
+        }
 
         details > summary {
             list-style-type: '📕  ';
             font-size: large;
             cursor: pointer;
-            margin: .3em -.4em;
-            padding: .3em;
-            background-color: var(--accent-background);
+            color: var(--accent-color);
         }
 
         details[open] > summary {
