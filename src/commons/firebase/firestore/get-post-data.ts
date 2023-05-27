@@ -14,11 +14,10 @@ export async function putDoc(collectionName: string, data) {
 }
 
 export async function getAll(collectionName: string) {
-    const querySnapshot = await getDocs(collection(db, collectionName))
-    console.log(querySnapshot)
-    querySnapshot.forEach((doc) => {
-        console.log(doc.data())
-    })
+    return getDocs(collection(db, collectionName))
+    // querySnapshot.forEach((doc) => {
+    //     console.log(doc.data())
+    // })
 }
 
 export async function doesBrokerExist(email: string) {

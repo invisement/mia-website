@@ -1,7 +1,12 @@
 
 {
     "car": {
-        "common-columns": []
+        "collection": "auto-insurance-questionnaire",
+        "columns": ["email", "address-state", "address-city", "car-anti-theft-yesno", "car-make", "car-model", "car-year", "car-ownership", "coverage-preferred", "demographics-dob", "demographic-marital-status", "driving-miles", "car-primary-use"]
+    },
+    "home": {
+        "collection": "home-insurance-questionnaire",
+        "columns": ["email", "square-footage", "year-built", "address-state", "address-city", "construction-type", "coverage-dwelling", "coverage-liability", "coverage-property", "num-stories", "roof-age", "roof-type"]
     }
 
 }

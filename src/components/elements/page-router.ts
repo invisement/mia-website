@@ -42,7 +42,7 @@ export const routes: Routes = {
 
     "/questionnaires/:name": (params: Params) => html`<simple-form auth="customer" src="/questionnaires/${params.name}"></simple-form>`,
     "/": () => html`<home-page></home-page>`,
-    "/broker-home": () => html`<broker-home></broker-home>`,
+    "/broker-home": () => html`<broker-home class="wide"></broker-home>`,
     "/feedback-form": () => html`<simple-form src="html-content/feedback-form"></simple-form>`,
 //    "/simple-form/personal-loan": (params: Params) => html`<simple-form .content=${personalLoan} name="Personal Lines P&C"></simple-form>`,
     "/about-us": () => aboutUs,
@@ -149,10 +149,13 @@ class PageRouter extends LitElement {
     }
 
     static styles = css`
-        :host {
+        :host > * {
             display: block;
             margin: auto;
             max-width: 65rem;
+        }
+        .wide {
+            max-width: 100vw;
         }
     `
 }

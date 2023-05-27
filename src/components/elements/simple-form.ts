@@ -308,8 +308,6 @@ export class SimpleForm extends LitElement {
         const url = "https://api.mia.invisement.com/send-email"
         //const url = "http://127.0.0.1:8000/send-email"
 
-        console.log("data", data)
-
         const response = await fetch(url, {
             method: "POST", 
             mode: "cors",
@@ -355,8 +353,6 @@ export class SimpleForm extends LitElement {
         data["submitted time"] = (new Date()).toISOString()
         data["signedUserEmail"] = currentUser.getValue().email || ""
         data["signedUserId"] = currentUser.getValue().userId || ""
-
-        console.log("user", currentUser)
 
         //const documentPath = `/${userId}`
         const docRef = await putDoc(this.collection, data)
