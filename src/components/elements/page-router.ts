@@ -44,7 +44,6 @@ export const routes: Routes = {
     "/": () => html`<home-page></home-page>`,
     "/broker-home": () => html`<broker-home class="wide"></broker-home>`,
     "/feedback-form": () => html`<simple-form src="html-content/feedback-form"></simple-form>`,
-//    "/simple-form/personal-loan": (params: Params) => html`<simple-form .content=${personalLoan} name="Personal Lines P&C"></simple-form>`,
     "/about-us": () => aboutUs,
 
 }

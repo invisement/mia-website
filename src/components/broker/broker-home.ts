@@ -11,8 +11,6 @@ import { getAll } from "/commons/firebase/firestore/get-post-data";
 import "/components/elements/simple-table"
 import "/components/elements/simple-form"
 
-const metaData = await fetch("/meta-data/broker-filter.json").then(r => r.json())
-const insurances = Object.keys(metaData)
 
 type Insurance = string
 
@@ -31,6 +29,10 @@ class BrokerHome extends LitElement {
     private columns: string[] = []
     private viewRecordStyle = "padding: .5em; font-size: bigger; font-weight: bold; color: red; box-shadow: var(--outset); cursor: pointer;"
     @state() record = {}
+
+    @state() insurances: Insurance[] = []
+
+    @state() metaData = {}
 
     @query('web-table')
     tbl: WebTable
@@ -72,20 +74,14 @@ class BrokerHome extends LitElement {
         dialog>header>* {
             margin: 1em;
         }
-        dialog>#close {
-            background-color: var(--highlight-background);
-            color: var(--warning-color);
-            font-size: 3em;
-            font-weight: bold;
-            box-shadow: var(--outset);
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 5;
-            cursor: pointer;
-        }
-
     `
+
+    async connectedCallback() {
+        super.connectedCallback()
+        
+        this.metaData = await fetch("/meta-data/broker-filter.json").then(r => r.json())
+        this.insurances = Object.keys(this.metaData)                
+    }
 
     render() {
         return html`
@@ -95,16 +91,15 @@ class BrokerHome extends LitElement {
             <select @change=${e => this.populateTable(e.target.value)}>
                 <option value="">Select an insurance type</option>
 
-                ${insurances.map(insurance => html`<option value=${insurance}>${insurance}</option>`)}
+                ${this.insurances.map(insurance => html`<option value=${insurance}>${insurance}</option>`)}
             </select>
                         
         </header>
         <web-table id="web-table"></web-table>
 
         <dialog id="record-dialog">
-            <span id="close" @click=${() => this.recordDialog.close()}>X</span>
             <header>
-                <simple-form auth="broker" afterPage="/broker-home" src="/html-content/submit-quote">
+                <simple-form auth="broker" .doneCallBack=${() => this.recordDialog.close()} src="/html-content/submit-quote">
                 </simple-form>
             </header>
             <simple-table .head=${["key", "value"]} .rows=${this.sortedRecord(this.record)}>
@@ -129,7 +124,7 @@ class BrokerHome extends LitElement {
     }
 
     async fetchData(insurance: Insurance) {
-        const { collection, columns } = metaData[insurance]
+        const { collection, columns } = this.metaData[insurance]
 
         // get data from collection and add document id
         if (!this.insuranceTableData[insurance]) {
@@ -170,20 +165,3 @@ class BrokerHome extends LitElement {
     }
 }
 customElements.define("broker-home", BrokerHome)
-
-/*
-class ViewRecord extends LitElement{
-    render() {return html`
-        <span @click=${this.view}>View Record</span>
-    `}
-
-    @property()
-    id: string;
-
-    view() {
-
-    }
-
-
-}
-*/

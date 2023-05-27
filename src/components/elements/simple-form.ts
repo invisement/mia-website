@@ -29,8 +29,7 @@ export class SimpleForm extends LitElement {
     auth: Authorization = "guest"
 
     @property()
-    afterPage = "/"
-
+    doneCallBack = () => gotoPage("/")
 
     @state()
     content: TemplateResult<1>
@@ -113,7 +112,7 @@ export class SimpleForm extends LitElement {
 
                 <footer>
                     <button type="submit" @click=${this.submit}>Submit</button>
-                    <button type="button"  @click=${() => gotoPage(this.afterPage)}>Cancel</button>
+                    <button type="button"  @click=${this.doneCallBack}>Cancel</button>
                 </footer>
             </form> 
         <dia-logue id="thank-you" .buttons=${["OK"]}>
@@ -358,7 +357,7 @@ export class SimpleForm extends LitElement {
         const docRef = await putDoc(this.collection, data)
         if (docRef) {
             await this.thankYou.show()
-            gotoPage(this.afterPage)
+            this.doneCallBack()
             
             this.sendEmail({"email": currentUser.getValue().email, "message": this.emailMessage()}).catch(console.error)
         } else {
