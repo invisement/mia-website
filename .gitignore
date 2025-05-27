@@ -2,10 +2,15 @@
 # Perosnal/temporary folders and files and build folders like www and dist
 temp
 dist
-node_modules
+node_modules/
+vendor/
 types/
 package-lock.json
 .env*
+deno.lock
+ui-dist
+
+
 
 # Logs
 logs
