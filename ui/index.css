@@ -1,0 +1,45 @@
+:root {
+	--background-color: 150, 150, 150;
+}
+
+body {
+	font-family: sans-serif;
+	margin: 0;
+	height: 100vh;
+	overflow: hidden;
+	/* Prevent body from scrolling */
+	display: flex;
+	flex-direction: column;
+	/* Stack top-bar, content vertically */
+}
+
+.top-bar {
+	background-color: rgba(var(--background-color), 0.2);
+	padding: 0.5em;
+	height: 1em;
+
+	border: outset;
+}
+
+.content {
+	display: flex;
+	flex: 1;
+	overflow: hidden;
+}
+
+.left-bar {
+	flex: 1;
+	background-color: rgba(var(--background-color), 0.1);
+	overflow: auto;
+	padding: 0.5em;
+}
+
+.right-bar {
+	flex: 3;
+	overflow: auto;
+	padding: 0.5em;
+}
+
+.hidden {
+	display: none;
+}
