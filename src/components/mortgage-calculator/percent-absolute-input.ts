@@ -4,7 +4,7 @@ class PercentAbsoluteInput extends LitElement {
 	static properties = {
 		price: { type: Number },
 		percent: { type: Number },
-		value: { type: Number },
+		absolute: { type: Number },
 	};
 
 	percentClass = "";
@@ -13,7 +13,26 @@ class PercentAbsoluteInput extends LitElement {
 	override connectedCallback() {
 		super.connectedCallback();
 		this.price = this.price || 0;
-		this.active = this.percent ? "percent" : "value";
+		this.active = this.percent ? "percent" : "absolute";
+	}
+
+	set value(value: [number, number]) {
+		if (value[0] === undefined) {
+			this.absolute = value[1];
+			this.active = "absolute";
+		} else {
+			this.percent = value[0];
+			this.active = "percent";
+		}
+	}
+
+	get value() {
+		return [this.percent, this.absolute];
+	}
+
+	absoluteChanged(e: InputEvent) {
+		this.absolute = Number(e.target.value);
+		this.active = "absolute";
 	}
 
 	percentChanged(e: InputEvent) {
@@ -21,23 +40,14 @@ class PercentAbsoluteInput extends LitElement {
 		this.active = "percent";
 	}
 
-	valueChanged(e: InputEvent) {
-		this.value = Number(e.target.value);
-		this.active = "value";
-	}
-
 	static styles = css`
 		:host {
 			display: flex;
-			gap: 0;
 		}
 		span {
 	  		padding-left: 0.25em;
 	 		position: absolute;
 		}
-        .active {
-			border-style: outset;
-    	}
     	input {
   			padding-left: 1.5em;
 		}
@@ -45,24 +55,24 @@ class PercentAbsoluteInput extends LitElement {
 
 	render() {
 		if (this.active == "percent") {
-			this.value = this.price * this.percent / 100;
-			this.valueClass = "";
+			this.absolute = this.price * this.percent / 100;
+			this.absoluteClass = "";
 			this.percentClass = "active";
 		} else {
-			this.percent = 100 * this.value / this.price;
+			this.percent = 100 * this.absolute / this.price;
 			this.percentClass = "";
-			this.valueClass = "active";
+			this.absoluteClass = "active";
 		}
 
 		return html`
 		<label> 
 			<span> $ </span>
-         	<input class=${this.valueClass} size=10 @change=${this.valueChanged} .value=${this.value}> 
+         	<input name="percent" class=${this.absoluteClass} size=10 @change=${this.absoluteChanged} value=${this.absolute}> 
 		</label>
 
 		<label> 
 			<span> % </span>
-        	<input class=${this.percentClass} size=6 @change=${this.percentChanged} .value=${this.percent}>
+        	<input class=${this.percentClass} size=6 @change=${this.percentChanged} value=${this.percent}>
 		</label>
         `;
 	}
