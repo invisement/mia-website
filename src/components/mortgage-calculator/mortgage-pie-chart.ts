@@ -10,15 +10,17 @@ export class ChartElement extends LitElement {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			height: 20em;
-			width: 20em;
+			height: 22em;
 		}
 		#legend {
 			position: absolute;
+			padding: 1em;
+			font-size: smaller;
 		}
 		canvas {
 			display: grid;
 			grid-template-columns: auto auto;
+			height: auto;
 		}
 	
 	`;
@@ -77,6 +79,9 @@ export class ChartElement extends LitElement {
 		});
 
 		const legend = document.createElement("legend-table");
+		labels.push("Total");
+		data.push(data.reduce((a, b) => a + b, 0));
+
 		legend.legendValues = labels.map((
 			label,
 			index,

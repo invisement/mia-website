@@ -5,6 +5,7 @@ export class SliderNumber extends LitElement {
 		value: { type: Number },
 		min: { type: Number },
 		max: { type: Number },
+		step: { type: Number },
 	};
 
 	constructor() {
@@ -12,6 +13,7 @@ export class SliderNumber extends LitElement {
 		this.value = 50;
 		this.min = 0;
 		this.max = 100;
+		this.step = 1;
 	}
 
 	static styles = css`
@@ -26,8 +28,9 @@ export class SliderNumber extends LitElement {
     }
 
     .value {
-      height: 50%;
+      line-height: 1em;
       text-align: center;
+      vertical-align: bottom;
     }
   `;
 
@@ -41,6 +44,7 @@ export class SliderNumber extends LitElement {
           type="range"
           min="${this.min}"
           max="${this.max}"
+          step = "${this.step}"
           .value="${this.value}"
           @input="${this._onInput}"
         />

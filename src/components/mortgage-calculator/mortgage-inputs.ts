@@ -29,18 +29,17 @@ export class MortgageInputs extends LitElement {
 		padding-left: 0.25em;
 		position: absolute;
 	}
-	fieldset {
+	:host {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1em;
-		padding-bottom: 2em;
 	}
   `;
 
 	get values() {
-		const fieldset = this.shadowRoot?.querySelector("fieldset");
 		const data: [string, string | number][] = [];
-		fieldset?.querySelectorAll("[name]").forEach((el) => {
+
+		this.shadowRoot?.querySelectorAll("[name]").forEach((el) => {
 			data.push([el.getAttribute("name") || "", el.value]);
 		});
 		return data;
@@ -49,9 +48,8 @@ export class MortgageInputs extends LitElement {
 	set values(values: [string, string | number][]) {
 		const event = new Event("change", { bubbles: true }); // 'bubbles: true' is important for event propagation
 
-		const fieldset = this.shadowRoot?.querySelector("fieldset");
 		values.forEach(([name, value]) => {
-			const el = fieldset?.querySelector(`[name="${name}"]`);
+			const el = this.shadowRoot?.querySelector(`[name="${name}"]`);
 			if (el) {
 				el.value = value;
 				el.dispatchEvent(event);
@@ -59,16 +57,8 @@ export class MortgageInputs extends LitElement {
 		});
 	}
 
-	submit() {
-		console.log(this.values);
-	}
-
 	render() {
-		console.log("rendered", this.downPayment, this.homePrice);
-
 		return html`
-		<fieldset>
-			<legend>Mortgage Calculator</legend>
 
 	  <label>
 			Home Price
@@ -101,8 +91,9 @@ export class MortgageInputs extends LitElement {
 			Mortgage Years
 			<br/>
 			<slider-number
-				min="10"
+				min="5"
 				max="30"
+				step="5"
 				name="termYears"
 				value=30
 			>
@@ -147,11 +138,11 @@ export class MortgageInputs extends LitElement {
 		<label>
 			HOA
 			<br/>
-			<percent-absolute-input
+			<input
+				type="number"
 				name="HOA"
-				percent = "1"
-				price=${this.homePrice}
-			></percent-absolute-input>
+				value = "0"
+			>
 		</label>
 
 		<label>
@@ -175,11 +166,6 @@ export class MortgageInputs extends LitElement {
 			>
 			</slider-number>
 		</label>
-
-
-
-
-	  </fieldset>
     `;
 	}
 }
