@@ -22,6 +22,12 @@ deno task deploy
 We use `cloud run` to deploy this service. `deno task deploy` then in browser:
 `https://invisement.com`
 
+## Conventions
+
+- For complicated ui components, that have their own folder, like
+  `mortgage-calculator`, the entry point file has the same name as the folder.
+  All other files (components and utils) are in the same folder.
+
 ## Main Components
 
 Our main components are written in Web Component to be browser native,

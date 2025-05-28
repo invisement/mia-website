@@ -19,7 +19,10 @@
 		"@deno/deployctl": "jsr:@deno/deployctl@^1.13.1",
 		"@invisement/husk": "jsr:@invisement/husk@^0.4.62",
 		"@invisement/husk/transpile-ui": "jsr:@invisement/husk@^0.4.62/transpile-ui",
-		"lit": "https://cdn.jsdelivr.net/npm/lit/+esm"
+		"chart.js": "npm:chart.js@^4.4.9",
+		"lit": "https://cdn.jsdelivr.net/npm/lit/+esm",
+		"lit/": "https://esm.run/lit/",
+		"@invisement": "./src/components/elements"
 	},
 	"deploy": {
 		"exclude": ["**/node_modules"],

@@ -1,12 +1,18 @@
-import { html, LitElement, css } from "lit";
+import { css, html, LitElement } from "lit";
 import { property } from "lit/decorators.js";
 
-
 class MenuItem extends LitElement {
-    @property() disabled=false
+	//@property() disabled=false
+	static properties = {
+		disabled: { type: Boolean },
+	};
 
+	constructor() {
+		super();
+		this.disabled = false;
+	}
 
-    static styles = css`
+	static styles = css`
         div {
             display: inline-flex;
             height: 100%;
@@ -40,14 +46,15 @@ class MenuItem extends LitElement {
 
             background: none;
         }
-    `
+    `;
 
-    render () {return html`
+	render() {
+		return html`
         <div disabled=${this.disabled}>
             <slot>
             </slot>
         </div>
-    `}
-
+    `;
+	}
 }
-customElements.define('menu-item', MenuItem)
+customElements.define("menu-item", MenuItem);
