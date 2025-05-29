@@ -15,7 +15,7 @@ export class MortgageInputs extends LitElement {
 
 	static styles = css`
 	label {
-		width: 15em;
+		width: 13em;
 	}
 	input[type="number"] {
 		display: block;
@@ -32,7 +32,7 @@ export class MortgageInputs extends LitElement {
 	:host {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 1em;
+		gap: 2em;
 	}
   `;
 

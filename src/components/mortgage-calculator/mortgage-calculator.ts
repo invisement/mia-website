@@ -23,6 +23,9 @@ class MortgageCalculator extends LitElement {
 		gap: 2em; 
 		align-items: center; 
 		justify-content: center;
+
+		box-sizing: border-box;
+		width: 100%;
 	}
 	
 	footer {
@@ -37,14 +40,6 @@ class MortgageCalculator extends LitElement {
 	.hidden {
 		display: none;
 	}
-
-
-	amortization-bar-chart{
-		width: 100%;
-		max-height: 30em;
-	}
-
-
 	
 	`;
 
@@ -69,9 +64,6 @@ class MortgageCalculator extends LitElement {
 			interestRate,
 			termYears,
 		);
-
-		const initialInterest = loanAmount * interestRate / 12;
-		const initialPricipal = loanPayment - initialInterest;
 
 		this.shadowRoot?.querySelector("mortgage-pie-chart")?.draw({
 			loanPayment,
@@ -106,7 +98,7 @@ class MortgageCalculator extends LitElement {
 		);
 	}
 
-	reset(defaultValues: Record<string, number | [number, number]> = {}) {
+	async reset(defaultValues: Record<string, number | [number, number]> = {}) {
 		const inputData = {
 			homePrice: 700_000,
 			downPayment: [10, undefined],
@@ -122,12 +114,22 @@ class MortgageCalculator extends LitElement {
 
 		const inputs = this.shadowRoot?.querySelector("mortgage-inputs");
 		inputs.values = Object.entries(inputData);
+		await inputs.updateComplete;
 
 		this.shadowRoot?.querySelector("output")?.classList.add("hidden");
 	}
 
+	async connectedCallback(): void {
+		super.connectedCallback();
+		await this.updateComplete;
+		await this.reset();
+		await this.updateComplete;
+		this.submit();
+	}
+
 	render() {
 		return html`
+			<h3>Mortgage Calculator</h3>
 			<fieldset>
 				<legend>Mortgage Inputs</legend>
 			<mortgage-inputs></mortgage-inputs>

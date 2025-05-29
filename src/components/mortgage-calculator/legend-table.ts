@@ -4,7 +4,6 @@ export class LegendTable extends LitElement {
 	legendValues: [string, number | string | Date, string][] = [];
 
 	render() {
-		console.log(this.legendValues);
 		return this.legendValues.map(([label, value, color]) =>
 			html`
 			<div style="display: contents">

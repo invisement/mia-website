@@ -11,6 +11,8 @@ export class AmmortizationBarChart extends LitElement {
 		:host {
 			display: flex;
 			justify-content: center;
+			height: 30em;
+			max-width: 100%;
 		}
 		canvas {
 			background-color: white;
@@ -35,7 +37,7 @@ export class AmmortizationBarChart extends LitElement {
 			labels: months,
 			datasets: [
 				{
-					label: "Principal Paid",
+					label: "Principal",
 					data: totalPrincipalsPaid,
 					borderColor: "#000000",
 					backgroundColor: "rgba(0, 0, 0, 0.2)",
@@ -45,7 +47,7 @@ export class AmmortizationBarChart extends LitElement {
 					fill: true,
 				},
 				{
-					label: "Interest Paid",
+					label: "Interest",
 					data: totalInterestsPaid,
 					borderColor: "#ff0000",
 					backgroundColor: "rgba(255, 0, 0, 0.2)",
@@ -55,7 +57,7 @@ export class AmmortizationBarChart extends LitElement {
 					fill: true,
 				},
 				{
-					label: "Remaining Loan",
+					label: "Balance",
 					data: remainingBalance,
 					borderColor: "#0000ff",
 					backgroundColor: "rgba(0, 0, 255, 0.2)",
@@ -78,11 +80,11 @@ export class AmmortizationBarChart extends LitElement {
 				plugins: {
 					title: {
 						display: true,
-						text: "Loan Amortization",
+						text: "Cumulative Paid and Remaining Balance",
 					},
 				},
 				responsive: true,
-				//maintainAspectRatio: false,
+				maintainAspectRatio: false,
 
 				interaction: {
 					intersect: false,

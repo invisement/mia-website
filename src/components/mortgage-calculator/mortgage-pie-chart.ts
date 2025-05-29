@@ -79,13 +79,18 @@ export class ChartElement extends LitElement {
 		});
 
 		const legend = document.createElement("legend-table");
-		labels.push("Total");
-		data.push(data.reduce((a, b) => a + b, 0));
 
-		legend.legendValues = labels.map((
+		const legendValues = labels.map((
 			label,
 			index,
 		) => [label, parseInt(data[index]), colors[index]]);
+		legendValues.push([
+			"Total",
+			parseInt(data.reduce((a, b) => a + b, 0)),
+			"#000000",
+		]);
+
+		legend.legendValues = legendValues.filter((value) => value[1] > 0);
 		legendElement.replaceChildren(legend);
 	}
 }

@@ -3,8 +3,8 @@ export const uiEntrypoints = [
 	"index.html",
 	"index.ts",
 	"index.css",
-	"people.ts",
-	"people.html",
+	"components.ts",
+	"components.html",
 ];
 export const uiOutDir = "ui-dist";
 export const importMapFile = "./deno.json";
