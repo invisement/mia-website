@@ -2,7 +2,7 @@
 	"tasks": {
 		"install": "deno install --allow-import --reload; deno install jsr:@deno/deployctl --allow-import;",
 		"dev": "deno run -A --watch server.ts --watch-ui",
-		"build": "deno run -A jsr:@invisement/husk/transpile-ui",
+		"build": "deno run -A jsr:@invisement/husk/transpile-ui --config=config.ts",
 		"prod": "deno run -A server.ts",
 		"deploy-deno": "deno task install; deno task build; deployctl deploy --prod --entrypoint=\"deno task prod\" server.ts;",
 		"deploy": "deno task build; gcloud run deploy invisement-website --region us-west1 --source . --allow-unauthenticated",
