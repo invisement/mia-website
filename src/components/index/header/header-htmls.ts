@@ -1,15 +1,32 @@
 import { html, TemplateResult } from "lit";
-import { chatIcon, calendarIcon, phoneIcon, brokerIcon, doorIcon, settingIcon, dollarIcon, editIcon } from "@static/svg/icons";
-import { currentUser, gotoPage, Authorization, signInDialog, signOutDialog } from "/commons/pubsub/store";
+import {
+	brokerIcon,
+	calendarIcon,
+	chatIcon,
+	dollarIcon,
+	doorIcon,
+	editIcon,
+	phoneIcon,
+	settingIcon,
+} from "/static/svg/icons.ts";
+import {
+	Authorization,
+	currentUser,
+	gotoPage,
+	signInDialog,
+	signOutDialog,
+} from "/commons/pubsub/store.ts";
 
-export const headerHtmls: {[key in Authorization]: (name: string | undefined) => TemplateResult<1>} = {
-}
+export const headerHtmls: {
+	[key in Authorization]: (name: string | undefined) => TemplateResult<1>;
+} = {};
 
-
-headerHtmls["guest"] = name => html`
+headerHtmls["guest"] = (name) =>
+	html`
     <ul>
         <li>
-        <img @click=${() => gotoPage("/")} title="Home" src="/images/favicon.ico">
+        <img @click=${() =>
+		gotoPage("/")} title="Home" src="/images/favicon.ico">
         </li>
         
         <li @click=${() => gotoPage("/feedback-form")} title="Feedback">
@@ -20,28 +37,30 @@ headerHtmls["guest"] = name => html`
     <ul>
         <li>
         <button title="Broker Sign In" @click=${() => {
-            //signInDialog.show("broker")
-            // no need fo signin dialog because /broker-home is a restricted page
-            gotoPage("/broker-home")
-        }}>
+		//signInDialog.show("broker")
+		// no need fo signin dialog because /broker-home is a restricted page
+		gotoPage("/broker-home");
+	}}>
             Become A Broker
         </button>
         </li>
 
         <li>
-        <button class="reverse" title="User Sign In" @click=${() => signInDialog.show("customer")}>
+        <button class="reverse" title="User Sign In" @click=${() =>
+		signInDialog.show("customer")}>
             Log In
         </button>
         </li>
     </ul>
-`
+`;
 
-
-headerHtmls["customer"] = name => html`
+headerHtmls["customer"] = (name) =>
+	html`
 
     <ul>
     <li>
-        <img @click=${() => gotoPage("/")} title="Home" src="/images/favicon.ico">
+        <img @click=${() =>
+		gotoPage("/")} title="Home" src="/images/favicon.ico">
     </li>
     <li @click=${() => gotoPage("/feedback-form")} title="Feedback">
                 Contact Us
@@ -57,17 +76,18 @@ headerHtmls["customer"] = name => html`
         <img title="Sign out" @click=${signOut} src="/illustrations/exit.svg">
         </li>
     </ul>
-`
+`;
 
-async function signOut () {
-    const dialogButton = await signOutDialog.show()
-    if (dialogButton == "OK") {
-        currentUser.pub()
-        gotoPage("/")
-    }
-} 
+async function signOut() {
+	const dialogButton = await signOutDialog.show();
+	if (dialogButton == "OK") {
+		currentUser.pub();
+		gotoPage("/");
+	}
+}
 
-headerHtmls["broker"] = name => html`
+headerHtmls["broker"] = (name) =>
+	html`
     <ul>
     <menu-item @click=${() => gotoPage("/")}>
         <img src="/images/favicon.ico">
@@ -96,5 +116,4 @@ headerHtmls["broker"] = name => html`
         <img src="/illustrations/exit.svg">
     </menu-item>
 </ul>
-`
-
+`;

@@ -1,18 +1,19 @@
-
 body {
-    font-family: var(--primary-font);
-    background-color: var(--inactive-background);
+	font-family: var(--primary-font);
+	background-color: var(--inactive-background);
 	font-size: 16px;
-    line-height: 1.5em;
+	line-height: 1.5em;
 
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
 a, svg, button {
-    text-decoration: none;
-    color: var(--highlight-color);
+	text-decoration: none;
+	color: var(--highlight-color);
 	cursor: pointer;
 }
+
+box-sizing: border-box;
 
 a:hover, svg:hover, button:hover {
 	color: var(--accent-color);
@@ -24,145 +25,142 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--heading-font);
-    font-weight: normal;
+	font-family: var(--heading-font);
+	font-weight: normal;
 
 	padding-top: 1em;
 	margin: 0;
-    color: var(--highlight);
+	color: var(--highlight);
 	line-height: 1.5em;
 }
 
 p {
 	margin-top: 0;
-	margin-bottom: .5em;
+	margin-bottom: 0.5em;
 }
 
-
 h1 {
-    font-size: xx-large;
-    background-color: var(--accent);
-    text-align: center;
+	font-size: xx-large;
+	background-color: var(--accent);
+	text-align: center;
 }
 
 h1 + p {
-    text-align: center;
-    background-color: var(--accent);
-    padding-bottom: 1em;
+	text-align: center;
+	background-color: var(--accent);
+	padding-bottom: 1em;
 }
 
 h2 {
-    font-size: x-large;
-    border-bottom: thin solid lightgrey;
+	font-size: x-large;
+	border-bottom: thin solid lightgrey;
 }
 h3 {
-    font-size: large;
+	font-size: large;
 }
 
 h4 {
-    font-size: medium;
+	font-size: medium;
 }
 
 h5 {
-    font-size: small;
+	font-size: small;
 }
 
 h6 {
-    font-size: x-small;
+	font-size: x-small;
 }
 
 @media only screen and (max-width: 55rem) {
-    body {
-        font-size: 12px;
-    }
+	body {
+		font-size: 12px;
+	}
 }
 
 @media print {
-    body {
-        font-size: 14px;
-        border: none;
+	body {
+		font-size: 14px;
+		border: none;
 		column-count: 2;
-    }
+	}
 
 	h1, h2, h3 {
 		break-after: avoid;
 	}
 }
 
-
 blockquote {
-    border-left: .5em solid var(--highlight);
-    padding: 0 .5em;
+	border-left: 0.5em solid var(--highlight);
+	padding: 0 0.5em;
 	margin: 0;
-    background-color: var(--accent);
+	background-color: var(--accent);
 }
 
 pre,
 code {
-    font-family: 'JetBrains Mono', Monospace;
-    font-size: 14px;
-    background-color: var(--accent);
+	font-family: "JetBrains Mono", Monospace;
+	font-size: 14px;
+	background-color: var(--accent);
 }
 
 pre {
-    padding: 1em;
-    border-radius: 0.5em;
-    overflow-x: auto;
+	padding: 1em;
+	border-radius: 0.5em;
+	overflow-x: auto;
 }
 
 table {
-    border-collapse: collapse;
-    text-align: left;
-    max-height: 30em;
-    overflow: auto;
-    display: block;
+	border-collapse: collapse;
+	text-align: left;
+	max-height: 30em;
+	overflow: auto;
+	display: block;
 }
 
 figure {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
 }
 img,
 svg,
 table {
-    display: block;
-    max-width: 100%;
-    margin: auto;
+	display: block;
+	max-width: 100%;
+	margin: auto;
 }
 
 table thead {
-    position: sticky;
-    top: 0;
-    background-color: white;
-    box-shadow: 0 1px 0;
+	position: sticky;
+	top: 0;
+	background-color: white;
+	box-shadow: 0 1px 0;
 }
 
 tbody th {
-    position: sticky;
-    left: 0;
-    background-color: white;
-    box-shadow: 1px 0 0;
+	position: sticky;
+	left: 0;
+	background-color: white;
+	box-shadow: 1px 0 0;
 }
 
 tbody td {
-    border-left: thin solid lightgrey;
+	border-left: thin solid lightgrey;
 }
 
 table td,
 table th {
-    padding: 5px;
+	padding: 5px;
 }
 
 tbody tr:nth-child(even) {
-    background-color: var(--accent);
+	background-color: var(--accent);
 }
 
 ul ul, ul ol, ol ol, ol ul {
-    font-size: calc(100% - 2px);
+	font-size: calc(100% - 2px);
 }
 
 ul, ol {
 	padding-left: 1.5em;
 }
-

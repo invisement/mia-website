@@ -1,56 +1,57 @@
-import { LitElement, css, html } from "lit";
+import { css, html, LitElement } from "lit";
 import { property, query } from "lit/decorators.js";
 
 class ChangingWord extends LitElement {
-    @query('span')
-    word: HTMLSpanElement;
+	@query("span")
+	word: HTMLSpanElement;
 
-    @property()
-    words=["Home", "Auto"]
+	@property()
+	words = ["Home", "Auto"];
 
-    @property()
-    speed = 500;
+	@property()
+	speed = 500;
 
-    async connectedCallback() {
-        super.connectedCallback()
-        
-        await this.updateComplete
-        this.changeLetters()
-    }
-    changeLetters = () => {
-        var spanElement = this.word;
-        var words = this.words;
-        var currentWordIndex = 0;
-        var currentLetterIndex = 0;
-        setInterval(changeLetter, this.speed);
+	async connectedCallback() {
+		super.connectedCallback();
 
-        //const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+		await this.updateComplete;
+		this.changeLetters();
+	}
+	changeLetters = () => {
+		var spanElement = this.word;
+		var words = this.words;
+		var currentWordIndex = 0;
+		var currentLetterIndex = 0;
+		setInterval(changeLetter, this.speed);
 
-        async function changeLetter() {
-            var word = words[currentWordIndex];
-            var currentLetter = word[currentLetterIndex];
+		//const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-            if (currentLetterIndex >= word.length) {
-                currentLetterIndex = 0;
-                currentWordIndex = (currentWordIndex + 1) % words.length;
-                spanElement.textContent = "";
-            } else {
-                spanElement.textContent += currentLetter;
-                currentLetterIndex++;
-            }
-        }
+		async function changeLetter() {
+			var word = words[currentWordIndex];
+			var currentLetter = word[currentLetterIndex];
 
-    }
+			if (currentLetterIndex >= word.length) {
+				currentLetterIndex = 0;
+				currentWordIndex = (currentWordIndex + 1) % words.length;
+				spanElement.textContent = "";
+			} else {
+				spanElement.textContent += currentLetter;
+				currentLetterIndex++;
+			}
+		}
+	};
 
-    render() {return html`
+	render() {
+		return html`
         <p>
             <mark>Relax!</mark> We will search 100s of sources to find<br>
             the <u>lowest insurance rate</u> for your <span></span>_
         </p>
         <img src="/illustrations/mindfulness.svg">
-    `}
+    `;
+	}
 
-    static styles = css`
+	static styles = css`
         :host {
             display: flex;
             justify-content: space-around;
@@ -81,6 +82,6 @@ class ChangingWord extends LitElement {
         }
 
     
-    `
+    `;
 }
-customElements.define('changing-word', ChangingWord)
+customElements.define("changing-word", ChangingWord);

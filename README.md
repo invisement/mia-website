@@ -1,5 +1,10 @@
 # Invisement Website
 
+## navigate for components:
+
+open /components/component-name to see the pure components that are imported in
+/ui/components.ts
+
 ## Tech stack
 
 - Typescript: Front end and backend language
@@ -104,7 +109,11 @@ broker-header, guest-header, etc.
 ### open source free icon sources:
 
 - https://heroicons.com/
--
+- https://undraw.co/
+- https://www.svgrepo.com/
+- https://www.manypixels.co/gallery
+- https://www.openpeeps.com/
+- https://storyset.com/
 
 ## Technical Debts, YAGNI, Bugs
 
