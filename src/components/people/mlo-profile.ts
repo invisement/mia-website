@@ -59,12 +59,15 @@ class MLOProfile extends LitElement {
 		<div id="headline"  class=${classMap(classes)} >${
 			unsafeHTML(this.data.headline)
 		}</div>
+		<chips-group class=${
+			classMap(classes)
+		} .chips=${mortgageChips}></chips-group>
+
 		<div class=${classMap(classes)}>${unsafeHTML(this.data.bio)}</div>
 		<img class=${
 			classMap(classes)
 		} id="license" src=${this.data.license} alt="${this.data.name} license">
 
-		<chips-group .chips=${mortgageChips}></chips-group>
 	`;
 	}
 
