@@ -6,11 +6,11 @@ export function firstPageLoad(mainEl: HTMLElement) {
 		document.body.appendChild(mainEl);
 	}
 	main = mainEl;
-	const path = globalThis.location.pathname;
-	loadComponent(path);
+	loadComponent();
 }
 
-function loadComponent(path: string) {
+function loadComponent() {
+	const path = globalThis.location.pathname;
 	let componentName = path.replace("/", "") || "home-page";
 
 	if (!customElements.get(componentName)) {
@@ -20,29 +20,14 @@ function loadComponent(path: string) {
 	main.replaceChildren(el);
 }
 
-function handlePopState() {
-	loadComponent(globalThis.location.pathname);
-}
-
-export function creatLinkEl(href: string) {
-	const a = document.createElement("a");
-	a.href = href;
-	//a.textContent = event.target.textContent;
-	a.addEventListener("click", handleLinkClick);
-	return a;
-}
-
 export function gotoPage(href: string) {
-	history.pushState(null, "", href); // Update the URL without reloading
-	loadComponent(href);
-}
-
-function handleLinkClick(event) {
-	event.preventDefault();
-	const href = event.currentTarget.getAttribute("href");
-	history.pushState(null, "", href); // Update the URL without reloading
-	loadComponent(href);
+	if (href.startsWith("http")) {
+		globalThis.open(href, "_blank")?.focus();
+	} else {
+		history.pushState(null, "", href); // Update the URL without reloading
+		loadComponent();
+	}
 }
 
 // works when user clicks back and forward navigations
-globalThis.addEventListener("popstate", handlePopState);
+globalThis.addEventListener("popstate", loadComponent);

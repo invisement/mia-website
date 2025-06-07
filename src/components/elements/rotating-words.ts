@@ -24,7 +24,6 @@ class RotatingWords extends LitElement {
 			.map((li) => li.textContent.trim() + "‎".repeat(30) + "\n")
 			.join(""); // added no-space char for delay between words
 
-
 		const speed = this.speed || 100;
 
 		setInterval(() => {
@@ -46,12 +45,13 @@ class RotatingWords extends LitElement {
 	}
 
 	static styles = css`
-		:host {
-			display: contents;
+		span{
+			color: blue;
+			font-size: 2em;
+			font-family: cursive;
+			text-shadow: 0px 5px 1px orange;
 		}
-		span {
-			margin-left: 2em;
-		}
+	
 	`;
 }
 customElements.define("rotating-words", RotatingWords);

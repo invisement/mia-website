@@ -1,5 +1,5 @@
 import { router } from "./api/router.ts";
-import { serveDir, serveFile } from "jsr:@std/http/file-server";
+import { serveDir } from "jsr:@std/http/file-server";
 
 import { hostname, port } from "./config.ts";
 
@@ -10,6 +10,13 @@ Deno.serve({ port, hostname }, async (req) => {
 		return serveDir(req, {
 			fsRoot: "src",
 			urlRoot: "src",
+		});
+	}
+
+	if (pathname.startsWith("/data/")) {
+		return serveDir(req, {
+			fsRoot: "data",
+			urlRoot: "data",
 		});
 	}
 

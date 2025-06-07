@@ -1,5 +1,5 @@
 import { css, html, LitElement } from "lit";
-import { creatLinkEl } from "../../utils/handle-ui-links.ts";
+import { gotoPage } from "../../utils/handle-ui-links.ts";
 
 type Icon = {
 	name?: string;
@@ -67,9 +67,10 @@ export class TopBar extends LitElement {
 		for (const { path, link } of list) {
 			const img = document.createElement("img");
 			img.src = path;
-			const a = creatLinkEl(link);
-			a.appendChild(img);
-			div.appendChild(a);
+			// const a = creatLinkEl(link);
+			// a.appendChild(img);
+			img.addEventListener("click", () => gotoPage(link));
+			div.appendChild(img);
 		}
 	};
 }
